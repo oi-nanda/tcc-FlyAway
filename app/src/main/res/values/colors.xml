@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="backgroud">#FEF8F3</color>
+    <color name="darkblue">#000F36</color>
+    <color name="lighterblue">#153894</color>
+    <color name="blue">#1d1637</color>
+    <color name="lue">#153894</color>
+    <color name="lighteryellow">#F19E36</color>
+    <color name="darkyellow">#CF8626</color>
+    <color name="lightergreen">#697928</color>
+    <color name="darkgreen">#525B46</color>
+    <color name="lightergray">#717578</color>
+    <color name="darkgray">#484B4E</color>
+    <color name="gray">#E7E2E2</color>
+</resources>

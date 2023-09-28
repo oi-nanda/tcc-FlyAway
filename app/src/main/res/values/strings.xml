@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application FlyAway</string>
+    <string name="roteiros_facilitados">Crie roteiros descomplicados para destinos deslumbrantes de forma eficiente e organizada! </string>
+    <string name="geolocalizacao">Connheça lugares incriveis, com auxilio de mapas e rotas na palma da sua mão</string>
+    <string name="atracoes_locais">Descubra além do convencional, explore tesouros locais e mergulhe em uma experiência verdadeiramente enriquecedora</string>
+    <string name="contexto"> Tenha uma plataforma adaptada aos seus objetivos e que te auxilie em qualquer mudança de planos</string>
+
+</resources>
