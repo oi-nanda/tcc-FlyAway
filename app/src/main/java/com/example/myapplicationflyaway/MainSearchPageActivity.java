@@ -53,7 +53,9 @@ public class MainSearchPageActivity extends AppCompatActivity {
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(v -> {
-            ShowPopup(v);
+            Intent i = new Intent (MainSearchPageActivity.this,CreateTrip.class);
+            startActivity(i);
+            finish();
         });
     }
     public void ShowPopup(View v){
