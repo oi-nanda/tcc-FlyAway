@@ -25,16 +25,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
             android:id="@+id/imagem_login"
             android:layout_width="300dp"
             android:layout_height="200dp"
-            android:layout_marginTop="30dp"
-            app:srcCompat="@drawable/imagem_tela_login"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            />
+            app:srcCompat="@drawable/imagem_tela_login" />
 
         <View
             android:id="@+id/containerComponents"
@@ -74,6 +75,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_password"/>
+
+        <com.google.android.gms.common.SignInButton
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_login" />
 
         <TextView
             android:id="@+id/text_create_account"

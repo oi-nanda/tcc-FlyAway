@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.myapplicationflyaway.Activity.CreateItineraryActivity;
 import com.example.myapplicationflyaway.Activity.LoginActivity;
@@ -21,9 +22,12 @@ import com.example.myapplicationflyaway.Fragments.ProfileFragment;
 import com.example.myapplicationflyaway.Fragments.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.ktx.Firebase;
 
 public class MainActivity extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
     Dialog myDialog;
     public static int home_footer = 1000052;
     View view;
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         myDialog = new Dialog(this);
+        mAuth = FirebaseAuth.getInstance();
 
         BottomNavigationView navigationView = findViewById(R.id.bottomNavigationView);
         Menu menu = navigationView.getMenu();
@@ -97,8 +102,8 @@ public class MainActivity extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(getApplicationContext(), "Logout realizado com sucesso", Toast.LENGTH_SHORT).show();
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {

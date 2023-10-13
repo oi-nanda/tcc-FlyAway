@@ -172,6 +172,7 @@
                     android:id="@+id/imageView4"
                     android:layout_width="111dp"
                     android:layout_height="147dp"
+                    android:layout_marginBottom="-3dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/info_password_two"
                     app:srcCompat="@drawable/torre_de_pisa"
@@ -182,6 +183,7 @@
                     android:layout_width="90dp"
                     android:layout_height="139dp"
                     android:layout_marginStart="20dp"
+                    android:layout_marginBottom="-9dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/button_create_account"
@@ -192,11 +194,11 @@
                     android:id="@+id/back_loginPage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="35dp"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/baseline_arrow_back_ios_24"
+                    app:srcCompat="@drawable/ic_arrow_back"
                     tools:ignore="MissingConstraints" />
 
                 <ImageView

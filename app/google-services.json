@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "508064670678",
+    "project_id": "flyaway-5841b",
+    "storage_bucket": "flyaway-5841b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508064670678:android:e525d46cd2107263ce3a77",
+        "android_client_info": {
+          "package_name": "com.example.myapplicationflyaway"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlksQppB1D1gS4iOYziyyi8VFjSMMv7yk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
