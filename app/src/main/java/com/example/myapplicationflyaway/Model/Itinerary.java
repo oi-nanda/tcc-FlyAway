@@ -1,6 +1,6 @@
-package com.example.myapplicationflyaway;
+package com.example.myapplicationflyaway.Model;
 
-public class Roteiro {
+public class Itinerary {
 
     private String titulo, data, lugar;
     private Boolean salvo;
@@ -46,7 +46,7 @@ public class Roteiro {
         this.imageId = imageId;
     }
 
-    public Roteiro(String titulo, String data, String lugar, Boolean salvo, int imageId) {
+    public Itinerary(String titulo, String data, String lugar, Boolean salvo, int imageId) {
         this.titulo = titulo;
         this.data = data;
         this.lugar = lugar;

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroud"
-    tools:context=".CreateAccountActivity">
+    tools:context=".Activity.CreateAccountActivity">
     <include layout="@layout/footer"/>
     <include layout="@layout/header" />
     <RelativeLayout
@@ -161,7 +161,7 @@
                     style="@style/Button_Login"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/button_login"
-                    android:text="Cadastrar-se"
+                    android:text="Cadastrar"
                     android:textColor="@color/white"
                     android:textStyle="normal"
                     app:layout_constraintEnd_toEndOf="parent"

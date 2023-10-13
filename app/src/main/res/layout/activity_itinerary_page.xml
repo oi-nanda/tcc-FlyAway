@@ -4,18 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ItineraryPageActivity"
+    tools:context=".Activity.ItineraryPageActivity"
     android:background="@color/backgroud"
     android:orientation="vertical">
 
-    <include layout="@layout/footer_after_login_page"/>
-    <include layout="@layout/header_after_login_page"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@+id/footer_after_login_page"
-        android:layout_below="@+id/header_after_login"
         android:gravity="center" >
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -112,80 +108,173 @@
                     android:text="Descrição do roteiro criado" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
+                    android:layout_marginStart="20dp"
+                    android:layout_width="368dp"
+                    android:layout_height="130dp"
+                    android:orientation="horizontal"
+                    android:textAlignment="center">
 
-                    <EditText
-                        android:id="@+id/financas"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:background="@drawable/icone"
-                        android:focusableInTouchMode="false" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.333"
+                        android:background="@drawable/gray_background_profile"
+                        android:elevation="5dp"
+                        android:orientation="vertical">
 
-                    <EditText
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:background="@drawable/icone"
-                        android:focusableInTouchMode="false" />
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="12dp"
+                            android:background="@drawable/circle_background_itinerary">
 
-                    <EditText
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:background="@drawable/icone"
-                        android:focusableInTouchMode="false" />
+                            <ImageView
+                                android:id="@+id/finances_itinerary_image"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/hand" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <EditText
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:background="@drawable/icone"
-                        android:focusableInTouchMode="false" />
+                        <TextView
+                            android:id="@+id/liked_scrips_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="Finanças"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="13dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.333"
+                        android:background="@drawable/gray_background_profile"
+                        android:elevation="5dp"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="12dp"
+                            android:background="@drawable/circle_background_itinerary">
+
+                            <ImageView
+                                android:id="@+id/galery_itinerary_image"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/galery" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/galery_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="Galeria"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="13dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.333"
+                        android:background="@drawable/gray_background_profile"
+                        android:elevation="5dp"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="12dp"
+                            android:background="@drawable/circle_background_itinerary">
+
+                            <ImageView
+                                android:id="@+id/climate_image"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/climate" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/climate_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="Clima"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="13dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.333"
+                        android:background="@drawable/gray_background_profile"
+                        android:elevation="5dp"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="12dp"
+                            android:background="@drawable/circle_background_itinerary">
+
+                            <ImageView
+                                android:id="@+id/notes_image"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/notes" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <TextView
+                            android:id="@+id/notes_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:layout_marginBottom="8dp"
+                            android:text="Anotações"
+                            android:textAlignment="center"
+                            android:textColor="#000000"
+                            android:textSize="13dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Finanças"
-                        android:layout_marginLeft="20dp"
-                        android:textSize="15dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Galeria"
-                        android:layout_marginLeft="48dp"
-                        android:textSize="15dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Previsão"
-                        android:layout_marginLeft="48dp"
-                        android:textSize="15dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Notas"
-                        android:layout_marginLeft="53dp"
-                        android:textSize="15dp"/>
-
-
-                </LinearLayout>
 
                 <ListView
                     android:id="@+id/trip_list"
@@ -197,19 +286,16 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/Adicionar"
-                    android:textColor="@color/white"
-                    android:background="@drawable/icone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
                     android:layout_below="@+id/pessoas"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginStart="175dp"
-                    android:layout_marginEnd="175dp"
-                    android:layout_marginBottom="10dp"
                     android:layout_gravity="center"
+                    android:background="@drawable/button_login"
                     android:padding="10dp"
-                    android:text="+"
-                    android:textSize="30dp" />
+                    android:text="Adicionar Diária"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="15dp" />
 
 
             </LinearLayout>

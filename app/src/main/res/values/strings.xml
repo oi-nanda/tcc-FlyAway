@@ -4,5 +4,7 @@
     <string name="geolocalizacao">Connheça lugares incriveis, com auxilio de mapas e rotas na palma da sua mão</string>
     <string name="atracoes_locais">Descubra além do convencional, explore tesouros locais e mergulhe em uma experiência verdadeiramente enriquecedora</string>
     <string name="contexto"> Tenha uma plataforma adaptada aos seus objetivos e que te auxilie em qualquer mudança de planos</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

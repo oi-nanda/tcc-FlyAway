@@ -6,16 +6,16 @@
     android:layout_height="match_parent"
     android:id="@+id/CreateItinerary"
     android:background="@color/backgroud"
-    tools:context=".MainActivity">
-    <include layout="@layout/footer"/>
+    tools:context=".Components.OpenSlidesLayout">
+
 
     <include layout="@layout/header_after_login_page" />
+
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@+id/footer_after_login_page"
         android:layout_below="@+id/header_after_login"
         android:gravity="center"
         >
@@ -60,38 +60,43 @@
 
                 <ImageView
                     android:id="@+id/imageView4"
-                    android:layout_width="111dp"
-                    android:layout_height="147dp"
+                    android:layout_width="86dp"
+                    android:layout_height="130dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginBottom="-3dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/t2"
+                    app:layout_constraintEnd_toStartOf="@+id/buttonCreate"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:srcCompat="@drawable/torre_de_pisa"
                     tools:ignore="MissingConstraints" />
 
                 <ImageView
                     android:id="@+id/imageView5"
-                    android:layout_width="90dp"
-                    android:layout_height="139dp"
+                    android:layout_width="86dp"
+                    android:layout_height="130dp"
                     android:layout_marginStart="20dp"
+                    android:layout_marginBottom="-6dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.878"
                     app:layout_constraintStart_toEndOf="@+id/t2"
                     app:srcCompat="@drawable/torre_eiffel"
                     tools:ignore="MissingConstraints" />
 
+
                 <android.widget.SearchView
                     android:id="@+id/searchview"
-                    android:background="@drawable/edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="?actionBarSize"
                     android:layout_marginStart="30dp"
+                    android:layout_marginTop="60dp"
                     android:layout_marginEnd="30dp"
-                    android:layout_marginTop="15dp"
+                    android:background="@drawable/edit_text"
                     android:queryHint="Buscar locais"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.486"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/buttonCreate"
@@ -127,11 +132,13 @@
                     android:id="@+id/imageView"
                     android:layout_width="300dp"
                     android:layout_height="150dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@color/gray"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.495"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/searchview"
-                    android:background="@color/gray" />
+                    app:layout_constraintTop_toBottomOf="@+id/searchview" />
+
 
                 <EditText
                     android:id="@+id/data1"
@@ -141,16 +148,15 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="20dp"
                     android:ems="10"
-                    android:textAlignment="center"
-                    android:inputType="date"
-                    android:textSize="16sp"
-                    android:text="dd/mm/yy"
                     android:focusableInTouchMode="false"
+                    android:inputType="date"
+                    android:text="dd/mm/yy"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.293"
+                    app:layout_constraintHorizontal_bias="0.222"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
 
                 <EditText
                     android:id="@+id/data2"
@@ -169,6 +175,17 @@
                     app:layout_constraintHorizontal_bias="0.724"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+                <ImageButton
+                    android:id="@+id/btn_back_home"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/transparent_backgroud"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_arrow_back" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>

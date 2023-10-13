@@ -1,4 +1,4 @@
-package com.example.myapplicationflyaway;
+package com.example.myapplicationflyaway.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.example.myapplicationflyaway.R;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
@@ -20,7 +22,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         back_loginPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CreateAccountActivity.this, FirstPageActivity.class);
+                Intent intent = new Intent(CreateAccountActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });

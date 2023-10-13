@@ -1,21 +1,24 @@
-package com.example.myapplicationflyaway;
+package com.example.myapplicationflyaway.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.myapplicationflyaway.Adapter.ItineraryCardAdapter;
+import com.example.myapplicationflyaway.R;
+import com.example.myapplicationflyaway.Model.Itinerary;
 
 public class ItineraryPageActivity extends AppCompatActivity {
 
     private ListView list;
-    private MeuCardRoteiroAdapter adapter;
+    private ItineraryCardAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_itinerary_page);
 
-        adapter = new MeuCardRoteiroAdapter(getApplicationContext(),android.R.layout.simple_list_item_1);
+        adapter = new ItineraryCardAdapter(getApplicationContext(),android.R.layout.simple_list_item_1);
 
         list = findViewById(R.id.trip_list);
         list.setAdapter(adapter);
@@ -28,7 +31,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
         //        this.imageId = imageId;
         //    }
 
-        Roteiro roteiro = new Roteiro ("titulo","datayeah","japao",false,1234);
+        Itinerary roteiro = new Itinerary("titulo","datayeah","japao",false,1234);
         adapter.add(roteiro);
 
     }
