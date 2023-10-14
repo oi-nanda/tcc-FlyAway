@@ -104,6 +104,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(getApplicationContext(), "Logout realizado com sucesso", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(i);
+                finish();
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {

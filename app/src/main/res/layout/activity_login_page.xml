@@ -40,9 +40,10 @@
         <View
             android:id="@+id/containerComponents"
             style="@style/ContainerComponents"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="240dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imagem_login"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imagem_login" />
 
         <EditText
             android:id="@+id/edit_email"
@@ -76,14 +77,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_password"/>
 
-        <com.google.android.gms.common.SignInButton
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_login" />
 
         <TextView
             android:id="@+id/text_create_account"
