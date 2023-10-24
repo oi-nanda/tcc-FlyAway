@@ -1,56 +1,56 @@
 package com.example.myapplicationflyaway.Model;
 
+import android.media.Image;
+import android.widget.ImageView;
+
 public class Itinerary {
 
-    private String titulo, data, lugar;
-    private Boolean salvo;
-    private int imageId;
+    String placeName, inicialDate, finalDate, numberOfTravelers, description;
+    Day day[];
 
-    public String getTitulo() {
-        return titulo;
+    ImageView img;
+
+    public Itinerary() {}
+
+    public Itinerary(String placeName, String inicialDate, String finalDate, String numberOfTravelers, String description, Day[] day, ImageView img) {
+        this.placeName = placeName;
+        this.inicialDate = inicialDate;
+        this.finalDate = finalDate;
+        this.numberOfTravelers = numberOfTravelers;
+        this.description = description;
+        this.day = day;
+        this.img = img;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public String getPlaceName() {
+        return placeName;
     }
 
-    public String getData() {
-        return data;
+    public void setPlaceName(String placeName) {
+        this.placeName = placeName;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public String getInicialDate() {
+        return inicialDate;
     }
 
-    public String getLugar() {
-        return lugar;
+    public void setInicialDate(String inicialDate) {
+        this.inicialDate = inicialDate;
     }
 
-    public void setLugar(String lugar) {
-        this.lugar = lugar;
+    public String getFinalDate() {
+        return finalDate;
     }
 
-    public Boolean getSalvo() {
-        return salvo;
+    public void setFinalDate(String finalDate) {
+        this.finalDate = finalDate;
     }
 
-    public void setSalvo(Boolean salvo) {
-        this.salvo = salvo;
+    public String getNumberOfTravelers() {
+        return numberOfTravelers;
     }
 
-    public int getImageId() {
-        return imageId;
-    }
-
-    public void setImageId(int imageId) {
-        this.imageId = imageId;
-    }
-
-    public Itinerary(String titulo, String data, String lugar, Boolean salvo, int imageId) {
-        this.titulo = titulo;
-        this.data = data;
-        this.lugar = lugar;
-        this.salvo = salvo;
-        this.imageId = imageId;
+    public void setNumberOfTravelers(String numberOfTravelers) {
+        this.numberOfTravelers = numberOfTravelers;
     }
 }

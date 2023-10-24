@@ -33,9 +33,6 @@ public class ItineraryCardAdapter extends ArrayAdapter<Itinerary> {
             ImageView salvo = convertView.findViewById(R.id.save_card);
             ImageView imagem_local = convertView.findViewById(R.id.image_card);
 
-            titulo.setText(getItem(position).getTitulo());
-            data.setText(getItem(position).getData());
-            lugar.setText(getItem(position).getLugar());
 
             salvo.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -43,9 +40,6 @@ public class ItineraryCardAdapter extends ArrayAdapter<Itinerary> {
 
                 }
             });
-
-
-
 
         }
         return convertView;
