@@ -13,11 +13,14 @@ import android.widget.Toast;
 import com.example.myapplicationflyaway.MainActivity;
 import com.example.myapplicationflyaway.Model.Users;
 import com.example.myapplicationflyaway.R;
+import com.example.myapplicationflyaway.Util.ConfigBD;
 import com.example.myapplicationflyaway.databinding.ActivityCreateAccountBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -25,7 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class CreateAccountActivity extends AppCompatActivity {
 
     ActivityCreateAccountBinding binding;
-    String username, email, password, confirmPassword;
+    String username, email, password, confirmPassword, telefone, bio, localizacao;
     FirebaseDatabase db;
     DatabaseReference reference;
     ImageView back_loginPage;
@@ -41,7 +44,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         binding = ActivityCreateAccountBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         progressDialog = new ProgressDialog(this);
-        mAuth = FirebaseAuth.getInstance();
+        mAuth = ConfigBD.FirebaseAutenticacao();
         mUser=mAuth.getCurrentUser();
 
 
@@ -69,6 +72,9 @@ public class CreateAccountActivity extends AppCompatActivity {
         username = binding.editCreateAccountUsername.getText().toString();
         password = binding.editCreateAccountPassword.getText().toString();
         confirmPassword = binding.editCreateAccountConfirmPassword.getText().toString();
+        telefone = "(XXX) XXXXX-XXXX";
+        bio = "Bio Vazia";
+        localizacao = "Localização não informada";
 
         if(!email.matches(emailPattern)){
             binding.editCreateAccountEmail.setError("Email inválido");
@@ -93,10 +99,11 @@ public class CreateAccountActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
-                        Users users = new Users(username, email, password, confirmPassword);
+                        Users users = new Users(username, email, password, confirmPassword,telefone, bio, localizacao, null);
                         db = FirebaseDatabase.getInstance();
                         reference = db.getReference("Users");
-                        reference.child(username).setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        String id = mAuth.getUid();
+                        reference.child(id).setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 binding.editCreateAccountEmail.setText("");
@@ -112,7 +119,19 @@ public class CreateAccountActivity extends AppCompatActivity {
 
                     }else{
                         progressDialog.dismiss();
-                        Toast.makeText(CreateAccountActivity.this, "Erro ao criar usuário", Toast.LENGTH_SHORT).show();
+                        String excecao = "";
+                        try{
+                            throw task.getException();
+                        }catch (FirebaseAuthWeakPasswordException e){
+                            excecao = "Digite uma senha mais forte";
+                        }catch (FirebaseAuthUserCollisionException e){
+                            excecao = "Email já cadastrado";
+                        }catch (Exception e){
+                            excecao = "Erro ao cadastrar usuário" + e.getMessage();
+                            e.printStackTrace();
+                        }
+
+                        Toast.makeText(CreateAccountActivity.this, excecao, Toast.LENGTH_SHORT).show();
                     }
                 }
             });

@@ -23,7 +23,6 @@ import com.example.myapplicationflyaway.Fragments.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.ktx.Firebase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,12 +48,15 @@ public class MainActivity extends AppCompatActivity {
         menuItemSettings.setOnMenuItemClickListener(this::onClickGoToSettings);
         menuItemExit.setOnMenuItemClickListener(this::onClickExit);
 
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(v -> {
             Intent i = new Intent(getApplicationContext(), CreateItineraryActivity.class);
             startActivity(i);
             finish();
         });
+
+
     }
 
 
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
         return true;
     }
+
     private boolean onClickGoToSettings(MenuItem menuItem) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()

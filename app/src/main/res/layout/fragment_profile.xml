@@ -39,14 +39,16 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="360dp"
+                                android:layout_width="409dp"
+                                android:layout_height="376dp"
                                 android:background="@drawable/top_backgroud_profile"
                                 app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent">
 
@@ -57,49 +59,63 @@
                                     android:scaleType="centerCrop"
                                     app:srcCompat="@drawable/circles"
                                     tools:ignore="MissingConstraints"
-                                    tools:layout_editor_absoluteX="1dp" />
+                                    tools:layout_editor_absoluteX="-3dp"
+                                    tools:layout_editor_absoluteY="-14dp" />
+
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
-                            <ImageView
-                                android:id="@+id/imageView9"
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/profile_pic"
                                 android:layout_width="130dp"
                                 android:layout_height="130dp"
                                 android:layout_marginTop="35dp"
+                                android:src="@drawable/perfil_padrao"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/perfil_padrao" />
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                                android:id="@+id/edt_profile_pic"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:contentDescription="TODO"
+                                android:focusable="true"
+                                android:src="@drawable/baseline_mode_edit_outline_24"
+                                app:layout_constraintBottom_toBottomOf="@+id/profile_pic"
+                                app:layout_constraintEnd_toEndOf="@+id/profile_pic"
+                                app:shapeAppearanceOverlay="@style/circular" />
 
                             <TextView
-                                android:id="@+id/textView"
+                                android:id="@+id/txt_username"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="16dp"
-                                android:text="Nome do Usuário"
+                                android:text="username"
                                 android:textColor="#ffffff"
                                 android:textSize="20sp"
                                 android:textStyle="bold"
-                                app:layout_constraintEnd_toEndOf="@+id/imageView9"
-                                app:layout_constraintStart_toStartOf="@+id/imageView9"
-                                app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+                                app:layout_constraintEnd_toEndOf="@+id/profile_pic"
+                                app:layout_constraintStart_toStartOf="@+id/profile_pic"
+                                app:layout_constraintTop_toBottomOf="@+id/profile_pic" />
 
                             <TextView
-                                android:id="@+id/textView3"
+                                android:id="@+id/txt_email"
                                 android:layout_width="175dp"
                                 android:layout_height="29dp"
                                 android:gravity="center"
                                 android:text="usuario@gmail.com"
                                 android:textColor="#ffffff"
                                 android:textSize="18sp"
-                                app:layout_constraintEnd_toEndOf="@+id/textView"
-                                app:layout_constraintStart_toStartOf="@+id/textView"
-                                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                                app:layout_constraintEnd_toEndOf="@+id/txt_username"
+                                app:layout_constraintStart_toStartOf="@+id/txt_username"
+                                app:layout_constraintTop_toBottomOf="@+id/txt_username" />
 
                             <LinearLayout
                                 android:layout_width="368dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginTop="60dp"
-                                android:layout_marginBottom="24dp"
+                                android:layout_marginTop="35dp"
+                                android:layout_marginBottom="10dp"
                                 android:background="@drawable/white_backgroud_profile"
                                 android:elevation="3dp"
                                 android:orientation="vertical"
@@ -107,7 +123,7 @@
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/textView3">
+                                app:layout_constraintTop_toBottomOf="@+id/txt_email">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -236,6 +252,7 @@
                                     </LinearLayout>
 
                                 </LinearLayout>
+
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -244,7 +261,7 @@
                                     android:orientation="horizontal">
 
                                     <TextView
-                                        android:id="@+id/textBio"
+                                        android:id="@+id/textView1"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
@@ -253,14 +270,15 @@
                                         android:textSize="18sp" />
 
                                     <TextView
-                                        android:id="@+id/bio"
+                                        android:id="@+id/txt_bio"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="Realizando o sonho de viajar o mundo s2"
+                                        android:hint="--"
                                         android:textAlignment="viewEnd"
                                         android:textColor="#5B5B5B"
                                         android:textSize="16sp" />
+
                                 </LinearLayout>
 
                                 <View
@@ -286,47 +304,15 @@
                                         android:textSize="18sp" />
 
                                     <TextView
-                                        android:id="@+id/textView5"
+                                        android:id="@+id/txt_telefone"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="(51)984408294"
+                                        android:hint="(XX) XXXX-XXXX"
                                         android:textAlignment="viewEnd"
                                         android:textColor="#5B5B5B"
                                         android:textSize="16sp" />
-                                </LinearLayout>
 
-                                <View
-                                    android:id="@+id/view1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="1dp"
-                                    android:layout_margin="10dp"
-                                    android:background="#D9D9D9" />
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="10dp"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:id="@+id/text_email_profile"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:text="Email:"
-                                        android:textColor="#000000"
-                                        android:textSize="18sp" />
-
-                                    <TextView
-                                        android:id="@+id/text_email"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:text="usuario@gmail.com"
-                                        android:textAlignment="viewEnd"
-                                        android:textColor="#5B5B5B"
-                                        android:textSize="16sp" />
                                 </LinearLayout>
 
                                 <View
@@ -352,17 +338,15 @@
                                         android:textSize="18sp" />
 
                                     <TextView
-                                        android:id="@+id/localizacao"
+                                        android:id="@+id/txt_localizacao"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"
-                                        android:text="Brasil - RS"
+                                        android:hint="Localização não informada"
                                         android:textAlignment="viewEnd"
                                         android:textColor="#5B5B5B"
                                         android:textSize="16sp" />
                                 </LinearLayout>
-
-
 
 
                             </LinearLayout>
@@ -371,13 +355,13 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/button"
+                        android:id="@+id/button_edit_profile"
                         android:layout_width="match_parent"
                         style="@style/Button_Login"
                         android:layout_height="wrap_content"
-                        android:layout_margin="24dp"
+                        android:layout_margin="20dp"
                         android:background="@drawable/button_login"
-                        android:text="Editar Perfil"
+                        android:text="Alterar informações"
                         android:textColor="#ffffff"
                         android:textSize="18sp"
                         android:textStyle="normal" />

@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 import com.example.myapplicationflyaway.MainActivity;
+import com.example.myapplicationflyaway.Util.ConfigBD;
 import com.example.myapplicationflyaway.databinding.ActivityLoginPageBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
@@ -25,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        mAuth = FirebaseAuth.getInstance();
+        mAuth = ConfigBD.FirebaseAutenticacao();
 
 
         binding.textClickHere.setOnClickListener(new View.OnClickListener() {
@@ -60,16 +63,24 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();
-                            //updateUI(user);
                         } else {
-                            Toast.makeText(getApplicationContext(), "Email ou Senha incorretos",
+                            String excecao = "";
+                            try{
+                                throw task.getException();
+                            }catch (FirebaseAuthInvalidUserException e){
+                                excecao = "Usuário não esta cadastrado";
+                            }catch (FirebaseAuthInvalidCredentialsException e){
+                                excecao = "Email ou Senha incorretos";
+                            }catch (Exception e){
+                                excecao = "Erro ao logar na aplicação" + e.getMessage();
+                                e.printStackTrace();
+                            }
+                            Toast.makeText(getApplicationContext(), excecao,
                                     Toast.LENGTH_SHORT).show();
 
-                            //updateUI(null);
                         }
                     }
                 });
@@ -81,7 +92,11 @@ public class LoginActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        //updateUI(currentUser);
+        if(currentUser != null){
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
 
