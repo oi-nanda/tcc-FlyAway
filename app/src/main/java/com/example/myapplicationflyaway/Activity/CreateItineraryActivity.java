@@ -30,6 +30,8 @@ import com.example.myapplicationflyaway.databinding.ActivityCreateItineraryBindi
 import com.example.myapplicationflyaway.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -37,12 +39,13 @@ import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
+import java.util.UUID;
 
 public class CreateItineraryActivity extends AppCompatActivity {
 
     ActivityCreateItineraryBinding binding;
     String placeName, inicialDate, finalDate, numberOfTravelers;
-
+    Button add;
     final Calendar currentDate = Calendar.getInstance();
     final Calendar d1 = Calendar.getInstance();
     final Calendar d2 = Calendar.getInstance();
@@ -51,6 +54,14 @@ public class CreateItineraryActivity extends AppCompatActivity {
     FirebaseDatabase db;
     DatabaseReference reference;
 
+    FirebaseUser user;
+
+    String uid;
+
+    String id;
+
+    private FirebaseAuth mAuth;
+    private DatabaseReference databaseReference;
     EditText data1, data2;
     TextView npessoas;
     SearchView local;
@@ -65,6 +76,8 @@ public class CreateItineraryActivity extends AppCompatActivity {
         binding = ActivityCreateItineraryBinding.inflate(getLayoutInflater());
        setContentView(binding.getRoot());
         progressDialog = new ProgressDialog(this);
+
+        add = findViewById(R.id.Adicionar);
 
         binding.buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,10 +98,15 @@ public class CreateItineraryActivity extends AppCompatActivity {
 
 
                     if ((d2.after(d1) || d1.equals(d2)) && (d1.after(currentDate) || d1.compareTo(currentDate) == 0)){
-                    Itinerary itinerary = new Itinerary(placeName,inicialDate, finalDate, numberOfTravelers, null, null, null);
+                        user = FirebaseAuth.getInstance().getCurrentUser();
+                        uid = user.getUid().toString();
+                        id = UUID.randomUUID().toString();
+
+                    Itinerary itinerary = new Itinerary(id,placeName,inicialDate, finalDate, numberOfTravelers, null, null);
                     db = FirebaseDatabase.getInstance();
                     reference = db.getReference("Itineraries");
-                    reference.child(placeName).setValue(itinerary).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                    reference.child(uid).child(id).setValue(itinerary).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             binding.searchview.setQuery("", false);

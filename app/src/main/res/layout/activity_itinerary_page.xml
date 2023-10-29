@@ -9,10 +9,16 @@
     android:orientation="vertical">
 
 
+
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:gravity="center" >
+
+
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -20,9 +26,12 @@
             android:layout_marginTop="0dp"
             android:fillViewport="true">
 
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
+
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cover"
@@ -40,7 +49,31 @@
                         android:layout_width="match_parent"
                         android:layout_height="261dp"
                         android:scaleType="centerInside"
-                        android:src="@drawable/cover_1" />
+                        android:src="@color/gray">
+
+                    </ImageView>
+
+                    <ImageButton
+                        android:id="@+id/btn_back_home"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/transparent_backgroud"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_arrow_back" />
+
+                    <ImageButton
+                        android:id="@+id/btn_edit"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="350dp"
+                        android:layout_marginTop="20dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:background="@drawable/transparent_backgroud"
+                        app:srcCompat="@drawable/baseline_mode_edit_outline_24" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -99,7 +132,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/descrição"
+                    android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
@@ -276,13 +309,18 @@
                 </LinearLayout>
 
 
-                <ListView
-                    android:id="@+id/trip_list"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp">
+<!--                <ListView-->
+<!--                    android:id="@+id/trip_list"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="15dp">-->
+<!--                </ListView>-->
 
-                </ListView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:id="@+id/trip_list"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/Adicionar"

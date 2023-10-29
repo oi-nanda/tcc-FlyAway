@@ -3,29 +3,22 @@ package com.example.myapplicationflyaway.Model;
 import android.media.Image;
 
 public class Day {
-    String placeName[], description[], day;
-    Image imgDay[];
+    String day, description;
+    Image imgDay;
 
-    public Day(String[] placeName, String[] description, String day, Image[] imgDay) {
-        this.placeName = placeName;
-        this.description = description;
+    public Day(String day, String description,Image imgDay) {
         this.day = day;
+        this.description = description;
         this.imgDay = imgDay;
     }
 
-    public String[] getPlaceName() {
-        return placeName;
-    }
+    public Day(){}
 
-    public void setPlaceName(String[] placeName) {
-        this.placeName = placeName;
-    }
-
-    public String[] getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescription(String[] description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -37,12 +30,11 @@ public class Day {
         this.day = day;
     }
 
-
-    public Image[] getImgDay() {
+    public Image getImgDay() {
         return imgDay;
     }
 
-    public void setImgDay(Image[] imgDay) {
+    public void setImgDay(Image imgDay) {
         this.imgDay = imgDay;
     }
 }

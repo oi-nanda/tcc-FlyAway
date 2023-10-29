@@ -28,8 +28,8 @@ public class ItineraryCardAdapter extends ArrayAdapter<Itinerary> {
             convertView = inflater.inflate(R.layout.roteiro_card_item_layout, parent, false);
 
             TextView titulo = convertView.findViewById(R.id.title_card);
-            TextView data = convertView.findViewById(R.id.date_card);
-            TextView lugar = convertView.findViewById(R.id.place_card);
+//            TextView data = convertView.findViewById(R.id.date_card);
+//            TextView lugar = convertView.findViewById(R.id.place_card);
             ImageView salvo = convertView.findViewById(R.id.save_card);
             ImageView imagem_local = convertView.findViewById(R.id.image_card);
 

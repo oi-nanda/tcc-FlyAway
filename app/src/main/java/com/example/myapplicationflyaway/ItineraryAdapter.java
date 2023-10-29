@@ -31,10 +31,7 @@ public class ItineraryAdapter extends ArrayAdapter<String> {
             String campo1adapter = getItem( getPosition(String.valueOf(R.id.title_card)) );
             String campo2adapter = getItem( getPosition(String.valueOf(R.id.title_card)) );
             TextView campo1 = convertView.findViewById(R.id.title_card);
-            TextView campo2 = convertView.findViewById(R.id.place_card);
-            TextView date = convertView.findViewById(R.id.date_card);
             campo1.setText(campo1adapter);
-            campo2.setText(campo2adapter);
         }
         return convertView;
     }

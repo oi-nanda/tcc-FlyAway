@@ -5,25 +5,49 @@ import android.widget.ImageView;
 
 public class Itinerary {
 
-    String placeName, inicialDate, finalDate, numberOfTravelers, description;
+    String placeName, inicialDate, finalDate, numberOfTravelers, description, userId, id;
     Day day[];
 
     ImageView img;
 
     public Itinerary() {}
 
-    public Itinerary(String placeName, String inicialDate, String finalDate, String numberOfTravelers, String description, Day[] day, ImageView img) {
+    public Itinerary(String id, String placeName, String inicialDate, String finalDate, String numberOfTravelers, String description,ImageView img) {
         this.placeName = placeName;
+        this.id = id;
         this.inicialDate = inicialDate;
         this.finalDate = finalDate;
         this.numberOfTravelers = numberOfTravelers;
         this.description = description;
-        this.day = day;
         this.img = img;
     }
 
     public String getPlaceName() {
         return placeName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Day[] getDay() {
+        return day;
+    }
+
+    public void setDay(Day[] day) {
+        this.day = day;
+    }
+
+    public ImageView getImg() {
+        return img;
+    }
+
+    public void setImg(ImageView img) {
+        this.img = img;
     }
 
     public void setPlaceName(String placeName) {
@@ -48,6 +72,14 @@ public class Itinerary {
 
     public String getNumberOfTravelers() {
         return numberOfTravelers;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public void setNumberOfTravelers(String numberOfTravelers) {
