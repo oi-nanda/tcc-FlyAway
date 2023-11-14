@@ -3,11 +3,11 @@ package com.example.myapplicationflyaway.Model;
 import android.media.Image;
 
 public class Day {
-    String day, description;
+    String dayname, description;
     Image imgDay;
 
-    public Day(String day, String description,Image imgDay) {
-        this.day = day;
+    public Day(String dayname, String description,Image imgDay) {
+        this.dayname = dayname;
         this.description = description;
         this.imgDay = imgDay;
     }
@@ -22,12 +22,12 @@ public class Day {
         this.description = description;
     }
 
-    public String getDay() {
-        return day;
+    public String getDayname() {
+        return dayname;
     }
 
-    public void setDay(String day) {
-        this.day = day;
+    public void setDayname(String dayname) {
+        this.dayname = dayname;
     }
 
     public Image getImgDay() {

@@ -182,7 +182,6 @@ public class CreateItineraryActivity extends AppCompatActivity {
                 SimpleDateFormat data = new SimpleDateFormat("dd/MM/yy");
                 data2.setText(data.format(dataCalendario));
                 data2.setTextColor(androidx.appcompat.R.style.Base_TextAppearance_AppCompat_Body2);
-
             }
         };
 
@@ -210,7 +209,6 @@ public class CreateItineraryActivity extends AppCompatActivity {
                 d.show();
             }
         });
-
     }
 
     private void sendUserToItineraryPage() {

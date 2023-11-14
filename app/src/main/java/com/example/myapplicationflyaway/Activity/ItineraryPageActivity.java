@@ -39,6 +39,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<Day> daylist;
     MyAdapter myAdapter;
+
     DatabaseReference databaseReference;
     private ItineraryAdapter adapter;
     private ImageView itinerary_pic;

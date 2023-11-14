@@ -42,7 +42,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull MyAdapter.ViewHolder holder, int position) {
 
         Day day = dayArrayList.get(position);
-        holder.day.setText(day.getDay());
+        holder.day.setText(day.getDayname());
 
     }
 

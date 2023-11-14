@@ -2,7 +2,9 @@ package com.example.myapplicationflyaway.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
+import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.media.Image;
@@ -13,6 +15,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplicationflyaway.Fragments.ProfileFragment;
 import com.example.myapplicationflyaway.Model.Day;
 import com.example.myapplicationflyaway.Model.Itinerary;
 import com.example.myapplicationflyaway.Model.Place;
@@ -20,12 +23,20 @@ import com.example.myapplicationflyaway.R;
 import com.example.myapplicationflyaway.databinding.ActivityCreateDayBinding;
 import com.example.myapplicationflyaway.databinding.ActivityCreateItineraryBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.UUID;
 
 public class CreateDayActivity extends AppCompatActivity {
@@ -33,16 +44,34 @@ public class CreateDayActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     ActivityCreateDayBinding binding;
     String desc, cost;
+
+    private ArrayList<Day> daylist;
+
+    MyAdapter myAdapter;
     String placeName;
     FirebaseUser user;
+
+    private FirebaseAuth mAuth;
+
+    private DatabaseReference dbReference;
+    private FirebaseAuth auth;
+    long a = 0;
+
+    View view;
+
+    DatabaseReference databaseReference, dbRefDay, dbRefPlace;
 
     FirebaseDatabase db;
     DatabaseReference reference;
 
     String uid;
 
-    String id;
+    String NDaysNew;
 
+    String dayname;
+
+    String id;
+    // CUIDADO, LOOP INFINITO!!!!! PODE SOBRECARREGAR O SISTEMA!
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,50 +82,84 @@ public class CreateDayActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
 
+
         binding.buttonCreateDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                SearchView simpleSearchView = (SearchView) findViewById(R.id.searchview);
-                CharSequence query = simpleSearchView.getQuery();
-                placeName = String.valueOf(query);
-                desc = binding.description.getText().toString();
-                cost = binding.custo.getText().toString();
-
-
-                progressDialog.setMessage("Criando dia");
-                progressDialog.setTitle("Dia do roteiro");
-                progressDialog.setCanceledOnTouchOutside(false);
-                progressDialog.show();
-
-                String dayname = "day "+1;
-
-                Day day = new Day("day 2",desc,null);
-                Place place = new Place(placeName,null,Double.valueOf(cost));
-                db = FirebaseDatabase.getInstance();
-                reference = db.getReference("Itineraries").child("abcs");
-
-                reference.child("Days").child("day3").setValue(day).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        binding.description.setText("");
-                        Toast.makeText(CreateDayActivity.this, "Dia criado com sucesso!",Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                reference.child("Days").child("day3").child("places").setValue(place).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        binding.searchview.setQuery("", false);
-                        binding.custo.setText("");
-                    }
-                });
-
-                Intent i = new Intent(CreateDayActivity.this, ItineraryPageActivity.class);
-                startActivity(i);
-
+                createDay(view);
             }
         });
 
     }
+
+    public void createDay(View view){
+
+        progressDialog.setMessage("Criando dia");
+        progressDialog.setTitle("Dia do roteiro");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
+
+        SearchView simpleSearchView = (SearchView) findViewById(R.id.searchview);
+        CharSequence query = simpleSearchView.getQuery();
+        placeName = String.valueOf(query);
+        desc = binding.description.getText().toString();
+        cost = binding.custo.getText().toString();
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Itineraries");
+
+        mAuth = FirebaseAuth.getInstance();
+
+
+
+        databaseReference.child(mAuth.getCurrentUser().getUid()).child("07803bc0-c2b6-4842-b998-e6b92919b314").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (snapshot.hasChild("NDays")){
+                    String NDays = snapshot.child("NDays").getValue().toString();
+                    int a = Integer.valueOf(NDays);
+                    a++;
+                    NDaysNew = Integer.toString(a);
+                }
+                else{NDaysNew = "1";}
+
+                dayname = "dia "+NDaysNew;
+
+                dbRefDay =  snapshot.child("Days").getRef();
+                Day day = new Day(dayname,desc,null);
+                dbRefDay.child(dayname).setValue(day).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        dbRefPlace = snapshot.child("Days").child(dayname).child("Places").getRef();
+                        Place place = new Place(placeName,null,Double.valueOf(cost));
+                        dbRefPlace.child(placeName).setValue(place).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+
+                            }
+                        });
+                        databaseReference.child(mAuth.getCurrentUser().getUid()).child("07803bc0-c2b6-4842-b998-e6b92919b314").child("NDays").setValue(NDaysNew);
+                        progressDialog.dismiss();
+                        sendUsertoItinerariesPage();
+                        Toast.makeText(CreateDayActivity.this, "Dia criado com sucesso", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+         }
+
+public void sendUsertoItinerariesPage () {
+    Intent i = new Intent(CreateDayActivity.this, ItineraryPageActivity.class);
+    startActivity(i);
+    finish();
+}
+
 }
