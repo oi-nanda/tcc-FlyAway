@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.myapplicationflyaway.R;
@@ -30,6 +31,7 @@ public class ProfileFragment extends Fragment {
 
     private TextView txt_username, txt_email, txt_email_profile, txt_telefone, txt_bio, txt_localizacao;
     View view;
+    LinearLayout btn_goSettings;
     DatabaseReference reference;
     FirebaseUser user;
     FloatingActionButton edt_profile_pic;
@@ -48,6 +50,7 @@ public class ProfileFragment extends Fragment {
         uid = user.getUid();
         mAuth = FirebaseAuth.getInstance();
 
+        btn_goSettings = view.findViewById(R.id.btn_configuracaoPage);
         txt_username = view.findViewById(R.id.txt_username);
         txt_email = view.findViewById(R.id.txt_email);
         txt_telefone = view.findViewById(R.id.txt_telefone);
@@ -69,6 +72,17 @@ public class ProfileFragment extends Fragment {
                     .commit();
         });
 
+        btn_goSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getParentFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.main_fragment, SettingsFragment.class, null)
+                        .setReorderingAllowed(true)
+                        .addToBackStack("name")
+                        .commit();
+            }
+        });
         button_edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

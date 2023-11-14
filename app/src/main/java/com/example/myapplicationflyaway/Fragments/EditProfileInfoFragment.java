@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.myapplicationflyaway.Model.Users;
@@ -39,6 +40,7 @@ public class EditProfileInfoFragment extends Fragment {
     ImageView btn_back_profile;
     EditText username, email, bio, phone, location;
     Button save;
+    LinearLayout btn_conf;
     private DatabaseReference dbReference;
     private FirebaseAuth auth;
 
@@ -51,6 +53,7 @@ public class EditProfileInfoFragment extends Fragment {
                              Bundle savedInstanceState) {
      view = inflater.inflate(R.layout.fragment_edit_profile_info, container, false);
 
+        btn_conf = view.findViewById(R.id.btn_configuracaoPage);
         username = view.findViewById(R.id.edit_profile_info_username);
         bio = view.findViewById(R.id.edit_profile_info_bio);
         phone = view.findViewById(R.id.edit_profile_info_telefone);
@@ -61,6 +64,8 @@ public class EditProfileInfoFragment extends Fragment {
 
         auth = FirebaseAuth.getInstance();
         dbReference = FirebaseDatabase.getInstance().getReference().child("Users");
+
+
 
         btn_back_profile.setOnClickListener(new View.OnClickListener() {
             @Override

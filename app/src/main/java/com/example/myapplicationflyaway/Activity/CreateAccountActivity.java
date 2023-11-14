@@ -83,7 +83,7 @@ public class CreateAccountActivity extends AppCompatActivity {
             binding.editCreateAccountPassword.setError("Senha não segue os padrões necessários");
         }
         else if(!password.equals(confirmPassword)){
-            binding.editCreateAccountConfirmPassword.setError("Senhas devem ser iguais");
+            binding.editCreateAccountConfirmPassword.setError("Senhas incompatíveis");
         }
         else if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             Toast.makeText(CreateAccountActivity.this, "Todos os campos devem ser preenchidos", Toast.LENGTH_SHORT).show();
