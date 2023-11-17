@@ -31,7 +31,7 @@ public class ProfileFragment extends Fragment {
 
     private TextView txt_username, txt_email, txt_email_profile, txt_telefone, txt_bio, txt_localizacao;
     View view;
-    LinearLayout btn_goSettings;
+    LinearLayout btn_goSettings, btn_myInineraries;
     DatabaseReference reference;
     FirebaseUser user;
     FloatingActionButton edt_profile_pic;
@@ -50,6 +50,7 @@ public class ProfileFragment extends Fragment {
         uid = user.getUid();
         mAuth = FirebaseAuth.getInstance();
 
+        btn_myInineraries = view.findViewById(R.id. btn_myItineraries);
         btn_goSettings = view.findViewById(R.id.btn_configuracaoPage);
         txt_username = view.findViewById(R.id.txt_username);
         txt_email = view.findViewById(R.id.txt_email);
@@ -83,6 +84,18 @@ public class ProfileFragment extends Fragment {
                         .commit();
             }
         });
+        btn_myInineraries.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getParentFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.main_fragment, MyitinerariesFragment.class, null)
+                        .setReorderingAllowed(true)
+                        .addToBackStack("name")
+                        .commit();
+            }
+        });
+
         button_edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

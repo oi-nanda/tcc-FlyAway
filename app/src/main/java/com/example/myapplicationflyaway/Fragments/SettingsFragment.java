@@ -25,6 +25,8 @@ import android.widget.Toast;
 
 import com.example.myapplicationflyaway.Activity.LoginActivity;
 import com.example.myapplicationflyaway.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
@@ -301,24 +303,28 @@ public class SettingsFragment extends Fragment {
                         user.reauthenticate(credential)
                                 .addOnCompleteListener(reauthTask -> {
                                     if (reauthTask.isSuccessful()) {
-//                                        if(email.getText().toString().isEmpty() || !email.getText().toString().matches(emailPattern) ){
-//                                            Toast.makeText(getContext(), "Email inválido", Toast.LENGTH_SHORT).show();
-//                                            email.setText("");
-//                                            confirm_email.setText("");
-//                                        }
+                                        if(email.getText().toString().isEmpty() || !email.getText().toString().matches(emailPattern) ){
+                                            Toast.makeText(getContext(), "Email inválido", Toast.LENGTH_SHORT).show();
+                                            email.setText("");
+                                            confirm_email.setText("");
+                                        }
                                          if(email.getText().toString().equals(confirm_email.getText().toString())) {
-                                            user.updateEmail(email.getText().toString())
-                                                    .addOnCompleteListener(updatePasswordTask -> {
-                                                        if (updatePasswordTask.isSuccessful()) {
-                                                            databaseReference.child(mAuth.getCurrentUser().getUid()).child("email").setValue(email.getText().toString());
-                                                            myDialog.dismiss();
+                                             String el = email.getText().toString();
 
-                                                            Toast.makeText(getContext(), "Email atualizado com sucesso!", Toast.LENGTH_SHORT).show();
-                                                        } else {
-                                                            myDialog.dismiss();
-                                                            Toast.makeText(getContext(), email.getText().toString() , Toast.LENGTH_SHORT).show();
+                                            user.updateEmail(el).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            if (task.isSuccessful()) {
+                                                                databaseReference.child(mAuth.getCurrentUser().getUid()).child("email").setValue(el);
+                                                                myDialog.dismiss();
+                                                                Toast.makeText(getContext(), "Email atualizado com sucesso!", Toast.LENGTH_SHORT).show();
+                                                            } else {
+                                                                myDialog.dismiss();
+                                                                Toast.makeText(getContext(), "Não foi possivel alterar email!", Toast.LENGTH_SHORT).show();
+                                                            }
                                                         }
                                                     });
+
                                         }
                                         else {
                                             Toast.makeText(getContext(), "Email's incompativeis", Toast.LENGTH_SHORT).show();

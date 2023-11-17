@@ -213,6 +213,7 @@ public class CreateItineraryActivity extends AppCompatActivity {
 
     private void sendUserToItineraryPage() {
         Intent intent = new Intent(CreateItineraryActivity.this, ItineraryPageActivity.class);
+        intent.putExtra("ItineraryId", id);
         startActivity(intent);
         finish();
     }

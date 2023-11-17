@@ -3,7 +3,9 @@ package com.example.myapplicationflyaway.Model;
 import android.media.Image;
 import android.widget.ImageView;
 
-public class Itinerary {
+import java.io.Serializable;
+
+public class Itinerary implements Serializable {
 
     String placeName, inicialDate, finalDate, numberOfTravelers, description, userId, id;
     Day day[];
@@ -76,6 +78,14 @@ public class Itinerary {
 
     public String getUserId() {
         return userId;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setUserId(String userId) {

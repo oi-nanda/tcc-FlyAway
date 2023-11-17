@@ -77,6 +77,7 @@ public class CreateDayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_create_day);
+        id = getIntent().getExtras().getString("ItineraryIdAtual");
         binding = ActivityCreateDayBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         progressDialog = new ProgressDialog(this);
@@ -111,7 +112,7 @@ public class CreateDayActivity extends AppCompatActivity {
 
 
 
-        databaseReference.child(mAuth.getCurrentUser().getUid()).child("07803bc0-c2b6-4842-b998-e6b92919b314").addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child(mAuth.getCurrentUser().getUid()).child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -138,7 +139,7 @@ public class CreateDayActivity extends AppCompatActivity {
 
                             }
                         });
-                        databaseReference.child(mAuth.getCurrentUser().getUid()).child("07803bc0-c2b6-4842-b998-e6b92919b314").child("NDays").setValue(NDaysNew);
+                        databaseReference.child(mAuth.getCurrentUser().getUid()).child(id).child("NDays").setValue(NDaysNew);
                         progressDialog.dismiss();
                         sendUsertoItinerariesPage();
                         Toast.makeText(CreateDayActivity.this, "Dia criado com sucesso", Toast.LENGTH_SHORT).show();
@@ -158,6 +159,7 @@ public class CreateDayActivity extends AppCompatActivity {
 
 public void sendUsertoItinerariesPage () {
     Intent i = new Intent(CreateDayActivity.this, ItineraryPageActivity.class);
+    i.putExtra("ItineraryId", id);
     startActivity(i);
     finish();
 }
