@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="90dp"
-    android:layout_height="wrap_content"
+    android:layout_width="98dp"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="3dp"
     app:cardCornerRadius="20dp"
@@ -12,22 +12,35 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@drawable/bg_climateday">
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_marginTop="8dp"
+            android:text="12:00"/>
 
         <TextView
+            android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="14sp"
             android:textAlignment="center"
-            android:layout_margin="8dp"
+            android:layout_margin="4dp"
             android:text="TextView"/>
         <ImageView
+            android:id="@+id/pic"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
             app:srcCompat="@drawable/cloudy_sunny" />
 
         <TextView
+            android:id="@+id/temp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="20"

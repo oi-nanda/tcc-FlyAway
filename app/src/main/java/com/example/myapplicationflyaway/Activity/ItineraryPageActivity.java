@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +54,9 @@ public class ItineraryPageActivity extends AppCompatActivity {
     private ImageView itinerary_pic;
     DatabaseReference reference;
 
+    LinearLayout btn_clima, btn_galeria;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_itinerary_page);
@@ -65,7 +69,9 @@ public class ItineraryPageActivity extends AppCompatActivity {
         txt_final_date = findViewById(R.id.dataf);
         txt_description = findViewById(R.id.description);
         itinerary_pic = findViewById(R.id.cover_1);
+        btn_clima = findViewById(R.id.btn_clima);
         btn_back = findViewById(R.id.btn_back);
+        btn_galeria = findViewById(R.id.btn_galeria);
 
         recyclerView = findViewById(R.id.trip_list);
         recyclerView.setHasFixedSize(true);
@@ -144,6 +150,22 @@ public class ItineraryPageActivity extends AppCompatActivity {
             }
         });
 
+
+        btn_clima.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ItineraryPageActivity.this, ClimaActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btn_galeria.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ItineraryPageActivity.this, GaleryActivity.class);
+                startActivity(i);
+            }
+        });
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
