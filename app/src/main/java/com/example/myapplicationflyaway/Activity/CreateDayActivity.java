@@ -127,7 +127,8 @@ public class CreateDayActivity extends AppCompatActivity {
                 dayname = "dia "+NDaysNew;
 
                 dbRefDay =  snapshot.child("Days").getRef();
-                Day day = new Day(dayname,desc,null);
+                String id = UUID.randomUUID().toString();
+                Day day = new Day(dayname,desc,id,null);
                 dbRefDay.child(dayname).setValue(day).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

@@ -30,7 +30,13 @@
             android:name=".Activity.FutureClimaActivity"
             android:exported="false" />
         <activity
+            android:name=".Activity.DayPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.ClimaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.EditItinerary"
             android:exported="false" />
         <activity
             android:name=".Activity.CreateDayActivity"
