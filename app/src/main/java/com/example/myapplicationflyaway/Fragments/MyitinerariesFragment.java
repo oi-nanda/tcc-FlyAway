@@ -1,5 +1,6 @@
 package com.example.myapplicationflyaway.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,8 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.myapplicationflyaway.Activity.ClimaActivity;
+import com.example.myapplicationflyaway.Activity.CreateItineraryActivity;
+import com.example.myapplicationflyaway.Activity.ItineraryPageActivity;
 import com.example.myapplicationflyaway.Adapter.MyItineraryAdapter;
 import com.example.myapplicationflyaway.Model.Itinerary;
 import com.example.myapplicationflyaway.R;
@@ -37,6 +42,8 @@ public class MyitinerariesFragment extends Fragment {
     DatabaseReference reference;
     ConstraintLayout itinerary_card;
    View view;
+   Button criar_roteiro;
+
    ImageView btn_back_profile;
 
     public MyitinerariesFragment() {
@@ -54,7 +61,7 @@ public class MyitinerariesFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         reference = FirebaseDatabase.getInstance().getReference().child("Itineraries").child(mAuth.getCurrentUser().getUid());
-
+        criar_roteiro = view.findViewById(R.id.criar_roteiro);
         itineraryList = new ArrayList<Itinerary>();
 
         reference.addValueEventListener(new ValueEventListener() {
@@ -85,6 +92,15 @@ public class MyitinerariesFragment extends Fragment {
                         .setReorderingAllowed(true)
                         .addToBackStack("name")
                         .commit();
+            }
+        });
+
+        criar_roteiro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), CreateItineraryActivity.class);
+
+                startActivity(i);
             }
         });
 

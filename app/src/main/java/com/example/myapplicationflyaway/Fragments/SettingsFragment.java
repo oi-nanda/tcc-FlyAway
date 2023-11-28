@@ -25,6 +25,10 @@ import android.widget.Toast;
 
 import com.example.myapplicationflyaway.Activity.LoginActivity;
 import com.example.myapplicationflyaway.R;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -50,6 +54,8 @@ public class SettingsFragment extends Fragment {
     String uid;
     View view2, view3, view4;
 
+    GoogleSignInClient gsc;
+    GoogleSignInOptions gso;
 
     String emailPattern = "^[A-Za-z0-9+_.-]+@(.+)$";
     String passwordPattern = "^(?=.*[A-Z])" + ".{8,16}$";
@@ -75,8 +81,14 @@ public class SettingsFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         myDialog = new Dialog(getContext());
 
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        gsc = GoogleSignIn.getClient(getContext(), gso);
 
         getUserinfo();
+
         editar_perfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -148,6 +160,16 @@ public class SettingsFragment extends Fragment {
 
     private void getUserinfo() {
 
+
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getContext());
+        if(account!=null){
+            String name = account.getDisplayName();
+            String mail = account.getEmail();
+
+            usernameTextView.setText(name);
+            emailTextView.setText(mail);
+        }
+
         databaseReference.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -180,6 +202,19 @@ public class SettingsFragment extends Fragment {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getContext());
+                if(account!=null){
+                   gsc.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+                       @Override
+                       public void onComplete(@NonNull Task<Void> task) {
+                           Toast.makeText(getContext(), "Logout realizado com sucesso", Toast.LENGTH_SHORT).show();
+                           Intent i = new Intent(getContext(), LoginActivity.class);
+                           startActivity(i);
+                       }
+                   });
+                }
+
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(getContext(), "Logout realizado com sucesso", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(getContext(), LoginActivity.class);

@@ -45,11 +45,11 @@ public class ItineraryPageActivity extends AppCompatActivity {
 
     private TextView txt_people, txt_inicial_date, txt_final_date, txt_description;
     private Button add;
-    private ImageButton btn_back, btn_edit;
+    ImageButton btn_back, btn_edit;
     private RecyclerView recyclerView;
     private ArrayList<Day> daylist;
     MyAdapter myAdapter;
-    String itineraryId;
+    String itineraryId, itineraryName;
     private FirebaseAuth mAuth;
     private ImageView itinerary_pic;
     DatabaseReference reference;
@@ -70,7 +70,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
         txt_description = findViewById(R.id.description);
         itinerary_pic = findViewById(R.id.cover_1);
         btn_clima = findViewById(R.id.btn_clima);
-        btn_back = findViewById(R.id.btn_back);
+        btn_back = findViewById(R.id.btn_back_myItineraries);
         btn_galeria = findViewById(R.id.btn_galeria);
         btn_edit = findViewById(R.id.btn_edit);
 
@@ -169,15 +169,19 @@ public class ItineraryPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ItineraryPageActivity.this, ClimaActivity.class);
+                i.putExtra("itineraryId", itineraryId);
                 startActivity(i);
+               // finish();
             }
         });
 
         btn_galeria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ItineraryPageActivity.this, GaleryActivity.class);
+                Intent i = new Intent(ItineraryPageActivity.this, GaleryPhotosActivity.class);
+                i.putExtra("itineraryId", itineraryId);
                 startActivity(i);
+               // finish();
             }
         });
 
@@ -187,6 +191,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
                 Intent i = new Intent(ItineraryPageActivity.this, CreateDayActivity.class);
                 i.putExtra("ItineraryIdAtual", itineraryId);
                 startActivity(i);
+                finish();
             }
         });
     }

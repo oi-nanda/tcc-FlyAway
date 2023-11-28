@@ -14,6 +14,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.myapplicationflyaway.R;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,6 +40,8 @@ public class ProfileFragment extends Fragment {
     FirebaseUser user;
     FloatingActionButton edt_profile_pic;
     String uid;
+    GoogleSignInOptions gso;
+    GoogleSignInClient gsc;
     Button button_edit_profile;
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
@@ -50,7 +56,7 @@ public class ProfileFragment extends Fragment {
         uid = user.getUid();
         mAuth = FirebaseAuth.getInstance();
 
-        btn_myInineraries = view.findViewById(R.id. btn_myItineraries);
+        btn_myInineraries = view.findViewById(R.id.btn_myItineraries);
         btn_goSettings = view.findViewById(R.id.btn_configuracaoPage);
         txt_username = view.findViewById(R.id.txt_username);
         txt_email = view.findViewById(R.id.txt_email);
@@ -63,6 +69,24 @@ public class ProfileFragment extends Fragment {
         edt_profile_pic = view.findViewById(R.id.edt_profile_pic);
         reference = FirebaseDatabase.getInstance().getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
+
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        gsc = GoogleSignIn.getClient(getContext(), gso);
+
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getContext());
+
+        if(account!=null){
+            String Name = account.getDisplayName();
+            String Mail = account.getEmail();
+
+            txt_username.setText(Name);
+            txt_email.setText(Mail);
+
+        }
+
 
         edt_profile_pic.setOnClickListener(v -> {
             FragmentManager fragmentManager = getParentFragmentManager();

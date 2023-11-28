@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "508064670678",
+    "firebase_url": "https://flyaway-5841b-default-rtdb.firebaseio.com",
     "project_id": "flyaway-5841b",
     "storage_bucket": "flyaway-5841b.appspot.com"
   },
@@ -12,7 +13,20 @@
           "package_name": "com.example.myapplicationflyaway"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "508064670678-ois9uahal3hvols2kb76emgmskmqumma.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myapplicationflyaway",
+            "certificate_hash": "61712180097d8ab33b7fc8f53defb1f6cbe18848"
+          }
+        },
+        {
+          "client_id": "508064670678-3ahmrcm7o5vhcaigf2q89kj5efd1684q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDlksQppB1D1gS4iOYziyyi8VFjSMMv7yk"
@@ -20,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "508064670678-3ahmrcm7o5vhcaigf2q89kj5efd1684q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

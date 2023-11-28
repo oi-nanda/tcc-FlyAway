@@ -6,5 +6,6 @@
     <string name="contexto"> Tenha uma plataforma adaptada aos seus objetivos e que te auxilie em qualquer mudança de planos</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="default_web_client_id" translatable="false">xxxxxxxx</string>
 </resources>

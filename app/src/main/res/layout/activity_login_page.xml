@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:background="@color/backgroud"
     tools:context=".Activity.LoginActivity">
-
     <include layout="@layout/footer"/>
     <include layout="@layout/header" />
 
@@ -30,7 +29,6 @@
             android:id="@+id/imagem_login"
             android:layout_width="300dp"
             android:layout_height="200dp"
-            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +38,7 @@
         <View
             android:id="@+id/containerComponents"
             style="@style/ContainerComponents"
-            android:layout_height="250dp"
+            android:layout_height="245dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imagem_login" />
@@ -48,49 +46,52 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="Iniciar Sessão"
-            android:layout_margin="10dp"
-            android:textSize="18dp"
-            android:layout_marginTop="60dp"
             android:textColor="@color/darkblue"
+            android:textSize="22dp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/containerComponents"
             app:layout_constraintEnd_toEndOf="@+id/containerComponents"
-            app:layout_constraintTop_toTopOf="@+id/containerComponents"
-             />
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="@+id/containerComponents"
+            app:layout_constraintTop_toTopOf="@+id/containerComponents" />
 
         <EditText
             android:id="@+id/edit_email"
             style="@style/Edit_Text"
-            android:hint="Email"
-            android:layout_marginTop="40dp"
-            android:inputType="textEmailAddress"
+            android:layout_marginTop="45dp"
             android:drawableRight="@drawable/ic_email"
-            app:layout_constraintStart_toStartOf="@+id/containerComponents"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="@+id/containerComponents"
-            app:layout_constraintTop_toTopOf="@+id/containerComponents"/>
+            app:layout_constraintStart_toStartOf="@+id/containerComponents"
+            app:layout_constraintTop_toTopOf="@+id/containerComponents" />
 
         <EditText
             android:id="@+id/edit_password"
             style="@style/Edit_Text"
-            android:inputType="textPassword"
-            android:hint="Senha"
+            android:layout_marginTop="15dp"
             android:drawableRight="@drawable/ic_eye"
-            app:layout_constraintStart_toStartOf="@+id/containerComponents"
+            android:hint="Senha"
+            android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="@+id/containerComponents"
+            app:layout_constraintStart_toStartOf="@+id/containerComponents"
             app:layout_constraintTop_toBottomOf="@+id/edit_email" />
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_login"
             style="@style/Button_Login"
+            android:background="@drawable/button_login"
             android:text="Login"
             android:textColor="@color/white"
             android:textStyle="normal"
-            android:background="@drawable/button_login"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/containerComponents"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_password"/>
-
+            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_password"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/text_create_account"
@@ -122,6 +123,21 @@
             app:layout_constraintLeft_toRightOf="@+id/text_create_account"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/containerComponents" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/googleAuth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="15dp"
+            android:text="   Login com Google"
+            android:textAllCaps="false"
+            android:padding="15dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/text_create_account"
+            android:drawableLeft="@drawable/google"
+       />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

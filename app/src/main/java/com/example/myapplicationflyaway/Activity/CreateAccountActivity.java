@@ -72,7 +72,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         username = binding.editCreateAccountUsername.getText().toString();
         password = binding.editCreateAccountPassword.getText().toString();
         confirmPassword = binding.editCreateAccountConfirmPassword.getText().toString();
-        telefone = "(XXX) XXXXX-XXXX";
+        telefone = "(XX) XXXXX-XXXX";
         bio = "Bio Vazia";
         localizacao = "Localização não informada";
 

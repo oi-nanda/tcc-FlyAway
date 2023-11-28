@@ -55,7 +55,7 @@
 
 
                     <ImageButton
-                        android:id="@+id/btn_back"
+                        android:id="@+id/btn_back_myItineraries"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginStart="20dp"
@@ -175,23 +175,18 @@
                         android:elevation="5dp"
                         android:orientation="vertical">
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_margin="12dp"
-                            android:background="@drawable/circle_background_itinerary">
 
                             <ImageView
+                                android:layout_gravity="center"
+                                android:layout_marginTop="16dp"
                                 android:id="@+id/finances_itinerary_image"
-                                android:layout_width="35dp"
-                                android:layout_height="35dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/hand" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                app:srcCompat="@drawable/moeda" />
 
                         <TextView
                             android:id="@+id/liked_scrips_text"
@@ -215,23 +210,18 @@
                         android:elevation="5dp"
                         android:orientation="vertical">
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_margin="12dp"
-                            android:background="@drawable/circle_background_itinerary">
 
-                            <ImageView
-                                android:id="@+id/galery_itinerary_image"
-                                android:layout_width="35dp"
-                                android:layout_height="35dp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/galery" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <ImageView
+                            android:id="@+id/galery_itinerary_image"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_gravity="center"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/camera_fotografica" />
 
                         <TextView
                             android:id="@+id/galery_text"
@@ -256,23 +246,17 @@
                         android:elevation="5dp"
                         android:orientation="vertical">
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_margin="12dp"
-                            android:background="@drawable/circle_background_itinerary">
-
                             <ImageView
                                 android:id="@+id/climate_image"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="50dp"
+                                android:layout_gravity="center"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="16dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/climate" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                app:srcCompat="@drawable/ensolarado" />
 
                         <TextView
                             android:id="@+id/climate_text"
@@ -296,23 +280,18 @@
                         android:elevation="5dp"
                         android:orientation="vertical">
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_margin="12dp"
-                            android:background="@drawable/circle_background_itinerary">
 
                             <ImageView
                                 android:id="@+id/notes_image"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/notes" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                android:layout_gravity="center"
+                                android:layout_marginTop="16dp"
+                                app:srcCompat="@drawable/notas" />
 
                         <TextView
                             android:id="@+id/notes_text"

@@ -20,6 +20,12 @@ import com.example.myapplicationflyaway.Activity.LoginActivity;
 import com.example.myapplicationflyaway.Fragments.HomeFragment;
 import com.example.myapplicationflyaway.Fragments.ProfileFragment;
 import com.example.myapplicationflyaway.Fragments.SettingsFragment;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
     Dialog myDialog;
     public static int home_footer = 1000052;
     View view;
+
+    GoogleSignInClient signInClient;
+    GoogleSignInOptions gso;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +57,12 @@ public class MainActivity extends AppCompatActivity {
         menuItemProfile.setOnMenuItemClickListener(this::onClickGoToProfile);
         menuItemSettings.setOnMenuItemClickListener(this::onClickGoToSettings);
         menuItemExit.setOnMenuItemClickListener(this::onClickExit);
+
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        signInClient = GoogleSignIn.getClient(this, gso);
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -110,6 +126,16 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(i);
                 finish();
+
+                if(gso != null){
+                    signInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            finish();
+                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                        }
+                    });
+                }
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {

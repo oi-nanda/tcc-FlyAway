@@ -101,7 +101,7 @@
 
                             <TextView
                                 android:id="@+id/txt_email"
-                                android:layout_width="175dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="29dp"
                                 android:gravity="center"
                                 android:text="usuario@gmail.com"
@@ -140,23 +140,18 @@
                                         android:elevation="5dp"
                                         android:orientation="vertical">
 
-                                        <androidx.constraintlayout.widget.ConstraintLayout
-                                            android:layout_width="60dp"
-                                            android:layout_height="60dp"
-                                            android:layout_gravity="center_horizontal"
-                                            android:layout_margin="12dp"
-                                            android:background="@drawable/circle_background_itinerary">
 
                                             <ImageView
                                                 android:id="@+id/liked_scrips_image"
-                                                android:layout_width="40dp"
-                                                android:layout_height="40dp"
+                                                android:layout_width="55dp"
+                                                android:layout_height="55dp"
+                                                android:layout_gravity="center"
+                                                android:layout_marginTop="16dp"
                                                 app:layout_constraintBottom_toBottomOf="parent"
                                                 app:layout_constraintEnd_toEndOf="parent"
                                                 app:layout_constraintStart_toStartOf="parent"
                                                 app:layout_constraintTop_toTopOf="parent"
-                                                app:srcCompat="@drawable/liked_scripts" />
-                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                                app:srcCompat="@drawable/marca_paginas" />
 
                                         <TextView
                                             android:id="@+id/liked_scrips_text"
@@ -181,23 +176,18 @@
                                         android:elevation="5dp"
                                         android:orientation="vertical">
 
-                                        <androidx.constraintlayout.widget.ConstraintLayout
-                                            android:layout_width="60dp"
-                                            android:layout_height="60dp"
-                                            android:layout_gravity="center_horizontal"
-                                            android:layout_margin="12dp"
-                                            android:background="@drawable/circle_background_itinerary">
 
                                             <ImageView
                                                 android:id="@+id/my_scripts_image"
-                                                android:layout_width="40dp"
-                                                android:layout_height="40dp"
+                                                android:layout_width="55dp"
+                                                android:layout_height="55dp"
+                                                android:layout_gravity="center"
+                                                android:layout_marginTop="16dp"
                                                 app:layout_constraintBottom_toBottomOf="parent"
                                                 app:layout_constraintEnd_toEndOf="parent"
                                                 app:layout_constraintStart_toStartOf="parent"
                                                 app:layout_constraintTop_toTopOf="parent"
-                                                app:srcCompat="@drawable/my_scripts" />
-                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                                app:srcCompat="@drawable/mochila" />
 
                                         <TextView
                                             android:id="@+id/my_scripts_text"
@@ -222,23 +212,18 @@
                                         android:elevation="5dp"
                                         android:orientation="vertical">
 
-                                        <androidx.constraintlayout.widget.ConstraintLayout
-                                            android:layout_width="60dp"
-                                            android:layout_height="60dp"
-                                            android:layout_gravity="center_horizontal"
-                                            android:layout_margin="12dp"
-                                            android:background="@drawable/circle_background_itinerary">
 
                                             <ImageView
                                                 android:id="@+id/settings_image"
-                                                android:layout_width="36dp"
-                                                android:layout_height="46dp"
+                                                android:layout_width="55dp"
+                                                android:layout_height="55dp"
+                                                android:layout_gravity="center"
+                                                android:layout_marginTop="16dp"
                                                 app:layout_constraintBottom_toBottomOf="parent"
                                                 app:layout_constraintEnd_toEndOf="parent"
                                                 app:layout_constraintStart_toStartOf="parent"
                                                 app:layout_constraintTop_toTopOf="parent"
-                                                app:srcCompat="@drawable/cogwheel" />
-                                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                                app:srcCompat="@drawable/contexto" />
 
                                         <TextView
                                             android:id="@+id/settings_text"
