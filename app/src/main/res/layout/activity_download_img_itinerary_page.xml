@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/backgroud"
-    tools:context=".Fragments.EditProfileImageFragment">
+    tools:context=".Activity.downloadImgItineraryPage">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -19,13 +18,11 @@
             <View
                 android:id="@+id/container_edit_profile_component"
                 style="@style/ContainerComponents"
-                android:layout_height="250dp"
-
+                android:layout_height="400dp"
                 android:layout_marginTop="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.975"
-                app:layout_constraintStart_toStartOf="parent"
                 android:paddingBottom="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
 
                 app:layout_constraintTop_toBottomOf="@id/back_itineraryPage" />
 
@@ -46,7 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
-                android:text="Alterar imagem"
+                android:text="Alterar imagem do roteiro"
                 android:textColor="@color/darkblue"
                 android:textSize="23dp"
                 android:textStyle="bold"
@@ -55,20 +52,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 android:id="@+id/edt_profile_pic"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="350dp"
+                android:layout_height="200dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edit_profile"
                 app:shapeAppearanceOverlay="@style/circular"
-                android:src="@drawable/perfil_padrao"
+                android:src="@drawable/downloadd"
                 tools:ignore="MissingConstraints" />
-
-
-
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/floatingActionButton_edit_profile_pic"
@@ -77,20 +71,24 @@
                 android:clickable="true"
                 android:contentDescription="TODO"
                 android:focusable="true"
+                android:layout_marginRight="70dp"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/baseline_photo_camera_edit_profile"
-                app:layout_constraintBottom_toBottomOf="@+id/edt_profile_pic"
-                app:layout_constraintStart_toStartOf="@+id/edt_profile_pic"
+                app:layout_constraintTop_toBottomOf="@+id/edt_profile_pic"
+                app:layout_constraintEnd_toStartOf="@+id/floatingActionButton_confirm_edit_profile_pic"
                 app:shapeAppearanceOverlay="@style/circular" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/floatingActionButton_confirm_edit_profile_pic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="80dp"
+                android:layout_marginTop="20dp"
                 android:clickable="true"
                 android:contentDescription="TODO"
                 android:focusable="true"
                 android:src="@drawable/baseline_check_24"
-                app:layout_constraintBottom_toBottomOf="@+id/edt_profile_pic"
+                app:layout_constraintTop_toBottomOf="@+id/edt_profile_pic"
                 app:layout_constraintEnd_toEndOf="@+id/edt_profile_pic"
                 app:shapeAppearanceOverlay="@style/circular" />
 

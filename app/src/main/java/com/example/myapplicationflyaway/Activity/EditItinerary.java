@@ -51,8 +51,6 @@ public class EditItinerary extends AppCompatActivity {
     ProgressDialog progressDialog;
     private FirebaseAuth auth;
     final Calendar currentDate = Calendar.getInstance();
-    final Calendar d1 = Calendar.getInstance();
-    final Calendar d2 = Calendar.getInstance();
     final Calendar calendario = Calendar.getInstance();
     String id;
     @Override
@@ -63,19 +61,13 @@ public class EditItinerary extends AppCompatActivity {
         setContentView(binding.getRoot());
         progressDialog = new ProgressDialog(this);
 
-        id = getIntent().getExtras().getString("ItineraryIdAtual");
-        oldinicialDate = getIntent().getExtras().getString("inicialDate");
-        oldFinalDate = getIntent().getExtras().getString("finalDate");
+        id = getIntent().getExtras().getString("ItineraryId");
         oldnumberOfTravelers = getIntent().getExtras().getString("numberOfTravelers");
         oldDescription = getIntent().getExtras().getString("description");
 
         numberOfTravelers = findViewById(R.id.edit_number_of_travelers);
         Description = findViewById(R.id.edit_description);
-        inicialDate = findViewById(R.id.data1edit);
-        finalDate = findViewById(R.id.data2edit);
         save = findViewById(R.id.button_edit_info_itinerary);
-        inicialDate.setText(oldinicialDate);
-        finalDate.setText(oldFinalDate);
         Description.setText(oldDescription);
 
 
@@ -83,65 +75,6 @@ public class EditItinerary extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
         dbReference = FirebaseDatabase.getInstance().getReference().child("Itineraries");
-
-        DatePickerDialog.OnDateSetListener datai = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i2, int i3) {
-                calendario.set(Calendar.YEAR, i);
-                calendario.set(Calendar.MONTH,i2);
-                calendario.set(Calendar.DAY_OF_MONTH,i3);
-                d1.set(Calendar.YEAR, i);
-                d1.set(Calendar.MONTH,i2);
-                d1.set(Calendar.DAY_OF_MONTH,i3);
-                Date dataCalendario = calendario.getTime();
-                SimpleDateFormat data = new SimpleDateFormat("dd/MM/yy");
-                inicialDate.setText(data.format(dataCalendario));
-                inicialDate.setTextColor(androidx.appcompat.R.style.Base_TextAppearance_AppCompat_Body2);
-            }
-        };
-
-        DatePickerDialog.OnDateSetListener dataf = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i2, int i3) {
-                calendario.set(Calendar.YEAR, i);
-                calendario.set(Calendar.MONTH,i2);
-                calendario.set(Calendar.DAY_OF_MONTH,i3);
-                Date dataCalendario = calendario.getTime();
-                d2.set(Calendar.YEAR, i);
-                d2.set(Calendar.MONTH,i2);
-                d2.set(Calendar.DAY_OF_MONTH,i3);
-                SimpleDateFormat data = new SimpleDateFormat("dd/MM/yy");
-                finalDate.setText(data.format(dataCalendario));
-                finalDate.setTextColor(androidx.appcompat.R.style.Base_TextAppearance_AppCompat_Body2);
-            }
-        };
-
-        inicialDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar calendario = Calendar.getInstance();
-                int ano = calendario.get(calendario.YEAR);
-                int mes = calendario.get(calendario.MONTH);
-                int dia = calendario.get(calendario.DAY_OF_MONTH);
-                DatePickerDialog d = new DatePickerDialog(EditItinerary.this,android.R.style.Theme_DeviceDefault_Light_Dialog_MinWidth, datai,ano,mes,dia);
-                d.show();
-            }
-        });
-
-        finalDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar calendario = Calendar.getInstance();
-                int ano = calendario.get(calendario.YEAR);
-                int mes = calendario.get(calendario.MONTH);
-                int dia = calendario.get(calendario.DAY_OF_MONTH);
-
-                DatePickerDialog d = new DatePickerDialog(EditItinerary.this,android.R.style.Theme_DeviceDefault_Light_Dialog_MinWidth, dataf,ano,mes,dia);
-                d.show();
-            }
-        });
-
-
 
         btn_back_itinerary.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,22 +89,9 @@ public class EditItinerary extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 alterItineraryInformations();
-                if ((d2.after(d1) || d1.equals(d2)) && (d1.after(currentDate) || d1.compareTo(currentDate) == 0)) {
                     Intent i = new Intent(EditItinerary.this, ItineraryPageActivity.class);
                     i.putExtra("ItineraryId", id);
                     startActivity(i);
-                }
-                else{
-                    if (d1.after(d2)) {
-                        binding.data2edit.setError("Data final inválida");
-                        Toast.makeText(EditItinerary.this, "A data final deve vir após a data inicial", Toast.LENGTH_SHORT).show();
-                    }
-                    if (currentDate.after(d1)) {
-                        binding.data1edit.setError("Data incial inválida");
-                        Toast.makeText(EditItinerary.this, "A data inicial não pode anteceder o dia de hoje", Toast.LENGTH_SHORT).show();
-
-                    }
-                }
             }
         });
 
@@ -192,20 +112,6 @@ public class EditItinerary extends AppCompatActivity {
                     userMap.put("numberOfTravelers", numberOfTravelers.getText().toString());
                 } else {
                     userMap.put("numberOfTravelers", oldnumberOfTravelers);
-                }
-                if (!inicialDate.getText().toString().isEmpty()) {
-                    if ((d2.after(d1) || d1.equals(d2)) && (d1.after(currentDate) || d1.compareTo(currentDate) == 0)) {
-                        userMap.put("inicialDate", inicialDate.getText().toString());
-                    }
-                } else {
-                    userMap.put("inicialDate", oldinicialDate);
-                }
-                if (!finalDate.getText().toString().isEmpty()) {
-                    if ((d2.after(d1) || d1.equals(d2)) && (d1.after(currentDate) || d1.compareTo(currentDate) == 0)) {
-                        userMap.put("finalDate", finalDate.getText().toString());
-                    }
-                } else {
-                    userMap.put("finalDate", oldFinalDate);
                 }
                 if (!Description.getText().toString().isEmpty()) {
                     progressDialog.dismiss();

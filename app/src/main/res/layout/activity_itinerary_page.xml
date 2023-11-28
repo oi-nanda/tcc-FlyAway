@@ -44,6 +44,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="MissingConstraints">
 
+
                     <ImageView
                         android:id="@+id/cover_1"
                         android:layout_width="match_parent"
@@ -52,7 +53,6 @@
                         android:src="@color/gray">
 
                     </ImageView>
-
 
                     <ImageButton
                         android:id="@+id/btn_back_myItineraries"
@@ -67,14 +67,30 @@
 
                     <ImageButton
                         android:id="@+id/btn_edit"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="350dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="360dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/transparent_backgroud"
+                        android:maxWidth="30dp"
+                        android:maxHeight="30dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/baseline_mode_edit_outline_24" />
+
+                    <ImageView
+                        android:id="@+id/btn_img"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:maxHeight="30dp"
+                        android:maxWidth="30dp"
+                        android:clickable="true"
+                        android:layout_marginStart="315dp"
+                        android:layout_marginTop="15dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:background="@drawable/transparent_backgroud"
-                        app:srcCompat="@drawable/baseline_mode_edit_outline_24" />
+                        app:srcCompat="@drawable/downloadimg" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -115,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/data"
                     android:layout_alignLeft="@+id/data"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_marginTop="10dp"
                     android:textSize="15dp"
                     android:text="pessoas" />
