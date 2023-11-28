@@ -97,6 +97,7 @@ public class GaleryPhotosActivity extends AppCompatActivity {
 
 
             } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), "errp", Toast.LENGTH_SHORT).show();
                 throw new RuntimeException(e);
             }
 

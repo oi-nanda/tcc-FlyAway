@@ -2,39 +2,55 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
     app:flow_horizontalAlign="center">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/welcomeText"
         android:layout_width="252dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
         android:fontFamily="@font/poppins_semibold_italic"
         android:gravity="center"
         android:text="Bem-Vindo ao FlyAway!"
         android:textAlignment="center"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="253dp"
-        android:layout_marginTop="10dp"
-        app:srcCompat="@drawable/casal_aviaopng" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeText"
+        app:srcCompat="@drawable/casal_aviaopng"
+        android:layout_margin="16dp"/>
 
     <TextView
         android:id="@+id/textDescriptionOne"
-        android:layout_width="wrap_content"
+        android:layout_width="330dp"
         android:layout_height="91dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="20dp"
+        android:layout_margin="16dp"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/roteiros_facilitados"
         android:textAlignment="center"
         android:textColor="@color/darkblue"
-        android:textSize="17sp" />
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </LinearLayout>

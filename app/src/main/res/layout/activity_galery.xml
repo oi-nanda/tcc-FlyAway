@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroud"
+    android:background="#F3EBEB"
     tools:context=".Activity.GaleryActivity">
 
 
@@ -22,190 +22,194 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true" >
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:fillViewport="true">
 
-
-
-
-            <View
-                android:id="@+id/containerComponents"
-                style="@style/ContainerComponentsTres"
-                android:layout_height="150dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <View
-                android:id="@+id/view_test"
-                android:layout_height="1dp"
-                android:background="@color/darkgray"
-                app:layout_constraintBottom_toBottomOf="@+id/containerComponents"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/containerComponents"  android:layout_width="match_parent"/>
-
-            <TextView
-                android:id="@+id/galery_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="45dp"
-                android:text="Adicionar Fotos"
-                android:textSize="25dp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/containerComponents"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/desc_txt"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Em cada imagem, uma história; em cada destino, uma descoberta. "
-                android:textSize="14dp"
-                app:layout_constraintBottom_toBottomOf="@+id/containerComponents"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/galery_txt" />
-    <ImageButton
-        android:id="@+id/btn_back_from_galery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/transparent_backgroud"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025"
-        app:srcCompat="@drawable/ic_arrow_back" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_add_photos"
-                android:layout_width="230dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_galery"
-                android:padding="10dp"
-                android:text="Salvar"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_description_image"
-                tools:ignore="MissingConstraints" />
-
-
-            <LinearLayout
-                android:id="@+id/linear"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:layout_marginStart="20dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
+                android:layout_height="match_parent">
 
-                app:layout_constraintTop_toBottomOf="@+id/containerComponents"
-                >
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <View
+                    android:id="@+id/containerComponents"
+                    style="@style/ContainerComponentsTres"
+                    android:layout_height="150dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/view_test"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="1dp"
+                    android:background="@color/darkgray"
+                    app:layout_constraintBottom_toBottomOf="@+id/containerComponents"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/containerComponents" />
 
-                    <View
-                        android:id="@+id/containerComponents_adicionar"
-                        style="@style/ContainerComponentsQuarto"
-                        android:layout_height="180dp"
-                        android:layout_marginTop="30dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/galery_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="45dp"
+                    android:text="Adicionar Fotos"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/containerComponents"
+                    tools:ignore="MissingConstraints" />
 
-                    <ImageView
-                        android:id="@+id/Choose_image"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/transparent_backgroud"
+                <TextView
+                    android:id="@+id/desc_txt"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Em cada imagem, uma história; em cada destino, uma descoberta. "
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/containerComponents"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/galery_txt" />
 
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/adicionar_foto"
-                        tools:ignore="MissingConstraints" />
+                <ImageButton
+                    android:id="@+id/btn_back_from_galery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/transparent_backgroud"
+                    android:textSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.041"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.025"
+                    app:srcCompat="@drawable/ic_arrow_back" />
 
-                    <TextView
-                        android:id="@+id/add_txt"
-                        android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_add_photos"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_login"
+                    android:padding="10dp"
+                    android:text="Salvar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/add_description_image"
+                    tools:ignore="MissingConstraints" />
+
+
+                <LinearLayout
+                    android:id="@+id/linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/containerComponents">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+
+                        android:id="@+id/linear"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Selecionar"
-                        android:textSize="15dp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.216"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/Choose_image"
-                        tools:ignore="MissingConstraints" />
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/image_selected"
-                        android:layout_width="170dp"
-                        android:layout_height="170dp"
-                        android:layout_marginLeft="45dp"
-                        android:layout_marginRight="30dp"
-                        android:layout_marginTop="25dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/Choose_image"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        <View
+                            android:id="@+id/containerComponents_adicionar"
+                            style="@style/ContainerComponentsQuarto"
+                            android:layout_height="180dp"
+                            android:layout_marginTop="30dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <ImageView
+                            android:id="@+id/Choose_image"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+
+                            android:background="@drawable/transparent_backgroud"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/containerComponents_adicionar"
+                            app:layout_constraintHorizontal_bias="0.623"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/foto"
+                            tools:ignore="MissingConstraints" />
+
+                        <TextView
+                            android:id="@+id/add_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Selecionar"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.216"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/Choose_image"
+                            tools:ignore="MissingConstraints" />
+
+                        <ImageView
+                            android:id="@+id/image_selected"
+                            android:layout_width="170dp"
+                            android:layout_height="180dp"
+                            android:layout_marginRight="15dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="1.0" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/add_description_image"
+                    style="@style/Add_galery_description"
+                    android:layout_width="280dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="35dp"
+                    android:ems="10"
+                    android:hint="Descrição da Imagem"
+                    android:inputType="text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linear" />
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="50dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.266"
+                    app:layout_constraintStart_toEndOf="@+id/galery_txt"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/baseline_photo_24"
+                    tools:ignore="MissingConstraints" />
 
 
-
-            </LinearLayout>
-
-            <EditText
-        android:id="@+id/add_description_image"
-        style="@style/Add_galery_description"
-        android:layout_width="250dp"
-        android:layout_height="0dp"
-        android:ems="10"
-        android:inputType="text"
-                android:layout_marginTop="35dp"
-        android:hint="Descrição da Imagem"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear" />
-
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="50dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.266"
-                app:layout_constraintStart_toEndOf="@+id/galery_txt"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/baseline_photo_24"
-                tools:ignore="MissingConstraints" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </RelativeLayout>
 </RelativeLayout>
