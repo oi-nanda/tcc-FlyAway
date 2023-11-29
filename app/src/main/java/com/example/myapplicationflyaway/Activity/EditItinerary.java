@@ -2,17 +2,13 @@ package com.example.myapplicationflyaway.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -20,10 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.myapplicationflyaway.Fragments.ProfileFragment;
-import com.example.myapplicationflyaway.Model.Itinerary;
 import com.example.myapplicationflyaway.R;
-import com.example.myapplicationflyaway.databinding.ActivityCreateItineraryBinding;
 import com.example.myapplicationflyaway.databinding.ActivityEditItineraryBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -56,7 +49,7 @@ public class EditItinerary extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_itinerary);
+        setContentView(R.layout.activity_edit_itinerary_popup);
         binding = ActivityEditItineraryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         progressDialog = new ProgressDialog(this);

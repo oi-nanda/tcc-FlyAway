@@ -83,7 +83,7 @@ public class ClimaActivity extends AppCompatActivity {
         humididty_weather = findViewById(R.id.humididty_weather);
         imagem_clima = findViewById(R.id.imagem_clima);
         btn_back_itinerary = findViewById(R.id.btn_back_itinerary);
-        next_days = findViewById(R.id.next_days);
+
 
         recyclerView = findViewById(R.id.hourly_viewholder);
         recyclerView.setHasFixedSize(true);
@@ -93,8 +93,8 @@ public class ClimaActivity extends AppCompatActivity {
 
         String tempUrl = "";
         String tempFiveDaysUrl = "";
-        String city = "canoas";
-        String country = "brazil";
+        String city = "roma";
+        String country = "italia";
 
         if(city.equals("")){
 
@@ -267,14 +267,6 @@ public class ClimaActivity extends AppCompatActivity {
 
         }
 
-        next_days.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), FutureClimaActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
 
         btn_back_itinerary.setOnClickListener(new View.OnClickListener() {
             @Override

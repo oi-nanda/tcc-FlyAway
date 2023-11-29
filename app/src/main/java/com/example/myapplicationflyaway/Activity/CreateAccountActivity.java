@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -37,6 +40,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     String passwordPattern = "^(?=.*[A-Z])" + ".{8,16}$";
     FirebaseAuth mAuth;
     FirebaseUser mUser;
+    boolean passwordVisible;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +68,64 @@ public class CreateAccountActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        binding.editCreateAccountPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int Right = 2;
+                if(event.getAction()==MotionEvent.ACTION_UP){
+                    if(event.getRawX()>=binding.editCreateAccountPassword.getCompoundDrawables()[Right].getBounds().width()){
+                        int selection = binding.editCreateAccountPassword.getSelectionEnd();
+                        if(passwordVisible){
+                            binding.editCreateAccountPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0, R.drawable.ic_eye_off, 0);
+
+                            binding.editCreateAccountPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisible=false;
+                        }
+                        else{
+                            binding.editCreateAccountPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0, R.drawable.ic_eye, 0);
+
+                            binding.editCreateAccountPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisible=true;
+                        }
+                        binding.editCreateAccountPassword.setSelection(selection);
+                        return true;
+                    }
+                }
+
+
+                return false;
+            }
+        });
+        binding.editCreateAccountConfirmPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int Right = 2;
+                if(event.getAction()==MotionEvent.ACTION_UP){
+                    if(event.getRawX()>=binding.editCreateAccountConfirmPassword.getCompoundDrawables()[Right].getBounds().width()){
+                        int selection = binding.editCreateAccountConfirmPassword.getSelectionEnd();
+                        if(passwordVisible){
+                            binding.editCreateAccountConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0, R.drawable.ic_eye_off, 0);
+
+                            binding.editCreateAccountConfirmPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisible=false;
+                        }
+                        else{
+                            binding.editCreateAccountConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0, R.drawable.ic_eye, 0);
+
+                            binding.editCreateAccountConfirmPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisible=true;
+                        }
+                        binding.editCreateAccountConfirmPassword.setSelection(selection);
+                        return true;
+                    }
+                }
+
+
+                return false;
+            }
+        });
+
 
     }
 
