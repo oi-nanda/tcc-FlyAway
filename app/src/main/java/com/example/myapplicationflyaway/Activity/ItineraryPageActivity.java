@@ -46,6 +46,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
     private TextView txt_people, txt_inicial_date, txt_final_date, txt_description;
     private Button add;
     ImageButton btn_back, btn_edit;
+    ImageView btn_img;
     private RecyclerView recyclerView;
     private ArrayList<Day> daylist;
     MyAdapter myAdapter;
@@ -73,6 +74,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
         btn_back = findViewById(R.id.btn_back_myItineraries);
         btn_galeria = findViewById(R.id.btn_galeria);
         btn_edit = findViewById(R.id.btn_edit);
+        btn_img = findViewById(R.id.btn_img);
 
         recyclerView = findViewById(R.id.trip_list);
         recyclerView.setHasFixedSize(true);
@@ -95,7 +97,6 @@ public class ItineraryPageActivity extends AppCompatActivity {
                     txt_final_date.setText(snapshot.child("finalDate").getValue().toString());
 
                     if (snapshot.child("Description").getValue()==null){
-                        txt_description.setText("Sem descrição");
                     }
                     else{
                         txt_description.setText((snapshot.child("Description").getValue().toString()));
@@ -116,7 +117,6 @@ public class ItineraryPageActivity extends AppCompatActivity {
                                     daylist.add(day);
                                 }
                                 myAdapter.notifyDataSetChanged();
-
                             }
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
@@ -137,7 +137,6 @@ public class ItineraryPageActivity extends AppCompatActivity {
                 }
             });
 
-
         }
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,9 +154,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ItineraryPageActivity.this, EditItinerary.class );
-                i.putExtra("ItineraryIdAtual", itineraryId);
-                i.putExtra("inicialDate", txt_inicial_date.getText().toString());
-                i.putExtra("finalDate", txt_final_date.getText().toString());
+                i.putExtra("ItineraryId", itineraryId);
                 i.putExtra("description", txt_description.getText().toString());
                 i.putExtra("numberOfTravelers", txt_people.getText().toString());
                 startActivity(i);
@@ -172,6 +169,15 @@ public class ItineraryPageActivity extends AppCompatActivity {
                 i.putExtra("itineraryId", itineraryId);
                 startActivity(i);
                // finish();
+            }
+        });
+
+        btn_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ItineraryPageActivity.this, downloadImgItineraryPage.class);
+                i.putExtra("ItineraryId", itineraryId);
+                startActivity(i);
             }
         });
 
