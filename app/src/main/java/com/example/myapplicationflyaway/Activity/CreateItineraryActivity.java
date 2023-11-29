@@ -77,7 +77,6 @@ public class CreateItineraryActivity extends AppCompatActivity {
        setContentView(binding.getRoot());
         progressDialog = new ProgressDialog(this);
 
-        add = findViewById(R.id.Adicionar);
 
         binding.buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
