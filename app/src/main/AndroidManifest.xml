@@ -25,6 +25,9 @@
         android:theme="@style/Theme.MyApplicationFlyAway"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.NotesActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.CropperActivityItinerary"
             android:exported="false" />
         <activity

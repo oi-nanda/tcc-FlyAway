@@ -55,7 +55,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
     private ImageView itinerary_pic;
     DatabaseReference reference;
 
-    LinearLayout btn_clima, btn_galeria;
+    LinearLayout btn_clima, btn_galeria, btn_notes;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,6 @@ public class ItineraryPageActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        add = findViewById(R.id.Adicionar);
         txt_people = findViewById(R.id.pessoas);
         txt_inicial_date = findViewById(R.id.datai);
         txt_final_date = findViewById(R.id.dataf);
@@ -75,6 +74,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
         btn_galeria = findViewById(R.id.btn_galeria);
         btn_edit = findViewById(R.id.btn_edit);
         btn_img = findViewById(R.id.btn_img);
+        btn_notes = findViewById(R.id.btn_notes);
 
         recyclerView = findViewById(R.id.trip_list);
         recyclerView.setHasFixedSize(true);
@@ -191,13 +191,11 @@ public class ItineraryPageActivity extends AppCompatActivity {
             }
         });
 
-        add.setOnClickListener(new View.OnClickListener() {
+        btn_notes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ItineraryPageActivity.this, CreateDayActivity.class);
-                i.putExtra("ItineraryIdAtual", itineraryId);
+                Intent i = new Intent(ItineraryPageActivity.this, NotesActivity.class);
                 startActivity(i);
-                finish();
             }
         });
     }
