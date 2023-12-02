@@ -8,4 +8,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="default_web_client_id" translatable="false">xxxxxxxx</string>
+    <string name="my_map_api_key">AIzaSyDxXDXWBkyeRzkeAtdboL9R0U1y-lrlMao</string>
 </resources>
