@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -41,9 +42,10 @@ public class GaleryPhotosActivity extends AppCompatActivity {
     String itineraryId;
     DatabaseReference reference;
     String userId;
-    RecyclerView recyclerView;
+    GridView gridView;
     ArrayList<Upload> photosList;
     TextView txt_default;
+    GaleryAdapter adapter;
 
 
     @Override
@@ -53,65 +55,42 @@ public class GaleryPhotosActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         userId = mAuth.getCurrentUser().getUid();
-        recyclerView = findViewById(R.id.viewholder_photos);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(GaleryPhotosActivity.this));
+        gridView = findViewById(R.id.viewholder_photos);
         txt_default = findViewById(R.id.txt_default);
-
-        photosList = new ArrayList<Upload>();
+        gridView = findViewById(R.id.viewholder_photos);
+        photosList = new ArrayList<>();
 
         button_add_image = findViewById(R.id.button_add_image);
         btn_back_itinerary_page = findViewById(R.id.btn_back_itinerary_page);
         image_default = findViewById(R.id.image_default);
 
+        adapter = new GaleryAdapter(GaleryPhotosActivity.this, photosList);
+        gridView.setAdapter(adapter);
 
         itineraryId = getIntent().getExtras().getString("itineraryId");
+        reference = FirebaseDatabase.getInstance().getReference("Galery").child(userId).child(itineraryId);
 
-            try{
-                reference = FirebaseDatabase.getInstance().getReference("Galery").child(userId).child(itineraryId);
-
-                reference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for(DataSnapshot dataSnapshot : snapshot.getChildren()){
-                            Upload upload = dataSnapshot.getValue(Upload.class);
-                            photosList.add(upload);
-                        }
-                        galeryAdapter.notifyDataSetChanged();
-
-                        if(photosList.size() == 0 ){
-                            image_default.setImageResource(R.drawable.default_galery);
-                            txt_default.setText("Você ainda não possui imagens adicionadas...");
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-                galeryAdapter = new GaleryAdapter(GaleryPhotosActivity.this, photosList);
-                recyclerView.setAdapter(galeryAdapter);
-
-
-
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), "errp", Toast.LENGTH_SHORT).show();
-                throw new RuntimeException(e);
-            }
-
-
-        btn_back_itinerary_page.setOnClickListener(new View.OnClickListener() {
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                Intent i = new Intent(GaleryPhotosActivity.this, ItineraryPageActivity.class);
-                i.putExtra("itineraryId", itineraryId);
-                startActivity(i);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Upload dataClass = dataSnapshot.getValue(Upload.class);
+                    photosList.add(dataClass);
+                }
+                adapter.notifyDataSetChanged();
+
+                if(photosList.size() == 0 ){
+                    image_default.setImageResource(R.drawable.default_galery);
+                    txt_default.setText("Você ainda não possui imagens adicionadas...");
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
-
-        button_add_image.setOnClickListener(new View.OnClickListener() {
+                button_add_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(GaleryPhotosActivity.this, GaleryActivity.class);
@@ -119,8 +98,16 @@ public class GaleryPhotosActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
+                btn_back_itinerary_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(GaleryPhotosActivity.this, ItineraryPageActivity.class);
+                i.putExtra("ItineraryId", itineraryId);
+                startActivity(i);
+            }
+        });
     }
-
-    
 }
+
+
+

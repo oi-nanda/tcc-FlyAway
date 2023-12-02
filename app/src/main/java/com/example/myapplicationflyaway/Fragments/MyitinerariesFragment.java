@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +63,7 @@ public class MyitinerariesFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         reference = FirebaseDatabase.getInstance().getReference().child("Itineraries").child(mAuth.getCurrentUser().getUid());
         criar_roteiro = view.findViewById(R.id.criar_roteiro);
+
         itineraryList = new ArrayList<Itinerary>();
 
         reference.addValueEventListener(new ValueEventListener() {

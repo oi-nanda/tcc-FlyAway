@@ -64,7 +64,7 @@ public class EditItinerary extends AppCompatActivity {
         Description.setText(oldDescription);
 
 
-        btn_back_itinerary = findViewById(R.id.btn_back_itinerary);
+     //   btn_back_itinerary = findViewById(R.id.btn_back_itinerary);
 
         auth = FirebaseAuth.getInstance();
         dbReference = FirebaseDatabase.getInstance().getReference().child("Itineraries");

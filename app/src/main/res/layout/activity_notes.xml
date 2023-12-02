@@ -55,7 +55,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/txt_placeName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -66,7 +66,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/txt_notes" />
 
             <TextView
-                android:id="@+id/textView16"
+                android:id="@+id/txt_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -74,7 +74,7 @@
                 android:text="Qua, 29 Nov até Ter, 05 Dez"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView15" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_placeName" />
 
             <View
                 android:id="@+id/view_test"
@@ -86,119 +86,51 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView16" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_date" />
 
 
-            <ImageView
-                android:id="@+id/imageView18"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/bg_add_notes_button"
-                android:padding="5dp"
-                android:src="@drawable/baseline_add_24"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.906"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.954" />
 
-            <View
-                android:id="@+id/containerComponents_notes"
-                android:layout_width="164dp"
-                android:layout_height="132dp"
-                android:layout_marginTop="36dp"
-                android:background="@drawable/bg_note"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.139"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_notes"
-                app:layout_constraintVertical_bias="0.164" />
 
-            <View
-                android:id="@+id/containerComponents_notes3"
-                android:layout_width="163dp"
-                android:layout_height="130dp"
-                android:layout_marginTop="28dp"
-                android:background="@drawable/bg_note2"
-                app:layout_constraintBottom_toBottomOf="@+id/containerComponents_notes"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.104"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_notes"
-                app:layout_constraintVertical_bias="0.886" />
 
-            <TextView
-                android:id="@+id/txt_title"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Não esquecer"
-                android:textColor="@color/white"
-                android:textSize="13dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/containerComponents_notes"
-                app:layout_constraintEnd_toEndOf="@+id/containerComponents_notes"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/containerComponents_notes"
-                app:layout_constraintTop_toTopOf="@+id/containerComponents_notes"
-                app:layout_constraintVertical_bias="0.089" />
-
-            <TextView
-                android:id="@+id/txt_subtitle"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Documentos:"
-                android:textColor="@color/white"
-                android:textSize="12dp"
-                app:layout_constraintBottom_toBottomOf="@+id/containerComponents_notes"
-                app:layout_constraintEnd_toEndOf="@+id/containerComponents_notes"
-                app:layout_constraintHorizontal_bias="0.23"
-                app:layout_constraintStart_toStartOf="@+id/containerComponents_notes"
-                app:layout_constraintTop_toBottomOf="@+id/txt_title"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <TextView
-                android:id="@+id/txt_datetime"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="* Identidade"
-
-                android:textColor="@color/white"
-                android:textSize="7dp"
-                app:layout_constraintBottom_toBottomOf="@+id/containerComponents_notes"
-                app:layout_constraintEnd_toEndOf="@+id/containerComponents_notes"
-                app:layout_constraintHorizontal_bias="0.212"
-                app:layout_constraintStart_toStartOf="@+id/containerComponents_notes"
-                app:layout_constraintTop_toBottomOf="@+id/txt_subtitle"
-                app:layout_constraintVertical_bias="0.144" />
-
-            <TextView
-                android:id="@+id/txt_datetime2"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="* Passaporte"
-
-                android:textColor="@color/white"
-                android:textSize="7dp"
-                app:layout_constraintBottom_toBottomOf="@+id/containerComponents_notes"
-                app:layout_constraintEnd_toEndOf="@+id/containerComponents_notes"
-                app:layout_constraintHorizontal_bias="0.212"
-                app:layout_constraintStart_toStartOf="@+id/containerComponents_notes"
-                app:layout_constraintTop_toBottomOf="@+id/txt_subtitle"
-                app:layout_constraintVertical_bias="0.276" />
 
             <ImageView
                 android:id="@+id/imageView17"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
-                app:layout_constraintBottom_toTopOf="@+id/imageView18"
+                app:layout_constraintBottom_toTopOf="@+id/add_notes"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.567"
                 app:layout_constraintStart_toEndOf="@+id/txt_notes"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.086"
                 app:srcCompat="@drawable/bloco_de_anotacoes" />
+
+            <GridView
+                android:id="@+id/gridview_notes"
+                android:layout_width="391dp"
+                android:layout_height="478dp"
+                android:layout_marginTop="8dp"
+                android:numColumns="2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_test"
+                app:layout_constraintVertical_bias="0.026" />
+
+            <Button
+                android:id="@+id/add_notes"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="Adicionar"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/button_login"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:textSize="18dp"/>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

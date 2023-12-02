@@ -69,7 +69,7 @@
                         android:id="@+id/btn_edit"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:layout_marginStart="360dp"
+                        android:layout_marginStart="330dp"
                         android:layout_marginTop="15dp"
                         android:background="@drawable/transparent_backgroud"
                         android:maxWidth="30dp"
@@ -85,7 +85,7 @@
                         android:maxHeight="30dp"
                         android:maxWidth="30dp"
                         android:clickable="true"
-                        android:layout_marginStart="315dp"
+                        android:layout_marginStart="280dp"
                         android:layout_marginTop="15dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -136,7 +136,10 @@
                     android:textSize="15dp"
                     android:text="pessoas" />
 
-                </LinearLayout>
+
+
+            </LinearLayout>
+
 
 
                 <LinearLayout
@@ -163,6 +166,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:text="ddmmyy" />
+                    <Button
+                        android:id="@+id/btn_publicar"
+                        android:layout_width="110dp"
+                        android:text="Publicar"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="126dp"/>
 
                 </LinearLayout>
 
