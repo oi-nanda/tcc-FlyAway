@@ -160,54 +160,53 @@ public class ItineraryPageActivity extends AppCompatActivity {
         publicar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                publicItinerariesReference = FirebaseDatabase.getInstance().getReference().child("PublicItineraries");
 
-                AlertDialog.Builder buider = new AlertDialog.Builder(ItineraryPageActivity.this);
-                buider.setTitle("Tem certeza?");
-                buider.setMessage("Seu roteiro ficará visível para todos os usuários");
+                try {
+                    publicItinerariesReference = FirebaseDatabase.getInstance().getReference().child("PublicItineraries");
 
-                buider.setPositiveButton("Publicar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    AlertDialog.Builder buider = new AlertDialog.Builder(ItineraryPageActivity.this);
+                    buider.setTitle("Tem certeza?");
+                    buider.setMessage("Seu roteiro ficará visível para todos os usuários");
 
-                        publicItinerariesReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                String userId = mAuth.getCurrentUser().getUid();
+                    buider.setPositiveButton("Publicar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
-                                ItinerarySave itinerary = new ItinerarySave(id, itineraryName, date1, date2, numberOfTravelers, userId);
-                                Log.d("teste", id);
-                                Log.d("teste", itineraryName);
-                                Log.d("teste", date1);
-                                Log.d("teste", date2);
-                                Log.d("teste", numberOfTravelers);
-                                Log.d("teste", userId);
+                            publicItinerariesReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    String userId = mAuth.getCurrentUser().getUid();
 
-                                String key = publicItinerariesReference.push().getKey();
-                                publicItinerariesReference.child(key).setValue(itinerary).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        Toast.makeText(ItineraryPageActivity.this, "Publicado", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }
+                                    ItinerarySave itinerary = new ItinerarySave(id, itineraryName, date1, date2, numberOfTravelers, userId);
+                                    String key = publicItinerariesReference.push().getKey();
+                                    publicItinerariesReference.child(key).setValue(itinerary).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            Toast.makeText(ItineraryPageActivity.this, "Publicado", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
 
-                            }
-                        });
+                                }
+                            });
 
 
-                    }
-                });
-                buider.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(ItineraryPageActivity.this, "Cancelado", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                buider.show();
+                        }
+                    });
+                    buider.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(ItineraryPageActivity.this, "Cancelado", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    buider.show();
+
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
 
             }
         });
@@ -218,8 +217,6 @@ public class ItineraryPageActivity extends AppCompatActivity {
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.main_fragment, MyitinerariesFragment.class, null)
-                        .setReorderingAllowed(true)
-                        .addToBackStack("name")
                         .commit();
             }
         });
@@ -242,7 +239,6 @@ public class ItineraryPageActivity extends AppCompatActivity {
                 Intent i = new Intent(ItineraryPageActivity.this, ClimaActivity.class);
                 i.putExtra("itineraryId", itineraryId);
                 startActivity(i);
-               // finish();
             }
         });
 

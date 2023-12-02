@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,8 +46,9 @@ public class HomeFragment extends Fragment {
     ArrayList<ItinerarySave> itineraryArrayList;
     MySavesAdapter savesAdapter;
     DatabaseReference reference, savesReference;
-    GoogleSignInClient signInClient;
-    GoogleSignInOptions gso;
+   SearchView searchView;
+   ItinerarySave itinerarySave;
+
 
     public HomeFragment() {
     }
@@ -57,12 +59,28 @@ public class HomeFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_home, container, false);
 
         mAuth = FirebaseAuth.getInstance();
+
         recyclerView = view.findViewById(R.id.itinerary_saveList);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         reference = FirebaseDatabase.getInstance().getReference().child("Itineraries");
         savesReference = FirebaseDatabase.getInstance().getReference().child("PublicItineraries");
         ImageSlider imageSlider = view.findViewById(R.id.image_slider);
+
+        searchView = view.findViewById(R.id.searchView);
+        searchView.clearFocus();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+               filterList(newText);
+                return true;
+            }
+        });
 
         itineraryArrayList = new ArrayList<ItinerarySave>();
 
@@ -77,6 +95,7 @@ public class HomeFragment extends Fragment {
         slideModels.add(new SlideModel(R.drawable.china, ScaleTypes.CENTER_CROP));
 
         imageSlider.setImageList(slideModels, ScaleTypes.CENTER_CROP);
+
 
         savesReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -98,5 +117,19 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(savesAdapter);
 
         return view;
+    }
+
+    private void filterList(String text) {
+        ArrayList<ItinerarySave> filteredList = new ArrayList<>();
+        for(ItinerarySave itinerarySave : itineraryArrayList){
+            if(itinerarySave.getPlaceName().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(itinerarySave);
+            }
+        }
+        if(filteredList.isEmpty()){
+            Toast.makeText(getContext(), "Nenhum roteiro foi encontrado", Toast.LENGTH_SHORT).show();
+        }else{
+            savesAdapter.setFilteredList(filteredList);
+        }
     }
 }

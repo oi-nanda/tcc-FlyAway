@@ -168,10 +168,7 @@
                         android:text="ddmmyy" />
                     <Button
                         android:id="@+id/btn_publicar"
-                        android:layout_width="110dp"
-                        android:text="Publicar"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="126dp"/>
+                        style="@style/publicar"/>
 
                 </LinearLayout>
 

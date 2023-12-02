@@ -1,6 +1,5 @@
 package com.example.myapplicationflyaway.Adapter;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,11 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplicationflyaway.Activity.ItineraryPageActivity;
+import com.example.myapplicationflyaway.Fragments.SavesPageFregment;
 import com.example.myapplicationflyaway.Model.Itinerary;
 import com.example.myapplicationflyaway.Model.ItinerarySave;
 import com.example.myapplicationflyaway.R;
@@ -32,33 +31,34 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class MySavesAdapter extends RecyclerView.Adapter<MySavesAdapter.ViewHolder> {
+public class SavePageAdapter extends RecyclerView.Adapter<SavePageAdapter.ViewHolder> {
 
     Context context;
     private FirebaseAuth mAuth;
-    ArrayList<ItinerarySave> itinerarySaveList;
-    DatabaseReference referenceSaves, referenceUser, referenceListSaves;
+    ArrayList<ItinerarySave> itineraryArrayList;
+    DatabaseReference reference, referenceUser;
 
-    public MySavesAdapter(Context context, ArrayList<ItinerarySave> itinerarySaveList) {
+    public SavePageAdapter(Context context, ArrayList<ItinerarySave> itineraryArrayList) {
         this.context = context;
-        this.itinerarySaveList = itinerarySaveList;
+        this.itineraryArrayList = itineraryArrayList;
     }
 
     @NonNull
     @Override
-    public MySavesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.itinerary_save_cards,parent,false);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(R.layout.itinerary_card_saves,parent,false);
+
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        ItinerarySave itinerary = itinerarySaveList.get(position);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        ItinerarySave save = itineraryArrayList.get(position);
         mAuth = FirebaseAuth.getInstance();
-        holder.itineraryName.setText(itinerary.getPlaceName());
-        holder.date.setText(itinerary.getInicialDate() +" até "+ itinerary.getFinalDate());
+        holder.placename.setText(save.getPlaceName());
+        holder.data.setText(save.getInicialDate() +" até "+ save.getFinalDate());
 
-        String id = itinerary.getUserId();
+        String id = save.getUserId();
 
         referenceUser = FirebaseDatabase.getInstance().getReference().child("Users").child(id);
 
@@ -79,34 +79,41 @@ public class MySavesAdapter extends RecyclerView.Adapter<MySavesAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ItineraryPageActivity.class);
-                intent.putExtra("UserId", itinerary.getUserId());
-                intent.putExtra("ItineraryId", itinerary.getId());
+                intent.putExtra("UserId", save.getUserId());
+                intent.putExtra("ItineraryId", save.getId());
                 v.getContext().startActivity(intent);
             }
         });
 
-        holder.like.setOnClickListener(new View.OnClickListener() {
+        holder.remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                referenceSaves = FirebaseDatabase.getInstance().getReference().child("ItinerariesSave").child(mAuth.getCurrentUser().getUid());
+                reference = FirebaseDatabase.getInstance().getReference().child("ItinerariesSave").child(mAuth.getCurrentUser().getUid());
 
                 AlertDialog.Builder buider = new AlertDialog.Builder(context);
-                buider.setTitle("Salvar Roteiro");
-                buider.setMessage("Tem certeza que deseja salvar este roteiro?");
-                buider.setPositiveButton("Salvar", new DialogInterface.OnClickListener() {
+                buider.setTitle("Remover Roteiro");
+                buider.setMessage("Tem certeza que deseja remover este roteiro dos salvos?");
+
+                buider.setPositiveButton("Remover", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
-                        referenceSaves.addListenerForSingleValueEvent(new ValueEventListener() {
+                        reference.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                String key = referenceSaves.push().getKey();
-                                referenceSaves.child(key).setValue(itinerarySaveList.get(position)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                String key = reference.push().getKey();
+                                for(DataSnapshot snapshot1 : snapshot.getChildren()){
+                                    ItinerarySave itinerarySave = snapshot1.getValue(ItinerarySave.class);
+                                    if(itinerarySave.getId() == save.getId()){
+                                        reference.child(snapshot1.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
-                                        Toast.makeText(context, "Roteiro Salvo", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context, "Roteiro Removido", Toast.LENGTH_SHORT).show();
                                     }
                                 });
+                                    }
+
+                                }
+//
                             }
 
                             @Override
@@ -125,6 +132,7 @@ public class MySavesAdapter extends RecyclerView.Adapter<MySavesAdapter.ViewHold
                     }
                 });
                 buider.show();
+
             }
         });
 
@@ -132,28 +140,22 @@ public class MySavesAdapter extends RecyclerView.Adapter<MySavesAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return itinerarySaveList.size();
+        return itineraryArrayList.size();
     }
-
-    public void setFilteredList(ArrayList<ItinerarySave> filteredList) {
-        this.itinerarySaveList = filteredList;
-        notifyDataSetChanged();
-    }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView itineraryName, date, username;
-        ImageView like;
+        TextView placename, data, username;
         ConstraintLayout itinerary_card;
+        ImageView remove;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            itineraryName = itemView.findViewById(R.id.itinerary_save_name);
-            date = itemView.findViewById(R.id.data_save);
-            username = itemView.findViewById(R.id.username_save_txt);
-            like = itemView.findViewById(R.id.like_itinerary);
-            itinerary_card = itemView.findViewById(R.id.itinerary_save_cards);
-
+            placename = itemView.findViewById(R.id.itinerary_name);
+            data = itemView.findViewById(R.id.data);
+            username = itemView.findViewById(R.id.username_txt);
+            remove = itemView.findViewById(R.id.remove_itinerary);
+            itinerary_card = itemView.findViewById(R.id.itineraryPage_save_card);
         }
     }
+
 }

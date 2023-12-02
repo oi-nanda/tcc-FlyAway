@@ -76,7 +76,7 @@ public class CreateItineraryActivity extends AppCompatActivity {
         binding = ActivityCreateItineraryBinding.inflate(getLayoutInflater());
        setContentView(binding.getRoot());
         progressDialog = new ProgressDialog(this);
-
+        mAuth = FirebaseAuth.getInstance();
 
         binding.buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,6 +213,7 @@ public class CreateItineraryActivity extends AppCompatActivity {
     private void sendUserToItineraryPage() {
         Intent intent = new Intent(CreateItineraryActivity.this, ItineraryPageActivity.class);
         intent.putExtra("ItineraryId", id);
+        intent.putExtra("UserId", mAuth.getCurrentUser().getUid());
         startActivity(intent);
         finish();
     }

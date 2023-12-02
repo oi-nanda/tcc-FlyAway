@@ -68,7 +68,6 @@ public class MyItineraryAdapter extends RecyclerView.Adapter<MyItineraryAdapter.
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String name = snapshot.child("username").getValue().toString();
                 holder.username.setText(name);
-
             }
 
             @Override
