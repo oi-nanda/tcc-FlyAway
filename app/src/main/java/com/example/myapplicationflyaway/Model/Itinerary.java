@@ -10,6 +10,7 @@ public class Itinerary implements Serializable {
     String placeName, inicialDate, finalDate, numberOfTravelers, description, userId, id;
     Day day[];
 
+
     ImageView img;
 
     public Itinerary() {}

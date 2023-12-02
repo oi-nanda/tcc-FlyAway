@@ -1,5 +1,7 @@
 package com.example.myapplicationflyaway.Model;
 
+import android.net.Uri;
+
 public class Upload {
     private String mName;
     private String mImageUrl;

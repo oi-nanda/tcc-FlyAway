@@ -83,6 +83,7 @@ public class MyItineraryAdapter extends RecyclerView.Adapter<MyItineraryAdapter.
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ItineraryPageActivity.class);
                 intent.putExtra("ItineraryId", itinerary.getId());
+                intent.putExtra("UserId", mAuth.getCurrentUser().getUid());
                 v.getContext().startActivity(intent);
             }
         });

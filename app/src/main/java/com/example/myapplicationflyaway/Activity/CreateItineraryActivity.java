@@ -65,7 +65,7 @@ public class CreateItineraryActivity extends AppCompatActivity {
     EditText data1, data2;
     TextView npessoas;
     SearchView local;
-    Button start;
+    Button start, button2;
     ImageButton btn_back_home;
     final Calendar calendario = Calendar.getInstance();
 
@@ -76,7 +76,7 @@ public class CreateItineraryActivity extends AppCompatActivity {
         binding = ActivityCreateItineraryBinding.inflate(getLayoutInflater());
        setContentView(binding.getRoot());
         progressDialog = new ProgressDialog(this);
-
+        mAuth = FirebaseAuth.getInstance();
 
         binding.buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,6 +134,15 @@ public class CreateItineraryActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                     Toast.makeText(CreateItineraryActivity.this, "Erro ao criar o roteiro", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        binding.button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(CreateItineraryActivity.this, TestingMapsActivity.class);
+                startActivity(i);
+                finish();
             }
         });
 
@@ -213,6 +222,7 @@ public class CreateItineraryActivity extends AppCompatActivity {
     private void sendUserToItineraryPage() {
         Intent intent = new Intent(CreateItineraryActivity.this, ItineraryPageActivity.class);
         intent.putExtra("ItineraryId", id);
+        intent.putExtra("UserId", mAuth.getCurrentUser().getUid());
         startActivity(intent);
         finish();
     }
