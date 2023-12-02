@@ -25,7 +25,10 @@
         android:theme="@style/Theme.MyApplicationFlyAway"
         tools:targetApi="31">
         <activity
-            android:name=".Activity.PlacePage"
+            android:name=".Activity.deleteItinerary"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.PlacePageActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.NotesActivity"
@@ -35,6 +38,9 @@
             android:exported="false" />
         <activity
             android:name=".Activity.downloadImgItineraryPage"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.CreatePlaceActivity"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.

@@ -8,10 +8,6 @@
     android:background="@color/backgroud"
     android:orientation="vertical">
 
-
-
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
@@ -91,6 +87,21 @@
                         app:layout_constraintTop_toTopOf="parent"
                         android:background="@drawable/transparent_backgroud"
                         app:srcCompat="@drawable/downloadimg" />
+
+                    <ImageView
+                        android:id="@+id/btn_img_delete"
+                        android:layout_width="35dp"
+                        android:layout_height="40dp"
+                        android:maxHeight="30dp"
+                        android:maxWidth="30dp"
+                        android:clickable="true"
+                        android:layout_marginStart="270dp"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:background="@drawable/transparent_backgroud"
+                        app:srcCompat="@drawable/img_11" />
+
 
                 </androidx.cardview.widget.CardView>
 

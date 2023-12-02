@@ -34,8 +34,7 @@ public class MyAdapterPlace extends RecyclerView.Adapter<MyAdapterPlace.ViewHold
     @NonNull
     @Override
     public MyAdapterPlace.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // CRIAR LAYOUT PARA LUGAR
-        View v = LayoutInflater.from(context).inflate(R.layout.roteiro_card_item_layout,parent,false);
+        View v = LayoutInflater.from(context).inflate(R.layout.dia_card_item_layout,parent,false);
 
         return new MyAdapterPlace.ViewHolder(v);
     }
@@ -50,7 +49,7 @@ public class MyAdapterPlace extends RecyclerView.Adapter<MyAdapterPlace.ViewHold
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), PlacePageActivity.class);
-                intent.putExtra("PlaceId", place.getId());
+                intent.putExtra("PlaceName", place.getName());
                 v.getContext().startActivity(intent);
             }
         });
@@ -64,10 +63,11 @@ public class MyAdapterPlace extends RecyclerView.Adapter<MyAdapterPlace.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView place;
+        TextView place,valor;
         CardView imgPlace;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+//            valor = itemView.findViewById(R.id.valordolugar);
             place = itemView.findViewById(R.id.title_card);
             imgPlace = itemView.findViewById(R.id.image_card);
 
