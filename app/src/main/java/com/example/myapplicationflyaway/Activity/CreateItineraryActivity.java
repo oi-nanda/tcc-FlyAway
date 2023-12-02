@@ -38,6 +38,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Random;
 import java.util.UUID;
 
@@ -52,20 +53,22 @@ public class CreateItineraryActivity extends AppCompatActivity {
     Day day[];
     ProgressDialog progressDialog;
     FirebaseDatabase db;
-    DatabaseReference reference;
+    DatabaseReference reference, dbRefDay;
 
     FirebaseUser user;
 
     String uid;
 
     String id;
-
+    Long totaldedias;
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
     EditText data1, data2;
     TextView npessoas;
     SearchView local;
-    Button start, button2;
+    Button start,button2;
+    String dt;
+
     ImageButton btn_back_home;
     final Calendar calendario = Calendar.getInstance();
 
@@ -104,6 +107,7 @@ public class CreateItineraryActivity extends AppCompatActivity {
                     Itinerary itinerary = new Itinerary(id,placeName,inicialDate, finalDate, numberOfTravelers, null, null);
                     db = FirebaseDatabase.getInstance();
                     reference = db.getReference("Itineraries");
+                    dbRefDay = FirebaseDatabase.getInstance().getReference("Itineraries").child(uid).child(id).child("Days");
 
                     reference.child(uid).child(id).setValue(itinerary).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -116,6 +120,51 @@ public class CreateItineraryActivity extends AppCompatActivity {
                             sendUserToItineraryPage();
                         }
                     });
+
+                        String datainicial = (inicialDate).substring(0,6);
+                        String datainicial2 = (inicialDate).substring(6);
+                        String datafinal = (finalDate).substring(0,6);
+                        String datafinal2 = (finalDate).substring(6);
+
+                        String datainicialnew = datainicial+"20"+datainicial2;
+                        String datafinalnew = datafinal+"20"+datafinal2;
+
+                        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+                        sdf.setLenient (false);
+                        try {
+                            Date d1 = sdf.parse(datainicialnew);
+                            Date d2 = sdf.parse(datafinalnew);
+
+                            Long diff = d2.getTime() - d1.getTime();
+
+                            totaldedias = ((diff/(100*60*60*24))/10)+1;
+
+                            for (int i=1;i<=totaldedias;i++){
+                                String dayname = "dia " + i;
+                                String idday = UUID.randomUUID().toString();
+
+                                Calendar calendar = Calendar.getInstance();
+                                calendar.setTime(d1);
+                                if (i==1){}
+                                else{
+                                    calendar.add(Calendar.DATE, i-1);
+                                }
+                                SimpleDateFormat simple = new SimpleDateFormat("dd-MM-yyyy");
+                                dt = simple.format(calendar.getTime());
+
+                                Day day = new Day(dayname,"",idday,null,id,dt);
+                                dbRefDay.child(dayname).setValue(day).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        progressDialog.dismiss();
+                                    }
+                                });
+                            }
+
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
+                        }
+
                     }
                     else {
                       if (d1.after(d2)){

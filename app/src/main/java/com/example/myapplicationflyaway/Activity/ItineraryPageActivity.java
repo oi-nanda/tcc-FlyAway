@@ -45,16 +45,21 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.EventListener;
+import java.util.Locale;
 
 public class ItineraryPageActivity extends AppCompatActivity {
 
-    private TextView txt_people, txt_inicial_date, txt_final_date, txt_description;
+    private TextView txt_people, txt_inicial_date, txt_final_date, txt_description,totaldedias;
     private Button publicar;
     ImageButton btn_back, btn_edit;
-    ImageView btn_img, img;
+    ImageView btn_img, btn_delete,img;
+
     private RecyclerView recyclerView;
     private ArrayList<Day> daylist;
     MyAdapter myAdapter;
@@ -85,8 +90,12 @@ public class ItineraryPageActivity extends AppCompatActivity {
         btn_edit = findViewById(R.id.btn_edit);
         btn_img = findViewById(R.id.btn_img);
         btn_notes = findViewById(R.id.btn_notes);
+        btn_delete = findViewById(R.id.btn_img_delete);
+
+
         publicar = findViewById(R.id.btn_publicar);
         floatingActionButton = findViewById(R.id.floatingActionButtontoChat);
+
         recyclerView = findViewById(R.id.trip_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -252,6 +261,15 @@ public class ItineraryPageActivity extends AppCompatActivity {
             }
         });
 
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ItineraryPageActivity.this, deleteItinerary.class);
+                i.putExtra("ItineraryId", itineraryId);
+                startActivity(i);
+            }
+        });
+
         btn_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -264,9 +282,14 @@ public class ItineraryPageActivity extends AppCompatActivity {
         btn_galeria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ItineraryPageActivity.this, GaleryPhotosActivity.class);
+                Intent i = new Intent(ItineraryPageActivity.this, PlacePageActivity.class);
                 i.putExtra("itineraryId", itineraryId);
                 startActivity(i);
+//                Intent i = new Intent(ItineraryPageActivity.this, GaleryPhotosActivity.class);
+//                i.putExtra("itineraryId", itineraryId);
+//                startActivity(i);
+               // finish();
+
             }
         });
 

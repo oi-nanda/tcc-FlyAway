@@ -31,12 +31,11 @@
 
                 <ImageView
                     android:id="@+id/imageView15"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="209dp"
-                    android:layout_toEndOf="@+id/txt_edit_profile"
-                    android:src="@drawable/bagg" />
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginStart="100dp"
+                    android:src="@drawable/robozinho" />
 
                 <TextView
                     android:id="@+id/txt_edit_profile"

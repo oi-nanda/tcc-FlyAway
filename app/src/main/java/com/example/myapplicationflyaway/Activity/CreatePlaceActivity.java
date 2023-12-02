@@ -46,6 +46,7 @@ public class CreatePlaceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_place);
+        progressDialog = new ProgressDialog(this);
 
         binding = ActivityCreatePlaceBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -58,8 +59,8 @@ public class CreatePlaceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 createPlace(v);
-                Log.d("DayName", dayid+"abcde");
-                Log.d("ItineraryId", itineraryId);
+//                Log.d("DayName", dayid+"abcde");
+//                Log.d("ItineraryId", itineraryId);
                 sendUsertoPlacePage();
             }
         });
@@ -83,14 +84,13 @@ public class CreatePlaceActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("Itineraries");
 
         mAuth = FirebaseAuth.getInstance();
+        id = UUID.randomUUID().toString();
 
-
-        databaseReference.child(mAuth.getCurrentUser().getUid()).child(itineraryId).child("Days").child(dayid).child("Places").addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child(mAuth.getCurrentUser().getUid()).child(itineraryId).child("Days").child(dayid).child("Places").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                id = UUID.randomUUID().toString();
-                Place place = new Place(placeName,desc,newCost,id, null);
+                Place place = new Place(placeName,desc,newCost,id, null, dayid,itineraryId);
                 dbRefPlace = snapshot.getRef();
                 dbRefPlace.setValue(place).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

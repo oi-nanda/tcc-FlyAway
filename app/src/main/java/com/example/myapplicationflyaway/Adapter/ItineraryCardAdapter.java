@@ -30,16 +30,16 @@ public class ItineraryCardAdapter extends ArrayAdapter<Itinerary> {
             TextView titulo = convertView.findViewById(R.id.title_card);
 //            TextView data = convertView.findViewById(R.id.date_card);
 //            TextView lugar = convertView.findViewById(R.id.place_card);
-            ImageView salvo = convertView.findViewById(R.id.save_card);
+//            ImageView salvo = convertView.findViewById(R.id.save_card);
             ImageView imagem_local = convertView.findViewById(R.id.image_card);
 
 
-            salvo.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
+//            salvo.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                }
+//            });
 
         }
         return convertView;

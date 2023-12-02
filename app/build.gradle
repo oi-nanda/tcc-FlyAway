@@ -3,6 +3,7 @@ plugins {
     id 'com.google.gms.google-services'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
+//apply from: 'secrets.gradle'
 
 android {
     namespace 'com.example.myapplicationflyaway'
@@ -23,6 +24,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+//        buildTypes.each {
+//            it.buildConfigField "String", "CREDENTIALS_KEY", "\"$credentialsKey\""
+//        }
     }
     buildFeatures{
         viewBinding true
@@ -59,6 +63,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.8'
     implementation 'com.android.volley:volley:1.2.1'
     implementation("com.google.android.gms:play-services-auth:20.7.0")
+//    implementation 'com.microsoft.maps:maps-sdk:1.2.0'
 
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation("com.google.firebase:firebase-auth")

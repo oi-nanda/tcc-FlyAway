@@ -128,12 +128,12 @@ public class CreateDayActivity extends AppCompatActivity {
 
                 dbRefDay =  snapshot.child("Days").getRef();
                 String id = UUID.randomUUID().toString();
-                Day day = new Day(dayname,desc,id,null);
+                Day day = new Day(dayname,desc,id,null,null,null);
                 dbRefDay.child(dayname).setValue(day).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         dbRefPlace = snapshot.child("Days").child(dayname).child("Places").getRef();
-                        Place place = new Place(placeName,null,Double.valueOf(cost),null,null);
+                        Place place = new Place(placeName,null,Double.valueOf(cost),null,null,null,null);
                         dbRefPlace.child(placeName).setValue(place).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {

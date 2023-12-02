@@ -192,7 +192,8 @@
         app:layout_constraintEnd_toStartOf="@+id/textView25"
         app:layout_constraintStart_toStartOf="@+id/containerComponents"
         app:layout_constraintTop_toTopOf="@+id/containerComponents"
-        app:srcCompat="@drawable/talheres" />
+
+        />
 
     <TextView
         android:id="@+id/textView20"

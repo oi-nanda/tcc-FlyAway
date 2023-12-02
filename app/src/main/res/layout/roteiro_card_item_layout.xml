@@ -23,18 +23,5 @@
         tools:layout_editor_absoluteY="128dp"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/save_card"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        app:layout_constraintTop_toTopOf="@+id/image_card"
-        app:layout_constraintEnd_toEndOf="@+id/image_card"
-        app:srcCompat="@drawable/baseline_mode_edit_outline_24"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-
-        tools:ignore="MissingConstraints" />
-
-
 
 </androidx.cardview.widget.CardView>

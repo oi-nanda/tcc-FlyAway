@@ -55,7 +55,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), DayPageActivity.class);
-                intent.putExtra("DayId", day.getId());
+                intent.putExtra("DayName", day.getDayname());
+                intent.putExtra("ItineraryId",day.getItineraryId());
                 v.getContext().startActivity(intent);
             }
         });

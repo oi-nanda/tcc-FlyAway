@@ -6,16 +6,19 @@ public class Place {
 
     String name, description;
     Double cost;
-    String id;
+    String id,iddia,iditinerary;
     Image img;
+
 
     public void Place() {}
 
-    public Place(String name, String description, Double cost, String id, Image img) {
+    public Place(String name, String description, Double cost, String id, Image img, String iddia, String iditinerary) {
         this.name = name;
         this.description = description;
         this.cost = cost;
         this.id = id;
+        this.iddia = iddia;
+        this.iditinerary = iditinerary;
     }
 
     public String getId() {
