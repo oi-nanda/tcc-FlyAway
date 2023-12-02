@@ -184,9 +184,12 @@ public class ItineraryPageActivity extends AppCompatActivity {
         btn_galeria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ItineraryPageActivity.this, GaleryPhotosActivity.class);
+                Intent i = new Intent(ItineraryPageActivity.this, PlacePageActivity.class);
                 i.putExtra("itineraryId", itineraryId);
                 startActivity(i);
+//                Intent i = new Intent(ItineraryPageActivity.this, GaleryPhotosActivity.class);
+//                i.putExtra("itineraryId", itineraryId);
+//                startActivity(i);
                // finish();
             }
         });

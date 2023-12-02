@@ -4,6 +4,117 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.PlacePageActivity">
+    >
+
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView19"-->
+<!--        android:layout_width="702dp"-->
+<!--        android:layout_height="293dp"-->
+<!--        android:src="@drawable/img_7"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+
+
+
+<!--    <View-->
+<!--        android:id="@+id/ContainerComponentsQuarto2"-->
+<!--        style="@style/ContainerComponentsQuarto2"-->
+<!--        android:layout_width="416dp"-->
+<!--        android:layout_height="485dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.6"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:elegantTextHeight="true"-->
+<!--        android:text="Catedral de Milão"-->
+<!--        android:textSize="25dp"-->
+<!--        tools:layout_editor_absoluteX="16dp"-->
+<!--        tools:layout_editor_absoluteY="263dp" />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="É uma catedral católica romana situada na praça central da cidade de Milão, na Lombardia, localizada ao norte da Itália."-->
+<!--        tools:layout_editor_absoluteX="16dp"-->
+<!--        tools:layout_editor_absoluteY="318dp" />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="P.za del Duomo, 20122 Milano MI, Itália"-->
+<!--        tools:layout_editor_absoluteX="118dp"-->
+<!--        tools:layout_editor_absoluteY="609dp" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView25"-->
+<!--        android:layout_width="60dp"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:padding="5dp"-->
+<!--        android:src="@drawable/img_9"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.007" />-->
+
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView22"-->
+<!--        android:layout_width="57dp"-->
+<!--        android:layout_height="53dp"-->
+<!--        android:padding="5dp"-->
+<!--        android:src="@drawable/img_1"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.09"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.961" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView22"-->
+<!--        android:layout_width="88dp"-->
+<!--        android:layout_height="71dp"-->
+<!--        android:padding="5dp"-->
+<!--        android:src="@drawable/img_10"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.049"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.88" />-->
+
+<!--    <ImageView-->
+<!--        android:layout_width="97dp"-->
+<!--        android:layout_height="101dp"-->
+<!--        android:padding="5dp"-->
+<!--        android:src="@drawable/img_2"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.242" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/containerComponents"-->
+<!--        style="@style/ContainerComponents"-->
+<!--        android:layout_width="158dp"-->
+<!--        android:layout_height="44dp"-->
+<!--        android:layout_marginEnd="144dp"-->
+<!--        android:gravity="center"-->
+<!--        android:text="R$ 200,00"-->
+
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        tools:layout_editor_absoluteY="661dp" />-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

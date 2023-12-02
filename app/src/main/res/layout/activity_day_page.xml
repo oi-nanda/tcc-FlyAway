@@ -4,6 +4,223 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.DayPageActivity">
+   >
+
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView19"-->
+<!--        android:layout_width="742dp"-->
+<!--        android:layout_height="363dp"-->
+<!--        android:src="@drawable/img_6"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/imageView18"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        tools:layout_editor_absoluteX="-166dp" />-->
+
+<!--    <View-->
+<!--        android:id="@+id/ContainerComponentsQuarto2"-->
+<!--        style="@style/ContainerComponentsQuarto2"-->
+<!--        android:layout_width="416dp"-->
+<!--        android:layout_height="485dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        tools:layout_editor_absoluteY="259dp" />-->
+
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:id="@+id/cardView2"-->
+<!--        android:layout_width="320dp"-->
+<!--        android:layout_height="155dp"-->
+<!--        android:layout_margin="5dp"-->
+<!--        android:elevation="10dp"-->
+<!--        app:cardCornerRadius="25dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/cardView"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/containerComponents">-->
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/roundedImageView2"-->
+<!--            android:layout_width="321dp"-->
+<!--            android:layout_height="203dp"-->
+<!--            android:background="@color/white"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:src="@drawable/img_7" />-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="28dp"-->
+<!--            android:layout_height="23dp"-->
+<!--            android:layout_marginLeft="280dp"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:src="@drawable/baseline_mode_edit_outline_24" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/containerComponents2"-->
+<!--            style="@style/ContainerComponents"-->
+<!--            android:layout_width="81dp"-->
+<!--            android:layout_height="32dp"-->
+<!--            android:gravity="center"-->
+<!--            android:text="R$ 150,00" />-->
+
+
+<!--    </androidx.cardview.widget.CardView>-->
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:id="@+id/cardView"-->
+<!--        android:layout_width="320dp"-->
+<!--        android:layout_height="155dp"-->
+<!--        android:layout_margin="5dp"-->
+<!--        android:elevation="10dp"-->
+<!--        app:cardCornerRadius="25dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/imageView18"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        tools:ignore="MissingConstraints">-->
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/roundedImageView"-->
+<!--            android:layout_width="321dp"-->
+<!--            android:layout_height="206dp"-->
+<!--            android:background="@color/white"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:src="@drawable/img_3" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/containerComponents3"-->
+<!--            style="@style/ContainerComponents"-->
+<!--            android:layout_width="81dp"-->
+<!--            android:layout_height="32dp"-->
+<!--            android:gravity="center"-->
+<!--            android:text="R$ 50,00" />-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="28dp"-->
+<!--            android:layout_height="23dp"-->
+<!--            android:layout_marginLeft="280dp"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:src="@drawable/baseline_mode_edit_outline_24" />-->
+
+
+<!--    </androidx.cardview.widget.CardView>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView26"-->
+<!--        style="@style/bolinhadia"-->
+<!--        android:layout_width="88dp"-->
+<!--        android:layout_height="85dp"-->
+<!--        android:paddingTop="15dp"-->
+<!--        android:text="DIA 1"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textSize="20dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/imageView18"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/imageView19"-->
+<!--        app:layout_constraintVertical_bias="0.341" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/textView27"-->
+<!--        android:layout_width="1dp"-->
+<!--        android:layout_height="340dp"-->
+<!--        android:background="@color/black"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.08"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/imageView25"-->
+<!--        app:layout_constraintVertical_bias="0.843" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/aa"-->
+<!--        style="@style/bolinhadia"-->
+<!--        android:layout_width="9dp"-->
+<!--        android:layout_height="10dp"-->
+<!--        android:background="@color/black"-->
+<!--        android:paddingTop="15dp"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textSize="20dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/aa2"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/cardView2"-->
+<!--        app:layout_constraintHorizontal_bias="0.675"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/textView27"-->
+<!--        app:layout_constraintVertical_bias="0.329" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/aa2"-->
+<!--        style="@style/bolinhadia"-->
+<!--        android:layout_width="9dp"-->
+<!--        android:layout_height="10dp"-->
+<!--        android:background="@color/black"-->
+<!--        android:paddingTop="15dp"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textSize="20dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/textView27"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/cardView"-->
+<!--        app:layout_constraintHorizontal_bias="0.694"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/textView27"-->
+<!--        app:layout_constraintVertical_bias="0.766" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView18"-->
+<!--        android:layout_width="48dp"-->
+<!--        android:layout_height="44dp"-->
+<!--        android:background="@drawable/bg_add_notes_button"-->
+<!--        android:padding="5dp"-->
+<!--        android:src="@drawable/baseline_add_24"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.989" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView25"-->
+<!--        android:layout_width="60dp"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:padding="5dp"-->
+<!--        android:src="@drawable/img_9"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.007" />-->
+
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageViewaa"-->
+<!--        android:layout_width="57dp"-->
+<!--        android:layout_height="53dp"-->
+<!--        android:padding="5dp"-->
+<!--        android:src="@drawable/img_1"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.169"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.405" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/containerComponents"-->
+<!--        style="@style/ContainerComponents"-->
+<!--        android:layout_width="158dp"-->
+<!--        android:layout_height="44dp"-->
+<!--        android:gravity="center"-->
+<!--        android:text="R$ 200,00"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/imageView19"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.22"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/imageView22"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/textView26"-->
+<!--        app:layout_constraintVertical_bias="0.631" />-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

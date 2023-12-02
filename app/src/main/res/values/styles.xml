@@ -53,6 +53,18 @@
         <item name="android:layout_marginRight">20dp</item>
         <item name="android:layout_marginTop">10dp</item>
 
+    </style>
+    <style name="ContainerComponentsQuarto2">
+        <item name="android:layout_width">170dp</item>
+        <item name="android:layout_height">280dp</item>
+        <item name="android:background">@drawable/customdaypage</item>
+
+
+    </style>
+    <style name="bolinhadia">
+        <item name="android:background">@drawable/bolinhadia</item>
+        <item name="android:layout_marginTop">10dp</item>
+
 
     </style>
     <style name="Edit_Text">
