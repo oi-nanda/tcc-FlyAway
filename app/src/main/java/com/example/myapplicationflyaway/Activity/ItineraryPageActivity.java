@@ -34,6 +34,7 @@ import com.example.myapplicationflyaway.Model.Itinerary;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -60,6 +61,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
     String itineraryId, userId, itineraryName, dateTravel, id, numberOfTravelers, desc, date1, date2;
     private FirebaseAuth mAuth;
     private ImageView itinerary_pic;
+    FloatingActionButton floatingActionButton;
     DatabaseReference reference, publicItinerariesReference;
 
     LinearLayout btn_clima, btn_galeria, btn_notes;
@@ -84,7 +86,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
         btn_img = findViewById(R.id.btn_img);
         btn_notes = findViewById(R.id.btn_notes);
         publicar = findViewById(R.id.btn_publicar);
-
+        floatingActionButton = findViewById(R.id.floatingActionButtontoChat);
         recyclerView = findViewById(R.id.trip_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -155,6 +157,14 @@ public class ItineraryPageActivity extends AppCompatActivity {
             });
 
         }
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ItineraryPageActivity.this, ChatActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
 
         publicar.setOnClickListener(new View.OnClickListener() {

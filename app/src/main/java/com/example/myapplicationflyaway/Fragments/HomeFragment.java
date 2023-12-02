@@ -1,9 +1,11 @@
 package com.example.myapplicationflyaway.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,6 +20,7 @@ import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.myapplicationflyaway.Activity.ChatActivity;
 import com.example.myapplicationflyaway.Adapter.MySavesAdapter;
 import com.example.myapplicationflyaway.Model.Itinerary;
 import com.example.myapplicationflyaway.Model.ItinerarySave;
@@ -27,6 +30,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -65,7 +69,9 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         reference = FirebaseDatabase.getInstance().getReference().child("Itineraries");
         savesReference = FirebaseDatabase.getInstance().getReference().child("PublicItineraries");
+
         ImageSlider imageSlider = view.findViewById(R.id.image_slider);
+
 
         searchView = view.findViewById(R.id.searchView);
         searchView.clearFocus();
@@ -102,7 +108,10 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     ItinerarySave itinerary = snapshot1.getValue(ItinerarySave.class);
-                   itineraryArrayList.add(itinerary);
+
+                    if(!itinerary.getUserId().contains(mAuth.getCurrentUser().getUid())){
+                        itineraryArrayList.add(itinerary);
+                   }
                 }
                 savesAdapter.notifyDataSetChanged();
             }
@@ -129,7 +138,7 @@ public class HomeFragment extends Fragment {
         if(filteredList.isEmpty()){
             Toast.makeText(getContext(), "Nenhum roteiro foi encontrado", Toast.LENGTH_SHORT).show();
         }else{
-            savesAdapter.setFilteredList(filteredList);
+           savesAdapter.setFilteredList(filteredList);
         }
     }
 }
