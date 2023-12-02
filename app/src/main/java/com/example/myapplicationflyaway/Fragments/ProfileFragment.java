@@ -35,7 +35,7 @@ public class ProfileFragment extends Fragment {
 
     private TextView txt_username, txt_email, txt_email_profile, txt_telefone, txt_bio, txt_localizacao;
     View view;
-    LinearLayout btn_goSettings, btn_myInineraries;
+    LinearLayout btn_goSettings, btn_myInineraries, btn_mySaves;
     DatabaseReference reference;
     FirebaseUser user;
     FloatingActionButton edt_profile_pic;
@@ -58,6 +58,8 @@ public class ProfileFragment extends Fragment {
 
         btn_myInineraries = view.findViewById(R.id.btn_myItineraries);
         btn_goSettings = view.findViewById(R.id.btn_configuracaoPage);
+        btn_mySaves = view.findViewById(R.id.btn_mySaves);
+
         txt_username = view.findViewById(R.id.txt_username);
         txt_email = view.findViewById(R.id.txt_email);
         txt_telefone = view.findViewById(R.id.txt_telefone);
@@ -114,6 +116,17 @@ public class ProfileFragment extends Fragment {
                 FragmentManager fragmentManager = getParentFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.main_fragment, MyitinerariesFragment.class, null)
+                        .setReorderingAllowed(true)
+                        .addToBackStack("name")
+                        .commit();
+            }
+        });
+        btn_mySaves.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getParentFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.main_fragment, SavesPageFregment.class, null)
                         .setReorderingAllowed(true)
                         .addToBackStack("name")
                         .commit();

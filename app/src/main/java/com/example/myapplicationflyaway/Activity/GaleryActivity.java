@@ -1,5 +1,6 @@
 package com.example.myapplicationflyaway.Activity;
 
+import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -8,11 +9,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
@@ -51,10 +52,11 @@ public class GaleryActivity extends AppCompatActivity {
     ActivityResultLauncher<String> mGetContent;
     String itineraryId;
     ImageButton btn_back;
-    FirebaseDatabase databaseReferenceGalery;
+    DatabaseReference databaseReferenceGalery;
     DatabaseReference galeria;
     String idImage;
     Uri uri;
+    String id = UUID.randomUUID().toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,37 +70,43 @@ public class GaleryActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
         add_description_image = findViewById(R.id.add_description_image);
-        storageReference = FirebaseStorage.getInstance().getReference();
-        btn_back = findViewById(R.id.btn_back_from_galery);
         itineraryId = getIntent().getExtras().getString("itineraryId");
-        databaseReferenceGalery = FirebaseDatabase.getInstance();
+        String user = mAuth.getCurrentUser().getUid();
+        btn_back = findViewById(R.id.btn_back_from_galery);
+
+        storageReference = FirebaseStorage.getInstance().getReference().child("Galery Pics").child(mAuth.getCurrentUser().getUid()).child(itineraryId);
+
+
+        databaseReferenceGalery = FirebaseDatabase.getInstance().getReference("Galery").child(user).child(itineraryId);
+
+        ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+               if(result.getResultCode() == Activity.RESULT_OK){
+                   Intent data = result.getData();
+                   imageUri = data.getData();
+                   image_selected.setImageURI(imageUri);
+               }
+            }
+        });
+
         pickImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    mGetContent.launch("image/*");
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
+                Intent photoPicker = new Intent();
+                photoPicker.setAction(Intent.ACTION_GET_CONTENT);
+                photoPicker.setType("image/*");
+                activityResultLauncher.launch(photoPicker);
             }
         });
 
-        mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
-            @Override
-            public void onActivityResult(Uri result) {
-                Intent intent = new Intent(GaleryActivity.this, CropperActivity.class);
-                intent.putExtra("DATA", result.toString());
-                startActivityForResult(intent, 101);
 
-                //uri = result
-
-                imageUri = result;
-            }
-        });
         btn_add_photos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadGaleryImage(imageUri);
+                if(imageUri != null){
+                    uploadFirebase(imageUri);
+                }
             }
         });
 
@@ -106,88 +114,41 @@ public class GaleryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(GaleryActivity.this, GaleryPhotosActivity.class);
+                intent.putExtra("itineraryId", itineraryId);
                 startActivity(intent);
             }
         });
 
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == -1 && requestCode== 101){
-            String result = data.getStringExtra("RESULT");
-            Uri resulturi= null;
-            if(result!=null){
-                resulturi=Uri.parse(result);
-            }
-            image_selected.setImageURI(resulturi);
-        }
+    private void uploadFirebase(Uri imageUri) {
+        String caption = add_description_image.getText().toString();
+        final StorageReference imageReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
 
-    }
-
-
-    private void uploadGaleryImage(Uri imageUri) {
-
-        StorageReference fileRef = storageReference.child("Galery Pics")
-                .child(mAuth.getCurrentUser().getUid());
-
-        if(imageUri != null && add_description_image.getText() != null){
-
-           // uri = imageUri;
-            Log.d("imageUri", String.valueOf(imageUri));
-            Log.d("uri", String.valueOf(uri));
-            fileRef.child(itineraryId).child(System.currentTimeMillis() + "." + getFileExtention(imageUri)).putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                    Toast.makeText(GaleryActivity.this, "Imagem adicionada com sucesso", Toast.LENGTH_SHORT).show();
-
-                    AddOnDataBase();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(GaleryActivity.this, "Erro ao fazer upload de imagem", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }else {
-            Toast.makeText(GaleryActivity.this, "Preencha todos os campos", Toast.LENGTH_SHORT).show();
-
-        }
-
-
-    }
-
-    private void AddOnDataBase() {
-
-        galeria = databaseReferenceGalery.getReference("Galery");
-        String downloadUrl = uri.toString();
-        String desc = add_description_image.getText().toString();
-        String user = mAuth.getCurrentUser().getUid();
-
-        Upload upload = new Upload(desc,downloadUrl);
-
-       String id = UUID.randomUUID().toString();
-
-
-        galeria.child(user).child(itineraryId).child(id).setValue(upload).addOnCompleteListener(new OnCompleteListener<Void>() {
+        imageReference.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                Intent intent = new Intent(GaleryActivity.this, GaleryPhotosActivity.class);
-                startActivity(intent);
-                finish();
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                imageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Upload upload = new Upload(caption, uri.toString());
+                        String key = databaseReferenceGalery.push().getKey();
+                        databaseReferenceGalery.child(key).setValue(upload);
+
+                        Intent intent = new Intent(GaleryActivity.this, GaleryPhotosActivity.class);
+                        intent.putExtra("itineraryId", itineraryId);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
             }
         });
     }
+    private String getFileExtension(Uri fileUri){
+        ContentResolver contentResolver = getContentResolver();
+        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
 
-    private String getFileExtention(Uri imageUri) {
-
-        ContentResolver cr = getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(cr.getType(imageUri));
-
+        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(fileUri));
     }
-
 
 }

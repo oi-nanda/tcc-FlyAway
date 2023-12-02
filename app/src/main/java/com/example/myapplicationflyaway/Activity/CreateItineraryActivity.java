@@ -66,8 +66,9 @@ public class CreateItineraryActivity extends AppCompatActivity {
     EditText data1, data2;
     TextView npessoas;
     SearchView local;
-    Button start;
+    Button start,button2;
     String dt;
+
     ImageButton btn_back_home;
     final Calendar calendario = Calendar.getInstance();
 
@@ -78,7 +79,7 @@ public class CreateItineraryActivity extends AppCompatActivity {
         binding = ActivityCreateItineraryBinding.inflate(getLayoutInflater());
        setContentView(binding.getRoot());
         progressDialog = new ProgressDialog(this);
-
+        mAuth = FirebaseAuth.getInstance();
 
         binding.buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,6 +186,15 @@ public class CreateItineraryActivity extends AppCompatActivity {
             }
         });
 
+        binding.button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(CreateItineraryActivity.this, TestingMapsActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
         btn_back_home = findViewById(R.id.btn_back_home);
         local = findViewById(R.id.searchview);
         data1=(EditText) findViewById(R.id.data1);
@@ -261,6 +271,7 @@ public class CreateItineraryActivity extends AppCompatActivity {
     private void sendUserToItineraryPage() {
         Intent intent = new Intent(CreateItineraryActivity.this, ItineraryPageActivity.class);
         intent.putExtra("ItineraryId", id);
+        intent.putExtra("UserId", mAuth.getCurrentUser().getUid());
         startActivity(intent);
         finish();
     }

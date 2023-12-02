@@ -44,7 +44,7 @@
                             app:layout_constraintTop_toTopOf="parent">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="409dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="376dp"
                                 android:background="@drawable/top_backgroud_profile"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -132,6 +132,7 @@
                                     android:textAlignment="center">
 
                                     <LinearLayout
+                                        android:id="@+id/btn_mySaves"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_margin="10dp"
