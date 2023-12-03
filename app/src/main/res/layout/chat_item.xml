@@ -10,17 +10,18 @@
         android:layout_height="wrap_content"
         android:id="@+id/left_chat_view"
         android:background="@drawable/rounded_corner"
-        android:backgroundTint="#B6AFAF"
+        android:backgroundTint="#AF9136"
         android:padding="8dp"
         android:elevation="5dp"
         android:layout_marginEnd="80dp"
+        android:layout_marginStart="10dp"
         tools:ignore="MissingConstraints">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/left_chat_text_view"
-            android:textColor="@color/white"
+            android:textColor="#b4b4c2"
             android:textSize="18sp"
            />
     </LinearLayout>
@@ -33,14 +34,14 @@
         android:backgroundTint="#B6AFAF"
         android:elevation="5dp"
         android:padding="8dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginEnd="10dp"
         tools:ignore="MissingConstraints">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/right_chat_text_view"
-            android:textColor="@color/white"
+            android:textColor="#b4b4c2"
             android:textSize="18sp"
            />
     </LinearLayout>

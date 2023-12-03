@@ -45,7 +45,7 @@ public class EditItinerary extends AppCompatActivity {
     private FirebaseAuth auth;
     final Calendar currentDate = Calendar.getInstance();
     final Calendar calendario = Calendar.getInstance();
-    String id;
+    String id, userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +55,7 @@ public class EditItinerary extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         id = getIntent().getExtras().getString("ItineraryId");
+        userId = getIntent().getExtras().getString("UserId");
         oldnumberOfTravelers = getIntent().getExtras().getString("numberOfTravelers");
         oldDescription = getIntent().getExtras().getString("description");
 
@@ -74,6 +75,7 @@ public class EditItinerary extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(EditItinerary.this, ItineraryPageActivity.class);
                 i.putExtra("ItineraryId", id);
+                i.putExtra("UserId", userId);
                 startActivity(i);
             }
         });
@@ -82,8 +84,10 @@ public class EditItinerary extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 alterItineraryInformations();
+
                     Intent i = new Intent(EditItinerary.this, ItineraryPageActivity.class);
                     i.putExtra("ItineraryId", id);
+                    i.putExtra("UserId", userId);
                     startActivity(i);
             }
         });
