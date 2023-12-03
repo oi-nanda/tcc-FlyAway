@@ -110,9 +110,7 @@ public class DayPageActivity extends AppCompatActivity {
                         myAdapterPlace = new MyAdapterPlace(DayPageActivity.this, placelist);
                         recyclerView.setAdapter(myAdapterPlace);
                     }
-
                     nomedodia.setText((snapshot.child("dayname").getValue().toString()));
-
                 }
 
                 @Override
@@ -126,10 +124,10 @@ public class DayPageActivity extends AppCompatActivity {
         buttonCreatePlace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(DayPageActivity.this, CreatePlaceActivity.class);
+                Intent i = new Intent(DayPageActivity.this, TestingAutoComplete.class);
                 i.putExtra("ItineraryId",itineraryId);
                 i.putExtra("DayName",dayname);
-                startActivity(i); //? não vai
+                startActivity(i);
             }
         });
 

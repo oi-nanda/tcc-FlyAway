@@ -47,7 +47,7 @@ public class AddNotesActivity extends AppCompatActivity {
         btn_back_fomNotesSave = findViewById(R.id.btn_back_fomNotesSave);
         String user = mAuth.getCurrentUser().getUid();
 
-        itineraryId = getIntent().getExtras().getString("itineraryId");
+        itineraryId = getIntent().getExtras().getString("ItineraryId");
 
         referenceNotes = FirebaseDatabase.getInstance().getReference().child("Notes").child(user).child(itineraryId);
 
@@ -56,7 +56,7 @@ public class AddNotesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AddNotesActivity.this, NotesActivity.class);
-                intent.putExtra("itineraryId", itineraryId);
+                intent.putExtra("ItineraryId", itineraryId);
                 startActivity(intent);
                 finish();
             }
@@ -81,7 +81,7 @@ public class AddNotesActivity extends AppCompatActivity {
                                 Toast.makeText(AddNotesActivity.this, "Anotação criada com sucesso", Toast.LENGTH_SHORT).show();
 
                                 Intent intent = new Intent(AddNotesActivity.this, NotesActivity.class);
-                                intent.putExtra("itineraryId", itineraryId);
+                                intent.putExtra("ItineraryId", itineraryId);
                                 startActivity(intent);
                                 finish();
                             }
@@ -95,7 +95,6 @@ public class AddNotesActivity extends AppCompatActivity {
 
                     }
                 });
-
 
             }
         });

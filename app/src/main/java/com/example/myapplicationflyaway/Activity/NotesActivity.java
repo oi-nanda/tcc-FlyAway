@@ -109,7 +109,7 @@ public class NotesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(NotesActivity.this, AddNotesActivity.class);
-                i.putExtra("itineraryId", itineraryId);
+                i.putExtra("ItineraryId", itineraryId);
                 startActivity(i);
                 finish();
             }

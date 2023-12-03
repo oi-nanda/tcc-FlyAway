@@ -48,7 +48,7 @@ import java.util.HashMap;
 
 public class ItineraryPageActivity extends AppCompatActivity {
 
-    private TextView txt_people, txt_inicial_date, txt_final_date, txt_description, totaldedias,edit_description_popup,edit_number_of_travelers_popup;
+    private TextView txt_itinerary_name,txt_people, txt_inicial_date, txt_final_date, txt_description, totaldedias,edit_description_popup,edit_number_of_travelers_popup;
     private Button publicar;
     ImageButton btn_back, btn_edit;
     ImageView btn_img, btn_delete, img;
@@ -56,8 +56,6 @@ public class ItineraryPageActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<Day> daylist;
     private FirebaseUser user;
-
-
     Button button_edit_info_itinerary_popup;
 
     MyAdapter myAdapter;
@@ -186,6 +184,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
         btn_img = findViewById(R.id.btn_img);
         btn_notes = findViewById(R.id.btn_notes);
         btn_delete = findViewById(R.id.btn_img_delete);
+        txt_itinerary_name = findViewById(R.id.localdoroteiro);
 
         recyclerView = findViewById(R.id.trip_list);
         recyclerView.setHasFixedSize(true);
@@ -214,7 +213,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
                     txt_final_date.setText(snapshot.child("finalDate").getValue().toString());
                     itineraryName = snapshot.child("placeName").getValue().toString();
                     numberOfTravelers = snapshot.child("numberOfTravelers").getValue().toString();
-
+                    txt_itinerary_name.setText(itineraryName);
 
                     dateTravel = snapshot.child("inicialDate").getValue().toString() + " até " + snapshot.child("finalDate").getValue().toString();
 
