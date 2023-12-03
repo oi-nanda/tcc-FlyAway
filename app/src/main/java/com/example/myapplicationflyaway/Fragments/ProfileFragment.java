@@ -89,16 +89,17 @@ public class ProfileFragment extends Fragment {
 
         }
 
-
-        edt_profile_pic.setOnClickListener(v -> {
-            FragmentManager fragmentManager = getParentFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.main_fragment, EditProfileImageFragment.class, null)
-                    .setReorderingAllowed(true)
-                    .addToBackStack("name")
-                    .commit();
+        edt_profile_pic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getParentFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.main_fragment, EditProfileImageFragment.class, null)
+                        .setReorderingAllowed(true)
+                        .addToBackStack("name")
+                        .commit();
+            }
         });
-
         btn_goSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

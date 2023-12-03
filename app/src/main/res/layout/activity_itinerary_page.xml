@@ -28,7 +28,6 @@
                 android:layout_height="match_parent">
 
 
-
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cover"
                     android:layout_width="match_parent"
@@ -78,33 +77,42 @@
                         android:id="@+id/btn_img"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
+
                         android:maxHeight="30dp"
                         android:maxWidth="30dp"
                         android:clickable="true"
-                        android:layout_marginStart="320dp"
+                        android:layout_marginStart="280dp"
+
                         android:layout_marginTop="15dp"
+                        android:background="@drawable/transparent_backgroud"
+                        android:clickable="true"
+                        android:maxWidth="30dp"
+                        android:maxHeight="30dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        android:background="@drawable/transparent_backgroud"
                         app:srcCompat="@drawable/downloadimg" />
 
                     <ImageView
                         android:id="@+id/btn_img_delete"
                         android:layout_width="35dp"
                         android:layout_height="40dp"
+
                         android:maxHeight="30dp"
                         android:maxWidth="30dp"
                         android:clickable="true"
-                        android:layout_marginStart="280dp"
+                        android:layout_marginStart="270dp"
+
                         android:layout_marginTop="15dp"
+                        android:background="@drawable/transparent_backgroud"
+                        android:clickable="true"
+                        android:maxWidth="30dp"
+                        android:maxHeight="30dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        android:background="@drawable/transparent_backgroud"
                         app:srcCompat="@drawable/img_11" />
 
 
                 </androidx.cardview.widget.CardView>
-
 
 
 
@@ -343,13 +351,6 @@
                 </LinearLayout>
 
 
-<!--                <ListView-->
-<!--                    android:id="@+id/trip_list"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="15dp">-->
-<!--                </ListView>-->
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/trip_list"
                     android:layout_width="370dp"
@@ -358,21 +359,27 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"/>
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+
+                <ImageButton
                     android:id="@+id/floatingActionButtontoChat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="100dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/transparent_backgroud"
                     android:clickable="true"
                     android:contextClickable="true"
-                    android:src="@drawable/logogpt"
-                    app:fabCustomSize="50dp"
-                    app:fabSize="normal"
+                    android:elevation="3dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginStart="20dp"
+                    android:scaleType="centerInside"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.046"
+                    app:layout_constraintHorizontal_bias="0.95"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/trip_list" />
-
+                    app:layout_constraintTop_toBottomOf="@+id/cover"
+                    app:layout_constraintVertical_bias="0.971"
+                    app:srcCompat="@drawable/chat" />
 
 
 

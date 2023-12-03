@@ -40,7 +40,7 @@ public class NotesActivity extends AppCompatActivity {
     ImageButton bt_back;
     NotesAdapter notesAdapter;
     ArrayList<Notes> notesList;
-    String userId;
+    String userId, user2;
     int count =0;
 
     @Override
@@ -62,6 +62,7 @@ public class NotesActivity extends AppCompatActivity {
         gridView.setAdapter(notesAdapter);
 
         itineraryId = getIntent().getExtras().getString("itineraryId");
+        user2 = getIntent().getExtras().getString("UserId");
         itineraryName = getIntent().getExtras().getString("itineraryName");
         itineraryDate = getIntent().getExtras().getString("itineraryDate");
 
@@ -97,6 +98,7 @@ public class NotesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(NotesActivity.this, ItineraryPageActivity.class);
                 i.putExtra("ItineraryId", itineraryId);
+                i.putExtra("UserId", user2);
                 startActivity(i);
                 finish();
             }

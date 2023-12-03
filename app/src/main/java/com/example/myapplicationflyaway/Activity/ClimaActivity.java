@@ -50,7 +50,7 @@ public class ClimaActivity extends AppCompatActivity {
     private HourlyAdapter hourlyAdapter;
     private RecyclerView recyclerView;
     private ArrayList<Hourly> hourlyList;
-    String idItinerary;
+    String idItinerary, idUser;
 
     Hourly hourly;
     ImageButton btn_back_itinerary;
@@ -72,6 +72,7 @@ public class ClimaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clima);
         idItinerary = getIntent().getExtras().getString("ItineraryId");
+        idUser = getIntent().getExtras().getString("UserId");
 
         description_weather = findViewById(R.id.description_weather);
         place_weather = findViewById(R.id.name_place_weather);
@@ -273,6 +274,7 @@ public class ClimaActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), ItineraryPageActivity.class);
                 i.putExtra("ItineraryId",idItinerary);
+                i.putExtra("UserId",idUser);
                 startActivity(i);
                 finish();
             }

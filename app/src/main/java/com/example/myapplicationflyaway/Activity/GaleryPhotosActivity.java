@@ -41,7 +41,7 @@ public class GaleryPhotosActivity extends AppCompatActivity {
     GaleryAdapter galeryAdapter;
     String itineraryId;
     DatabaseReference reference;
-    String userId;
+    String userId, user2;
     GridView gridView;
     ArrayList<Upload> photosList;
     TextView txt_default;
@@ -55,6 +55,7 @@ public class GaleryPhotosActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         userId = mAuth.getCurrentUser().getUid();
+
         gridView = findViewById(R.id.viewholder_photos);
         txt_default = findViewById(R.id.txt_default);
         gridView = findViewById(R.id.viewholder_photos);
@@ -68,6 +69,7 @@ public class GaleryPhotosActivity extends AppCompatActivity {
         gridView.setAdapter(adapter);
 
         itineraryId = getIntent().getExtras().getString("itineraryId");
+        user2 = getIntent().getExtras().getString("UserId");
         reference = FirebaseDatabase.getInstance().getReference("Galery").child(userId).child(itineraryId);
 
         reference.addValueEventListener(new ValueEventListener() {
@@ -103,6 +105,7 @@ public class GaleryPhotosActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(GaleryPhotosActivity.this, ItineraryPageActivity.class);
                 i.putExtra("ItineraryId", itineraryId);
+                i.putExtra("UserId", user2);
                 startActivity(i);
             }
         });
