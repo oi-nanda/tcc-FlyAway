@@ -31,10 +31,10 @@ public class CropperActivityItinerary extends AppCompatActivity {
         readIntent();
 
         itineraryId = getIntent().getExtras().getString("ItineraryId");
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Itineraries").child(mAuth.getCurrentUser().getUid())
-                .child(itineraryId).child("ItineraryPic");
-        //?
-        String dest_uri = new StringBuilder(databaseReference.child(itineraryId).toString()).append(".jpg").toString();
+//        databaseReference = FirebaseDatabase.getInstance().getReference().child("Itineraries").child(mAuth.getCurrentUser().getUid())
+//                .child(itineraryId).child("ItineraryPic");
+
+        String dest_uri = new StringBuilder(itineraryId).append(".jpg").toString();
 
 
         UCrop.Options options = new UCrop.Options();

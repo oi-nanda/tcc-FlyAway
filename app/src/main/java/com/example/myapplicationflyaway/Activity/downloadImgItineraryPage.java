@@ -59,12 +59,12 @@ public class downloadImgItineraryPage extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Itineraries");
         storageItineraryPicsRef = FirebaseStorage.getInstance().getReference();
-        itineraryImageView = findViewById(R.id.edt_profile_pic);
+        itineraryImageView = findViewById(R.id.edt_itinerary_cover_pic);
 
-        btn_back_itineraryPage = findViewById(R.id.back_itineraryPage);
+        btn_back_itineraryPage = findViewById(R.id.back_itineraryPage_fromEditPic);
 
-        uploadImage = findViewById(R.id.floatingActionButton_confirm_edit_profile_pic);
-        selectImage = findViewById(R.id.floatingActionButton_edit_profile_pic);
+        uploadImage = findViewById(R.id.floatingActionButton_confirm_edit_itinerary_pic);
+        selectImage = findViewById(R.id.floatingActionButton_edit_itinerary_pic);
 
         btn_back_itineraryPage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +101,7 @@ public class downloadImgItineraryPage extends AppCompatActivity {
             }
         });
 
+
     }
 
     @Override
@@ -118,7 +119,7 @@ public class downloadImgItineraryPage extends AppCompatActivity {
     }
 
     private void uploadItineraryImage(Uri imageUri) {
-        StorageReference fileRef = storageItineraryPicsRef.child("Itineraries").child(mAuth.getCurrentUser().getUid()).child("ItineraryPic").child(itineraryId+".jpg");
+        StorageReference fileRef = storageItineraryPicsRef.child("Cover Itineraries").child(mAuth.getCurrentUser().getUid()).child(itineraryId + ".jpg");
 
         fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -127,13 +128,13 @@ public class downloadImgItineraryPage extends AppCompatActivity {
 
                 Intent i = new Intent(downloadImgItineraryPage.this, ItineraryPageActivity.class);
                 i.putExtra("ItineraryId",itineraryId);
+                i.putExtra("UserId", userId);
                 startActivity(i);
 
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.d("erro", String.valueOf(e));
                 Toast.makeText(downloadImgItineraryPage.this, "Erro ao alterar imagem", Toast.LENGTH_SHORT).show();
             }
         }).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
@@ -147,9 +148,9 @@ public class downloadImgItineraryPage extends AppCompatActivity {
                                 public void onSuccess(Uri uri) {
                                     String downloadUrl= uri.toString();
                                     HashMap<String, Object> userMap = new HashMap<>();
-                                    userMap.put("ItineraryPic", downloadUrl);
+                                    userMap.put("img", downloadUrl);
 
-                                    databaseReference.child("ItineraryPic").child(itineraryId).updateChildren(userMap);
+                                    databaseReference.child(mAuth.getCurrentUser().getUid()).child(itineraryId).updateChildren(userMap);
                                 }
                             });
                 }

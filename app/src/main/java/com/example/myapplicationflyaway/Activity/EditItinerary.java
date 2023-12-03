@@ -35,37 +35,27 @@ import java.util.HashMap;
 public class EditItinerary extends AppCompatActivity {
 
     ImageView btn_back_itinerary;
-    ActivityEditItineraryBinding binding;
     EditText numberOfTravelers, Description, inicialDate, finalDate;
-    String oldinicialDate, oldFinalDate, oldnumberOfTravelers, oldDescription;
+    String oldnumberOfTravelers, oldDescription;
     Button save;
-    LinearLayout btn_conf;
     private DatabaseReference dbReference;
     ProgressDialog progressDialog;
     private FirebaseAuth auth;
-    final Calendar currentDate = Calendar.getInstance();
-    final Calendar calendario = Calendar.getInstance();
     String id, userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_itinerary_popup);
-        binding = ActivityEditItineraryBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+
         progressDialog = new ProgressDialog(this);
 
         id = getIntent().getExtras().getString("ItineraryId");
         userId = getIntent().getExtras().getString("UserId");
-        oldnumberOfTravelers = getIntent().getExtras().getString("numberOfTravelers");
-        oldDescription = getIntent().getExtras().getString("description");
 
-        numberOfTravelers = findViewById(R.id.edit_number_of_travelers);
-        Description = findViewById(R.id.edit_description);
-        save = findViewById(R.id.button_edit_info_itinerary);
-        Description.setText(oldDescription);
-
-
-    //    btn_back_itinerary = findViewById(R.id.btn_back_itinerary);
+        numberOfTravelers = findViewById(R.id.edit_number_of_travelers_edit);
+        Description = findViewById(R.id.edit_description_edit);
+        save = findViewById(R.id.btn_edit_info_itinerary);
+        btn_back_itinerary = findViewById(R.id.btn_go_back_fromedit);
 
         auth = FirebaseAuth.getInstance();
         dbReference = FirebaseDatabase.getInstance().getReference().child("Itineraries");
@@ -84,60 +74,49 @@ public class EditItinerary extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 alterItineraryInformations();
-
-                    Intent i = new Intent(EditItinerary.this, ItineraryPageActivity.class);
-                    i.putExtra("ItineraryId", id);
-                    i.putExtra("UserId", userId);
-                    startActivity(i);
             }
         });
 
     }
 
     private void alterItineraryInformations() {
+
+        DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference().child("Itineraries");
         dbReference.child(auth.getCurrentUser().getUid()).child(id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                HashMap<String, Object> userMap = new HashMap<>();
+                HashMap<String, Object> ItineraryMap = new HashMap<>();
 
-                progressDialog.setMessage("Editando roteiro do usuário");
-                progressDialog.setTitle("Roteiro");
-                progressDialog.setCanceledOnTouchOutside(false);
-                progressDialog.show();
-
-                if (!numberOfTravelers.getText().toString().isEmpty()) {
-                    userMap.put("numberOfTravelers", numberOfTravelers.getText().toString());
-                } else {
-                    userMap.put("numberOfTravelers", oldnumberOfTravelers);
+                if(!Description.getText().toString().isEmpty()){
+                    ItineraryMap.put("Description",Description.getText().toString());
                 }
-                if (!Description.getText().toString().isEmpty()) {
-                    progressDialog.dismiss();
-                    userMap.put("Description", Description.getText().toString());
-                } else {
-                    progressDialog.dismiss();
-                    userMap.put("Description", oldDescription);
+                if(!numberOfTravelers.getText().toString().isEmpty()){
+                    ItineraryMap.put("numberOfTravelers",numberOfTravelers.getText().toString());
                 }
 
-                dbReference.child(auth.getCurrentUser().getUid()).child(id).updateChildren(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                dbReference.child(auth.getCurrentUser().getUid()).child(id).updateChildren(ItineraryMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Description.setText("");
-                        finalDate.setText("");
-                        inicialDate.setText("");
                         numberOfTravelers.setText("");
+                        Description.setText("");
                     }
 
                 }).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-
+                        Toast.makeText(EditItinerary.this, "Alterado com sucesso", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(EditItinerary.this, ItineraryPageActivity.class);
+                        i.putExtra("ItineraryId", id);
+                        i.putExtra("UserId", userId);
+                        startActivity(i);
                     }
                 });
 
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+
+                Toast.makeText(EditItinerary.this, "Não foi possível alterar os dados", Toast.LENGTH_SHORT).show();
             }
         });
 

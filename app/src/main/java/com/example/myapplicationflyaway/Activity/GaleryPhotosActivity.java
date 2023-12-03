@@ -83,7 +83,7 @@ public class GaleryPhotosActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
 
                 if(photosList.size() == 0 ){
-                    image_default.setImageResource(R.drawable.default_galery);
+                    image_default.setImageResource(R.drawable.sefault_save);
                     txt_default.setText("Você ainda não possui imagens adicionadas...");
                 }
             }
