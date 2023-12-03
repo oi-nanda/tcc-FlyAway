@@ -182,10 +182,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
         btn_clima = findViewById(R.id.btn_clima);
         btn_back = findViewById(R.id.btn_back_myItineraries);
         btn_galeria = findViewById(R.id.btn_galeria);
-        btn_edit = findViewById(R.id.btn_edit);
-        btn_img = findViewById(R.id.btn_img);
         btn_notes = findViewById(R.id.btn_notes);
-        btn_delete = findViewById(R.id.btn_img_delete);
 
         recyclerView = findViewById(R.id.trip_list);
         recyclerView.setHasFixedSize(true);

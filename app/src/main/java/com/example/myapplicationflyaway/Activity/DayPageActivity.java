@@ -2,13 +2,18 @@ package com.example.myapplicationflyaway.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -47,6 +52,32 @@ public class DayPageActivity extends AppCompatActivity {
     private ImageView buttonCreatePlace,back_popup;
     Button button_edit_info_itinerary_popup;
     private TextView data,valordodia,nomedodia,description,edit_description_popup;
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.day_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        String id = String.valueOf(item.getItemId());
+        String id1, id2;
+        id1 = String.valueOf(R.id.delete_day);
+        id2 = String.valueOf(R.id.add_cover_day);
+
+        if(id1.contains(id)){
+
+        }
+        if(id2.contains(id)){
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,13 +89,20 @@ public class DayPageActivity extends AppCompatActivity {
         description = findViewById(R.id.description);
         placelist = new ArrayList<Place>();
         buttonCreatePlace = findViewById(R.id.buttonCreatePlace);
-        btn_edit = findViewById(R.id.btn_edit);
 
         recyclerView = findViewById(R.id.places_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mAuth = FirebaseAuth.getInstance();
+
+
+
+        Toolbar toolbar2 = findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar2);
+        getSupportActionBar().setTitle("");
+
+
 
         Bundle bundle = getIntent().getExtras();
         if(bundle != null) {
@@ -80,12 +118,6 @@ public class DayPageActivity extends AppCompatActivity {
 
                     data.setText(snapshot.child("date").getValue().toString());
 
-                    if (snapshot.child("description").getValue()==null || snapshot.child("description").getValue()==""){
-                    }
-                    else{
-                        description.setText((snapshot.child("description").getValue().toString()));
-                    }
-
                     if (snapshot.child("img").getValue()==null){}
                     else{
 //                        String image = snapshot.child("img").getValue().toString();
@@ -95,12 +127,11 @@ public class DayPageActivity extends AppCompatActivity {
                         reference.child("Places").addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                                 for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                                    Place place = dataSnapshot.getValue(Place.class);
-//                                    placelist.add(place);
+                                    Place place = dataSnapshot.getValue(Place.class);
+                                    placelist.add(place);
                                 }
-                                myAdapterPlace.notifyDataSetChanged();
+                               myAdapterPlace.notifyDataSetChanged();
                             }
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
@@ -129,16 +160,11 @@ public class DayPageActivity extends AppCompatActivity {
                 Intent i = new Intent(DayPageActivity.this, CreatePlaceActivity.class);
                 i.putExtra("ItineraryId",itineraryId);
                 i.putExtra("DayName",dayname);
-                startActivity(i); //? não vai
+                startActivity(i);
             }
         });
 
-        btn_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onButtonShowPopupWindowClick(v);
-            }
-        });
+
 
     }
 
@@ -169,44 +195,6 @@ public class DayPageActivity extends AppCompatActivity {
             }
         });
 
-        button_edit_info_itinerary_popup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference().child("Itineraries");
-                dbReference.child(mAuth.getCurrentUser().getUid()).child(itineraryId).child("Days").child(dayname).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        HashMap<String, Object> DayMap = new HashMap<>();
-
-
-                        if(!edit_description_popup.getText().toString().isEmpty()){
-                            DayMap.put("description",edit_description_popup.getText().toString());
-                        }
-                        dbReference.child(mAuth.getCurrentUser().getUid()).child(itineraryId).child("Days").child(dayname).updateChildren(DayMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                edit_description_popup.setText("");
-                            }
-
-                        }).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void unused) {
-                                popupWindow.dismiss();
-                                Toast.makeText(DayPageActivity.this, "Alterado com sucesso", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        popupWindow.dismiss();
-                        Toast.makeText(DayPageActivity.this, "Não foi possível alterar os dados", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-            }
-        });
-
     }
+
 }
