@@ -34,7 +34,7 @@
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:layout_marginTop="25dp"
-                    android:layout_marginStart="100dp"
+                    android:layout_marginStart="70dp"
                     android:src="@drawable/robozinho" />
 
                 <TextView
@@ -42,7 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="130dp"
+                    android:layout_marginStart="100dp"
                     android:text="Editar roteiro"
                     android:textColor="@color/darkblue"
                     android:textSize="23dp"
@@ -58,7 +58,7 @@
             <EditText
                 android:id="@+id/edit_description"
                 style="@style/Edit_Text"
-                android:layout_width="311dp"
+                android:layout_width="250dp"
                 android:layout_height="100dp"
                 android:elevation="3dp"
                 android:ems="10"
@@ -76,7 +76,7 @@
             <EditText
                 android:id="@+id/edit_number_of_travelers"
                 style="@style/Edit_Text"
-                android:layout_width="311dp"
+                android:layout_width="250dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="16dp"
                 android:elevation="3dp"

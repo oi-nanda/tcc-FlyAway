@@ -7,14 +7,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplicationflyaway.Model.Day;
 import com.example.myapplicationflyaway.Model.Place;
 import com.example.myapplicationflyaway.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,16 +34,19 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DayPageActivity extends AppCompatActivity {
     String itineraryId, dayname;
     DatabaseReference reference;
     private FirebaseAuth mAuth;
+    private ImageButton btn_edit;
     MyAdapterPlace myAdapterPlace;
     private RecyclerView recyclerView;
     private ArrayList<Place> placelist;
-    private ImageView buttonCreatePlace;
-    private TextView data,valordodia,nomedodia,description;
+    private ImageView buttonCreatePlace,back_popup;
+    Button button_edit_info_itinerary_popup;
+    private TextView data,valordodia,nomedodia,description,edit_description_popup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +58,7 @@ public class DayPageActivity extends AppCompatActivity {
         description = findViewById(R.id.description);
         placelist = new ArrayList<Place>();
         buttonCreatePlace = findViewById(R.id.buttonCreatePlace);
+        btn_edit = findViewById(R.id.btn_edit);
 
         recyclerView = findViewById(R.id.places_list);
         recyclerView.setHasFixedSize(true);
@@ -116,6 +130,81 @@ public class DayPageActivity extends AppCompatActivity {
                 i.putExtra("ItineraryId",itineraryId);
                 i.putExtra("DayName",dayname);
                 startActivity(i); //? não vai
+            }
+        });
+
+        btn_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onButtonShowPopupWindowClick(v);
+            }
+        });
+
+    }
+
+    public void onButtonShowPopupWindowClick(View view){
+        LayoutInflater inflater = (LayoutInflater)
+                getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.activity_edit_day_popup, null);
+        back_popup = popupView.findViewById(R.id.imageView14);
+        edit_description_popup = popupView.findViewById(R.id.edit_description);
+        button_edit_info_itinerary_popup = popupView.findViewById(R.id.button_edit_info_itinerary);
+
+
+        // create the popup window
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = true; // lets taps outside the popup also dismiss it
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        // show the popup window
+        // which view you pass in doesn't matter, it is only used for the window tolken
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        back_popup.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                popupWindow.dismiss();
+                return true;
+            }
+        });
+
+        button_edit_info_itinerary_popup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference().child("Itineraries");
+                dbReference.child(mAuth.getCurrentUser().getUid()).child(itineraryId).child("Days").child(dayname).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        HashMap<String, Object> DayMap = new HashMap<>();
+
+
+                        if(!edit_description_popup.getText().toString().isEmpty()){
+                            DayMap.put("description",edit_description_popup.getText().toString());
+                        }
+                        dbReference.child(mAuth.getCurrentUser().getUid()).child(itineraryId).child("Days").child(dayname).updateChildren(DayMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                edit_description_popup.setText("");
+                            }
+
+                        }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                popupWindow.dismiss();
+                                Toast.makeText(DayPageActivity.this, "Alterado com sucesso", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        popupWindow.dismiss();
+                        Toast.makeText(DayPageActivity.this, "Não foi possível alterar os dados", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
         });
 
