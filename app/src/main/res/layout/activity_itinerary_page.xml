@@ -81,13 +81,10 @@
                         android:maxHeight="30dp"
                         android:maxWidth="30dp"
                         android:clickable="true"
-                        android:layout_marginStart="280dp"
+                        android:layout_marginStart="325dp"
 
                         android:layout_marginTop="15dp"
                         android:background="@drawable/transparent_backgroud"
-                        android:clickable="true"
-                        android:maxWidth="30dp"
-                        android:maxHeight="30dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/downloadimg" />
@@ -100,17 +97,13 @@
                         android:maxHeight="30dp"
                         android:maxWidth="30dp"
                         android:clickable="true"
-                        android:layout_marginStart="270dp"
+                        android:layout_marginStart="290dp"
 
                         android:layout_marginTop="15dp"
                         android:background="@drawable/transparent_backgroud"
-                        android:clickable="true"
-                        android:maxWidth="30dp"
-                        android:maxHeight="30dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/img_11" />
-
 
                 </androidx.cardview.widget.CardView>
 

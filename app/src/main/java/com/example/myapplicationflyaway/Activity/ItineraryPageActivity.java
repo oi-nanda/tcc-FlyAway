@@ -186,8 +186,8 @@ public class ItineraryPageActivity extends AppCompatActivity {
 
                 }
             });
-
         }
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -199,11 +199,9 @@ public class ItineraryPageActivity extends AppCompatActivity {
             }
         });
 
-
         publicar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 try {
                     publicItinerariesReference = FirebaseDatabase.getInstance().getReference().child("PublicItineraries");
 
@@ -236,7 +234,6 @@ public class ItineraryPageActivity extends AppCompatActivity {
                                 }
                             });
 
-
                         }
                     });
                     buider.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -250,7 +247,6 @@ public class ItineraryPageActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
-
             }
         });
 
@@ -270,7 +266,6 @@ public class ItineraryPageActivity extends AppCompatActivity {
                 onButtonShowPopupWindowClick(view);
             }
         });
-
 
         btn_clima.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -293,13 +288,10 @@ public class ItineraryPageActivity extends AppCompatActivity {
                 buider.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-//                        Intent i = new Intent(ItineraryPageActivity.this, MyitinerariesFragment.class);
-//                        startActivity(i);
 
-                        getSupportFragmentManager().beginTransaction()
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        fragmentManager.beginTransaction()
                                 .replace(R.id.main_fragment, MyitinerariesFragment.class, null)
-                                .setReorderingAllowed(true)
-                                .addToBackStack("name")
                                 .commit();
 
                         Toast.makeText(ItineraryPageActivity.this, "Roteiro deletado com sucesso", Toast.LENGTH_SHORT).show();
@@ -317,8 +309,6 @@ public class ItineraryPageActivity extends AppCompatActivity {
                 buider.show();
             }
         });
-
-
 
         btn_img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -338,7 +328,6 @@ public class ItineraryPageActivity extends AppCompatActivity {
                 i.putExtra("UserId", userId);
                 startActivity(i);
                 finish();
-
             }
         });
 

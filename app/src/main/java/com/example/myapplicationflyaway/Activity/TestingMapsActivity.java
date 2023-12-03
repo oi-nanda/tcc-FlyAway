@@ -25,6 +25,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+//import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 
 import java.io.IOException;
 import java.util.List;
@@ -78,6 +79,8 @@ public class TestingMapsActivity extends FragmentActivity implements OnMapReadyC
             }
         });
         mapFragment.getMapAsync(this);
+
+
 
         fused = LocationServices.getFusedLocationProviderClient(this);
 //        getLastLocation();
@@ -136,34 +139,31 @@ public class TestingMapsActivity extends FragmentActivity implements OnMapReadyC
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION},LOCATION_REQUEST_CODE);
     }
 
-    private void getLastLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},FINE_PERMISSION_CODE);
-            return;
-        }
-        Task<Location> tarefa = fused.getLastLocation();
-        tarefa.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (location !=null){
-                    localizacaoAtual = location;
-                    SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-                    mapFragment.getMapAsync(TestingMapsActivity.this);
-                }
-            }
-        });
-    }
+//    private void getLastLocation() {
+//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},FINE_PERMISSION_CODE);
+//            return;
+//        }
+//        Task<Location> tarefa = fused.getLastLocation();
+//        tarefa.addOnSuccessListener(new OnSuccessListener<Location>() {
+//            @Override
+//            public void onSuccess(Location location) {
+//                if (location !=null){
+//                    localizacaoAtual = location;
+//                    SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+//                    mapFragment.getMapAsync(TestingMapsActivity.this);
+//                }
+//            }
+//        });
+//    }
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         myMap = googleMap;
-
         myMap.getUiSettings().setMyLocationButtonEnabled(true);
-
-//
-//        LatLng current = new LatLng(localizacaoAtual.getLatitude(), localizacaoAtual.getLongitude());
-//        myMap.addMarker(new MarkerOptions().position(current).title("Localização atual"));
-//        myMap.moveCamera(CameraUpdateFactory.newLatLng(current));
+        LatLng current = new LatLng(localizacaoAtual.getLatitude(), localizacaoAtual.getLongitude());
+        myMap.addMarker(new MarkerOptions().position(current).title("Localização atual"));
+        myMap.moveCamera(CameraUpdateFactory.newLatLng(current));
 
 
     }
