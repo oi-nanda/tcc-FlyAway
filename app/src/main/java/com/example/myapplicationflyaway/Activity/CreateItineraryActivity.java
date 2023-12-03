@@ -64,6 +64,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.PhotoMetadata;
 import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.TypeFilter;
 import com.google.android.libraries.places.api.net.FetchPhotoRequest;
 import com.google.android.libraries.places.api.net.FetchPlaceRequest;
 import com.google.android.libraries.places.api.net.FetchPlaceResponse;
@@ -91,7 +92,7 @@ import java.util.UUID;
 public class CreateItineraryActivity extends FragmentActivity implements OnMapReadyCallback {
 
     ActivityCreateItineraryBinding binding;
-    String placeName, inicialDate, finalDate, numberOfTravelers;
+    String placeName, inicialDate, finalDate, numberOfTravelers, lugar;
     Button add;
     final Calendar currentDate = Calendar.getInstance();
     final Calendar d1 = Calendar.getInstance();
@@ -116,6 +117,8 @@ public class CreateItineraryActivity extends FragmentActivity implements OnMapRe
     String dt;
 
     ImageButton btn_back_home;
+
+    Fragment autoCompleteCriar;
     final Calendar calendario = Calendar.getInstance();
 
     private GoogleMap mMap;
@@ -136,7 +139,6 @@ public class CreateItineraryActivity extends FragmentActivity implements OnMapRe
        setContentView(binding.getRoot());
         progressDialog = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
-///////////////// TRECHO 1
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.imageViewCriar);
         mapFragment.getMapAsync(this);
@@ -151,9 +153,9 @@ public class CreateItineraryActivity extends FragmentActivity implements OnMapRe
 
         AutocompleteSupportFragment autocompleteSupportFragment = (AutocompleteSupportFragment)
                 getSupportFragmentManager().findFragmentById(R.id.autoCompleteCriar);
-/////////////////// TRECHO 3
         autocompleteSupportFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME,
                 Place.Field.LAT_LNG, Place.Field.ADDRESS,Place.Field.PHONE_NUMBER,Place.Field.PHOTO_METADATAS));
+        autocompleteSupportFragment.setTypeFilter(TypeFilter.CITIES);
         autocompleteSupportFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(@NonNull Place place) {
@@ -174,16 +176,8 @@ public class CreateItineraryActivity extends FragmentActivity implements OnMapRe
                 mMap.clear();
                 mMap.addMarker(new MarkerOptions().position(latLng).title(place.getName()));
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
+                placeName = place.getName();
 
-                mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-                    @Override
-                    public boolean onMarkerClick(Marker arg0) {
-                        FrameLayout tempLayout = new FrameLayout(getApplicationContext());
-                        tempLayout.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
-                        onButtonShowPopupWindowClick(place, tempLayout);
-                        return true;
-                    }
-                });
             }
 
             @Override
@@ -196,15 +190,10 @@ public class CreateItineraryActivity extends FragmentActivity implements OnMapRe
         fused = LocationServices.getFusedLocationProviderClient(this);
 
         checkLocationPermission();
-        /////////////////////////////
 
         binding.buttonCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                SearchView simpleSearchView = (SearchView) findViewById(R.id.searchview);
-//                CharSequence query = simpleSearchView.getQuery();
-//                placeName = String.valueOf(query);
-                placeName = "";
                 inicialDate = binding.data1.getText().toString();
                 finalDate = binding.data2.getText().toString();
                 numberOfTravelers = binding.npessoas.getText().toString();
@@ -398,13 +387,6 @@ public class CreateItineraryActivity extends FragmentActivity implements OnMapRe
 
     private void GetUserLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
         Task<Location> task = fused.getLastLocation();
@@ -418,11 +400,12 @@ public class CreateItineraryActivity extends FragmentActivity implements OnMapRe
 
                     LatLng userLocation = new LatLng(lat, longitude);
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(userLocation));
-                    mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
+                    mMap.animateCamera(CameraUpdateFactory.zoomTo(10));
                     mMap.addMarker(new MarkerOptions().position(userLocation).title("Sua localização atual!"));
 
                 }
             }
+
         });
     }
 
@@ -434,13 +417,6 @@ public class CreateItineraryActivity extends FragmentActivity implements OnMapRe
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
-//    LatLng canoas = new LatLng(-29.9177,-51.1839);
-//        if (mMap != null) {
-//            mMap.addMarker(new MarkerOptions().position(canoas).title("Canoas"));
-//            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(canoas, 14));
-//        } else {
-//            Log.e(TAG, "Map is null. Unable to add marker.");
-//        }
 
     }
 
@@ -458,146 +434,5 @@ public class CreateItineraryActivity extends FragmentActivity implements OnMapRe
         }
     }
 
-    public void onButtonShowPopupWindowClick(Place place, View v){
-        LayoutInflater inflater = (LayoutInflater)
-                getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.activity_show_place_details_popup, null);
-        endereco = popupView.findViewById(R.id.endereco);
-        celular  = popupView.findViewById(R.id.telefone);
-        nomedolugar = popupView.findViewById(R.id.place_name);
-        close_popup = popupView.findViewById(R.id.imageView14);
-        status = popupView.findViewById(R.id.status);
-        foto = popupView.findViewById(R.id.foto);
-        openinghours = popupView.findViewById(R.id.openinghours);
-
-
-//        final List<Period> hoursopen = place.getOpeningHours().getPeriods();
-//        hoursopen.toString();
-        //////////////////////////////////////////////////
-
-        @NonNull
-        Calendar isOpenCalendar = Calendar.getInstance();
-        String placeId = place.getId();
-        List<Place.Field> placeFields = new ArrayList<>(Arrays.asList(
-                Place.Field.BUSINESS_STATUS,
-                Place.Field.CURRENT_OPENING_HOURS,
-                Place.Field.ID,
-                Place.Field.OPENING_HOURS,
-                Place.Field.UTC_OFFSET,
-                Place.Field.PHONE_NUMBER
-        ));
-
-        FetchPlaceRequest request = FetchPlaceRequest.newInstance(placeId, placeFields);
-        Task<FetchPlaceResponse> placeTask = placesClient.fetchPlace(request);
-
-        placeTask.addOnSuccessListener(
-                (placeResponse) -> {
-                    Place lugar = placeResponse.getPlace();
-
-
-                    if (lugar.getOpeningHours() == null){
-                        status.setText("Sem horário de funcionamento");
-                    }
-                    else {
-                        IsOpenRequest isOpenRequest;
-
-                        try {
-                            isOpenRequest = IsOpenRequest.newInstance(lugar, isOpenCalendar.getTimeInMillis());
-                        } catch (IllegalArgumentException e) {
-                            e.printStackTrace();
-                            return;
-                        }
-                        Task<IsOpenResponse> isOpenTask = placesClient.isOpen(isOpenRequest);
-
-//                    AtomicReference<Boolean> isOpen = null;
-                        isOpenTask.addOnSuccessListener(
-                                (isOpenResponse) -> {
-//                                isOpen.set(isOpenResponse.isOpen())
-                                    boolean isOpen = isOpenResponse.isOpen();
-                                    if (isOpen) {
-                                        status.setText("Aberto");
-                                        status.setTextColor(Color.GREEN);
-                                    } else {
-                                        status.setText("Fechado");
-                                        status.setTextColor(Color.RED);
-                                    }
-                                }
-                        );
-                        isOpenTask.addOnFailureListener(
-                                (isOpenResponse) -> {
-                                    status.setText("Informações indisponíveis");
-                                }
-                        );
-
-                    }
-
-                });
-
-        if (place.getAddress() != null && !place.getAddress().isEmpty()) {
-            endereco.setText(place.getAddress());
-        } else {
-            endereco.setText("Endereço indisponível");
-        }
-
-        if (place.getPhoneNumber() != null && !place.getPhoneNumber().isEmpty()) {
-            celular.setText(place.getPhoneNumber());
-        } else {
-            celular.setText("Sem número de telefone");
-        }
-
-        //////////////////////////////
-
-        final List<PhotoMetadata> metadata = place.getPhotoMetadatas();
-        Drawable alternativeImage = getResources().getDrawable(R.drawable.img_13);
-        if (metadata == null || metadata.isEmpty()) {
-            foto.setImageDrawable(alternativeImage);
-        }
-        else{
-            final PhotoMetadata photoMetadata = metadata.get(0);
-            final String attributions = photoMetadata.getAttributions();
-            final FetchPhotoRequest photoRequest = FetchPhotoRequest.builder(photoMetadata)
-                    .setMaxWidth(500)
-                    .setMaxHeight(200)
-                    .build();
-
-            placesClient.fetchPhoto(photoRequest).addOnSuccessListener((fetchPhotoResponse) -> {
-                Bitmap bitmap = fetchPhotoResponse.getBitmap();
-                foto.setImageBitmap(bitmap);
-            }).addOnFailureListener((exception) -> {
-                foto.setImageDrawable(alternativeImage);
-                if (exception instanceof ApiException) {
-                    final ApiException apiException = (ApiException) exception;
-                    final int statusCode = apiException.getStatusCode();
-                    // TODO: Handle error with given status code.
-                }
-            });
-        }
-        /////////////////////////////
-
-        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true;
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-        popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
-
-        close_popup.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                popupWindow.dismiss();
-                return true;
-            }
-        });
-
-        if (place.getName() != null && !place.getName().isEmpty()) {
-            nomedolugar.setText(place.getName());
-        } else {
-            Toast.makeText(this,"Não foi possível visualizar as informações do lugar", Toast.LENGTH_SHORT).show();
-            popupWindow.dismiss();
-        }
-
-        if (v.getParent() instanceof ViewGroup) {
-            ((ViewGroup) v.getParent()).removeView(v);
-        }
-    }
 
 }

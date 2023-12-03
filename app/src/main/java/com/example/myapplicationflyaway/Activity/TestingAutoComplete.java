@@ -5,6 +5,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -19,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -26,6 +29,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myapplicationflyaway.Model.Day;
 import com.example.myapplicationflyaway.R;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.Status;
@@ -54,6 +58,7 @@ import com.google.android.libraries.places.api.net.IsOpenResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -66,12 +71,14 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class TestingAutoComplete extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private static String TAG = "Info";
+    String itineraryId, dayName;
     FusedLocationProviderClient fused;
     public static int LOCATION_REQUEST_CODE = 100;
     Location localizacaoAtual;
@@ -79,11 +86,20 @@ public class TestingAutoComplete extends FragmentActivity implements OnMapReadyC
     private ImageView close_popup, foto;
     private TextView endereco, celular,nomedolugar,status, openinghours;
     private Marker marker;
+    private Button button_add_places;
+
+    private DatabaseReference dbRefPlace;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_testing_auto_complete);
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            itineraryId = getIntent().getExtras().getString("ItineraryId");
+            dayName = getIntent().getExtras().getString("DayName");}
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map2);
@@ -337,6 +353,7 @@ public class TestingAutoComplete extends FragmentActivity implements OnMapReadyC
                 }
             });
         }
+
         /////////////////////////////
 
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -360,11 +377,53 @@ public class TestingAutoComplete extends FragmentActivity implements OnMapReadyC
             popupWindow.dismiss();
         }
 
+        button_add_places = popupView.findViewById(R.id.button_add_place);
+
+        button_add_places.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createPlace(place);
+            }
+        });
+
+
         if (v.getParent() instanceof ViewGroup) {
             ((ViewGroup) v.getParent()).removeView(v);
         }
     }
 
+    public void createPlace(Place place){
 
+        String placeId = place.getId();
+        String placeName = place.getName();
+
+        dbRefPlace = FirebaseDatabase.getInstance().getReference("Itineraries");
+        mAuth = FirebaseAuth.getInstance();
+
+        com.example.myapplicationflyaway.Model.Place newplace = new com.example.myapplicationflyaway.Model.Place(
+                place.getName(),null,null,place.getId(),null,dayName,itineraryId
+        );
+        Log.i("msg",dayName+"   "+itineraryId);
+
+        dbRefPlace.child(mAuth.getCurrentUser().getUid()).child(itineraryId).child("Days").child(dayName).child("Places").child(place.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                dbRefPlace.child(mAuth.getCurrentUser().getUid()).child(itineraryId).child("Days").child(dayName).child("Places").child(place.getId()).setValue(newplace).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                    }
+                });
+                Toast.makeText(TestingAutoComplete.this, "Lugar adicionado com sucesso", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(TestingAutoComplete.this,DayPageActivity.class);
+                i.putExtra("DayName",dayName);
+                i.putExtra("ItineraryId",itineraryId);
+                startActivity(i);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
 }

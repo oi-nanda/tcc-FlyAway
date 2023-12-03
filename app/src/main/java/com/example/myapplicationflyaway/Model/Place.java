@@ -20,6 +20,7 @@ public class Place implements Serializable {
         this.description = description;
         this.cost = cost;
         this.id = id;
+        this.img = img;
         this.iddia = iddia;
         this.iditinerary = iditinerary;
     }
