@@ -47,19 +47,19 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfileImageFragment extends Fragment {
 
-   View view;
-   private CircleImageView profileImageView;
-   private FloatingActionButton selectImage, uploadImage;
+    View view;
+    private CircleImageView profileImageView;
+    private FloatingActionButton selectImage, uploadImage;
 
-   private DatabaseReference databaseReference;
-   private FirebaseAuth mAuth;
+    private DatabaseReference databaseReference;
+    private FirebaseAuth mAuth;
 
-   private ImageView btn_back_profilePage;
+    private ImageView btn_back_profilePage;
 
 
-   private Uri imageUri;
-   private StorageReference storageProfilePicsRef;
-   ActivityResultLauncher<String> mGetContent;
+    private Uri imageUri;
+    private StorageReference storageProfilePicsRef;
+    ActivityResultLauncher<String> mGetContent;
 
     public EditProfileImageFragment() {
     }
@@ -67,7 +67,7 @@ public class EditProfileImageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-       view = inflater.inflate(R.layout.fragment_edit_image_profile, container, false);
+        view = inflater.inflate(R.layout.fragment_edit_image_profile, container, false);
 
        mAuth = FirebaseAuth.getInstance();
        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
@@ -75,7 +75,7 @@ public class EditProfileImageFragment extends Fragment {
        profileImageView = view.findViewById(R.id.edt_profile_pic);
 
 
-       btn_back_profilePage = view.findViewById(R.id.back_profilePage);
+       btn_back_profilePage = view.findViewById(R.id.back_itineraryPage);
 
        uploadImage = view.findViewById(R.id.floatingActionButton_confirm_edit_profile_pic);
        selectImage = view.findViewById(R.id.floatingActionButton_edit_profile_pic);
@@ -153,7 +153,6 @@ public class EditProfileImageFragment extends Fragment {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Log.d("erro", String.valueOf(e));
                     Toast.makeText(getContext(), "Erro ao alterar imagem", Toast.LENGTH_SHORT).show();
                 }
             }).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
@@ -174,7 +173,7 @@ public class EditProfileImageFragment extends Fragment {
                             });
                 }
             }
-        });
+             });
 
 
     }

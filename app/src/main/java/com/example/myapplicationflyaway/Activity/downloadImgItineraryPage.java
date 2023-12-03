@@ -44,7 +44,7 @@ public class downloadImgItineraryPage extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     private ImageView btn_back_itineraryPage;
-    private String itineraryId;
+    private String itineraryId, userId;
     private Uri imageUri;
     private StorageReference storageItineraryPicsRef;
     ActivityResultLauncher<String> mGetContent;
@@ -54,6 +54,7 @@ public class downloadImgItineraryPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_download_img_itinerary_page);
         itineraryId = getIntent().getExtras().getString("ItineraryId");
+        userId = getIntent().getExtras().getString("UserId");
 
         mAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Itineraries");
@@ -70,6 +71,7 @@ public class downloadImgItineraryPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(downloadImgItineraryPage.this, ItineraryPageActivity.class);
                 i.putExtra("ItineraryId",itineraryId);
+                i.putExtra("UserId", userId);
                 startActivity(i);
             }
         });

@@ -66,7 +66,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
     String itineraryId, userId, itineraryName, dateTravel, id, numberOfTravelers, desc, date1, date2;
     private FirebaseAuth mAuth;
     private ImageView itinerary_pic;
-    FloatingActionButton floatingActionButton;
+    ImageButton floatingActionButton;
     DatabaseReference reference, publicItinerariesReference;
 
     LinearLayout btn_clima, btn_galeria, btn_notes;
@@ -170,6 +170,8 @@ public class ItineraryPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ItineraryPageActivity.this, ChatActivity.class);
+                i.putExtra("itineraryId", itineraryId);
+                i.putExtra("userId", userId);
                 startActivity(i);
                 finish();
             }
@@ -245,6 +247,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(ItineraryPageActivity.this, EditItinerary.class );
                 i.putExtra("ItineraryId", itineraryId);
+                i.putExtra("UserId", userId);
                 i.putExtra("description", txt_description.getText().toString());
                 i.putExtra("numberOfTravelers", txt_people.getText().toString());
                 startActivity(i);
@@ -257,6 +260,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(ItineraryPageActivity.this, ClimaActivity.class);
                 i.putExtra("itineraryId", itineraryId);
+                i.putExtra("UserId", userId);
                 startActivity(i);
             }
         });
@@ -275,6 +279,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(ItineraryPageActivity.this, downloadImgItineraryPage.class);
                 i.putExtra("ItineraryId", itineraryId);
+                i.putExtra("UserId", userId);
                 startActivity(i);
             }
         });
@@ -282,13 +287,11 @@ public class ItineraryPageActivity extends AppCompatActivity {
         btn_galeria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ItineraryPageActivity.this, PlacePageActivity.class);
+                Intent i = new Intent(ItineraryPageActivity.this, GaleryPhotosActivity.class);
                 i.putExtra("itineraryId", itineraryId);
+                i.putExtra("UserId", userId);
                 startActivity(i);
-//                Intent i = new Intent(ItineraryPageActivity.this, GaleryPhotosActivity.class);
-//                i.putExtra("itineraryId", itineraryId);
-//                startActivity(i);
-               // finish();
+                finish();
 
             }
         });
@@ -298,6 +301,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(ItineraryPageActivity.this, NotesActivity.class);
                 i.putExtra("itineraryId", itineraryId);
+                i.putExtra("UserId", userId);
                 i.putExtra("itineraryName", itineraryName);
                 i.putExtra("itineraryDate", dateTravel);
                 startActivity(i);
