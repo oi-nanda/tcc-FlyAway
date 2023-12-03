@@ -9,17 +9,15 @@
 
 
         <LinearLayout
-            android:layout_width="500dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/popupbg"
-            android:layout_marginTop="50sp"
-            android:layout_marginBottom="50sp"
             android:orientation="vertical"
             >
 
 
             <ImageView
-                android:id="@+id/imageView14"
+                android:id="@+id/btn_go_back_fromedit"
                 android:layout_width="30dp"
                 android:layout_margin="20dp"
                 android:layout_height="30dp"
@@ -27,14 +25,15 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:id="@+id/relativell"
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/imageView15"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
+                    android:layout_marginStart="90dp"
                     android:layout_marginTop="25dp"
-                    android:layout_marginStart="70dp"
                     android:src="@drawable/robozinho" />
 
                 <TextView
@@ -42,7 +41,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="100dp"
+                    android:layout_marginStart="125dp"
+                    android:layout_marginBottom="10dp"
                     android:text="Editar roteiro"
                     android:textColor="@color/darkblue"
                     android:textSize="23dp"
@@ -56,17 +56,19 @@
             </RelativeLayout>
 
             <EditText
-                android:id="@+id/edit_description"
+                android:id="@+id/edit_description_edit"
                 style="@style/Edit_Text"
                 android:layout_width="250dp"
                 android:layout_height="100dp"
                 android:elevation="3dp"
-                android:ems="10"
+
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="70dp"
                 android:hint="Descrição do roteiro"
                 android:inputType="text"
                 android:textAlignment="viewStart"
                 android:textSize="15dp"
-                app:layout_constraintBottom_toBottomOf="@+id/container_edit_profile_info_component"
+                app:layout_constraintBottom_toBottomOf="@+id/relativell"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.512"
                 app:layout_constraintStart_toStartOf="parent"
@@ -74,11 +76,12 @@
                 app:layout_constraintVertical_bias="0.146" />
 
             <EditText
-                android:id="@+id/edit_number_of_travelers"
+                android:id="@+id/edit_number_of_travelers_edit"
                 style="@style/Edit_Text"
                 android:layout_width="250dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="70dp"
                 android:elevation="3dp"
                 android:ems="10"
                 android:hint="Número de viajantes"
@@ -92,7 +95,7 @@
                 app:layout_constraintVertical_bias="0.202" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button_edit_info_itinerary"
+                android:id="@+id/btn_edit_info_itinerary"
                 style="@style/Button_Login"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"

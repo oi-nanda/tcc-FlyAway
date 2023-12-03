@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.myapplicationflyaway.Adapter.SavePageAdapter;
 import com.example.myapplicationflyaway.Model.Itinerary;
@@ -37,7 +38,8 @@ public class SavesPageFregment extends Fragment {
     SavePageAdapter adapter;
     DatabaseReference reference;
     View view;
-    ImageView btn_back_profile;
+    ImageView btn_back_profile, imageView79;
+    TextView saves_default;
 
     public SavesPageFregment() {
     }
@@ -54,7 +56,8 @@ public class SavesPageFregment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         reference = FirebaseDatabase.getInstance().getReference().child("ItinerariesSave").child(mAuth.getCurrentUser().getUid());
-
+        imageView79 = view.findViewById(R.id.imageView79);
+        saves_default = view.findViewById(R.id.saves_default);
         itinerarySaveList = new ArrayList<ItinerarySave>();
 
 
@@ -66,6 +69,11 @@ public class SavesPageFregment extends Fragment {
                   itinerarySaveList.add(itinerarySave);
                 }
                 adapter.notifyDataSetChanged();
+
+                if(itinerarySaveList.size()==0){
+                    imageView79.setImageResource(R.drawable.sefault_save);
+                    saves_default.setText("Você ainda nã opossui nenhum roteiro salvo!");
+                }
             }
 
             @Override

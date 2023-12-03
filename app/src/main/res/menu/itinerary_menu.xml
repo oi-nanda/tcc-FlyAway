@@ -1,4 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/delete_itinerary"
+        app:showAsAction="ifRoom"
+        android:title="Deletar Itinerário"
+        android:icon="@drawable/baseline_delete_24"
+        />
+    <item android:id="@+id/edit_itinerary_menu"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/baseline_edit_24"
+        android:title="Editar Itinerário"
+        />
+    <item android:id="@+id/gpt_assistent"
+        app:showAsAction="never"
+        android:title="Assistente GPT"
+        />
+    <item android:id="@+id/add_cover"
+        app:showAsAction="never"
+        android:title="Adicionar Cover"
+        />
+    <item android:id="@+id/publicate"
+        app:showAsAction="never"
+        android:title="Publicar Itinerário"
+        />
+
 
 </menu>

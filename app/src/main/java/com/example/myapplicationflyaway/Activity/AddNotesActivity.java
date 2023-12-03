@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.myapplicationflyaway.Model.Notes;
@@ -29,6 +30,7 @@ public class AddNotesActivity extends AppCompatActivity {
     DatabaseReference referenceNotes;
     FirebaseAuth mAuth;
     String itineraryId;
+    ImageView btn_back_fomNotesSave;
 
 
 
@@ -42,6 +44,7 @@ public class AddNotesActivity extends AppCompatActivity {
         inputNoteTitle = findViewById(R.id.inputNoteTitle);
         inputNoteSubtitle = findViewById(R.id.editText);
         inputContent = findViewById(R.id.inputNote);
+        btn_back_fomNotesSave = findViewById(R.id.btn_back_fomNotesSave);
         String user = mAuth.getCurrentUser().getUid();
 
         itineraryId = getIntent().getExtras().getString("itineraryId");
@@ -49,7 +52,15 @@ public class AddNotesActivity extends AppCompatActivity {
         referenceNotes = FirebaseDatabase.getInstance().getReference().child("Notes").child(user).child(itineraryId);
 
 
-
+        btn_back_fomNotesSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddNotesActivity.this, NotesActivity.class);
+                intent.putExtra("itineraryId", itineraryId);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         save_note.setOnClickListener(new View.OnClickListener() {
             @Override

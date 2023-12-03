@@ -13,7 +13,7 @@
         android:layout_height="fill_parent"
         android:gravity="center" >
 
-
+        <include android:id="@+id/toolbar" layout="@layout/toolbar"/>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -30,8 +30,9 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cover"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_width="450dp"
+                    android:layout_height="195dp"
+                    android:layout_marginTop="65dp"
                     android:elevation="10dp"
                     app:cardCornerRadius="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -43,8 +44,8 @@
                     <ImageView
                         android:id="@+id/cover_1"
                         android:layout_width="match_parent"
-                        android:layout_height="261dp"
-                        android:scaleType="centerInside"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
                         android:src="@color/gray">
 
                     </ImageView>
@@ -53,64 +54,12 @@
                         android:id="@+id/btn_back_myItineraries"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="30dp"
                         android:layout_marginTop="20dp"
                         android:background="@drawable/transparent_backgroud"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_arrow_back" />
-
-                    <ImageButton
-                        android:id="@+id/btn_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="360dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@drawable/transparent_backgroud"
-                        android:maxWidth="30dp"
-                        android:maxHeight="30dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/baseline_mode_edit_outline_24" />
-
-                    <ImageView
-                        android:id="@+id/btn_img"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-
-                        android:maxHeight="30dp"
-                        android:maxWidth="30dp"
-                        android:clickable="true"
-                        android:layout_marginStart="280dp"
-
-                        android:layout_marginTop="15dp"
-                        android:background="@drawable/transparent_backgroud"
-                        android:clickable="true"
-                        android:maxWidth="30dp"
-                        android:maxHeight="30dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/downloadimg" />
-
-                    <ImageView
-                        android:id="@+id/btn_img_delete"
-                        android:layout_width="35dp"
-                        android:layout_height="40dp"
-
-                        android:maxHeight="30dp"
-                        android:maxWidth="30dp"
-                        android:clickable="true"
-                        android:layout_marginStart="270dp"
-
-                        android:layout_marginTop="15dp"
-                        android:background="@drawable/transparent_backgroud"
-                        android:clickable="true"
-                        android:maxWidth="30dp"
-                        android:maxHeight="30dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/img_11" />
-
 
                 </androidx.cardview.widget.CardView>
 
@@ -123,42 +72,43 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:layout_marginTop="200dp">
+            android:layout_marginTop="260dp"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/pessoas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/data"
-                    android:layout_alignLeft="@+id/data"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:textSize="15dp"
-                    android:text="x" />
 
-                <TextView
-                    android:id="@+id/pessoasnome"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/data"
-                    android:layout_alignLeft="@+id/data"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="10dp"
-                    android:textSize="15dp"
-                    android:text="pessoas" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/pessoas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/data"
+                        android:layout_alignLeft="@+id/data"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="x"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/pessoasnome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/data"
+                        android:layout_alignLeft="@+id/data"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:text="pessoas"
+                        android:textSize="15dp" />
 
 
-
-            </LinearLayout>
-
+                </LinearLayout>
 
 
                 <LinearLayout
@@ -185,9 +135,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:text="ddmmyy" />
-                    <Button
-                        android:id="@+id/btn_publicar"
-                        style="@style/publicar"/>
+
 
                 </LinearLayout>
 
@@ -195,15 +143,15 @@
                     android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_margin="16dp"
+                    android:textStyle="bold"
+                    android:textSize="17dp"
                     android:text="" />
 
                 <LinearLayout
-                    android:layout_marginStart="20dp"
                     android:layout_width="368dp"
                     android:layout_height="130dp"
+                    android:layout_marginStart="20dp"
                     android:orientation="horizontal"
                     android:textAlignment="center">
 
@@ -217,17 +165,17 @@
                         android:orientation="vertical">
 
 
-                            <ImageView
-                                android:layout_gravity="center"
-                                android:layout_marginTop="16dp"
-                                android:id="@+id/finances_itinerary_image"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/moeda" />
+                        <ImageView
+                            android:id="@+id/finances_itinerary_image"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/moeda" />
 
                         <TextView
                             android:id="@+id/liked_scrips_text"
@@ -241,6 +189,7 @@
                             android:textSize="13dp"
                             android:textStyle="bold" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/btn_galeria"
                         android:layout_width="0dp"
@@ -256,8 +205,8 @@
                             android:id="@+id/galery_itinerary_image"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:layout_marginTop="16dp"
                             android:layout_gravity="center"
+                            android:layout_marginTop="16dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -287,17 +236,17 @@
                         android:elevation="5dp"
                         android:orientation="vertical">
 
-                            <ImageView
-                                android:id="@+id/climate_image"
-                                android:layout_width="50dp"
-                                android:layout_gravity="center"
-                                android:layout_height="50dp"
-                                android:layout_marginTop="16dp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/ensolarado" />
+                        <ImageView
+                            android:id="@+id/climate_image"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ensolarado" />
 
                         <TextView
                             android:id="@+id/climate_text"
@@ -323,17 +272,17 @@
                         android:orientation="vertical">
 
 
-                            <ImageView
-                                android:id="@+id/notes_image"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="16dp"
-                                app:srcCompat="@drawable/notas" />
+                        <ImageView
+                            android:id="@+id/notes_image"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/notas" />
 
                         <TextView
                             android:id="@+id/notes_text"
@@ -349,39 +298,34 @@
                     </LinearLayout>
 
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="7dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:text="Programação"
+                        android:textColor="#DCA900"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
 
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/trip_list"
                     android:layout_width="370dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"/>
-
-
-
-                <ImageButton
-                    android:id="@+id/floatingActionButtontoChat"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/transparent_backgroud"
-                    android:clickable="true"
-                    android:contextClickable="true"
-                    android:elevation="3dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginStart="20dp"
-                    android:scaleType="centerInside"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.95"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cover"
-                    app:layout_constraintVertical_bias="0.971"
-                    app:srcCompat="@drawable/chat" />
-
-
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp" />
 
 
             </LinearLayout>
