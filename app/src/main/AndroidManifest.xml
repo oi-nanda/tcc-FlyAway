@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -29,12 +29,15 @@
         android:theme="@style/Theme.MyApplicationFlyAway"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.TestingAutoComplete"
+            android:exported="false" />
+        <activity
             android:name=".Activity.deleteItinerary"
             android:exported="false" />
         <activity
             android:name=".Activity.PlacePageActivity"
             android:exported="false" />
-      <activity
+        <activity
             android:name=".Activity.ChatActivity"
             android:exported="false" />
         <activity
@@ -63,8 +66,6 @@
              project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
              "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
         -->
-
-
         <activity
             android:name=".Activity.GaleryPhotosActivity"
             android:exported="false" />
@@ -123,11 +124,10 @@
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Activity.TestingMapsActivity"
+            android:exported="false" />
 
-        <activity android:name ="com.example.myapplicationflyaway.Activity.TestingMapsActivity"
-            android:exported="false"
-
-            />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
@@ -143,8 +143,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/my_map_api_key" />
-
     </application>
 
 </manifest>
-

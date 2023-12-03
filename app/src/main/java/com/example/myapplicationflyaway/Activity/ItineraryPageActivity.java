@@ -259,7 +259,6 @@ public class ItineraryPageActivity extends AppCompatActivity {
 
                 }
             });
-
         }
 
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -291,7 +290,6 @@ public class ItineraryPageActivity extends AppCompatActivity {
                 i.putExtra("UserId", userId);
                 startActivity(i);
                 finish();
-
             }
         });
 

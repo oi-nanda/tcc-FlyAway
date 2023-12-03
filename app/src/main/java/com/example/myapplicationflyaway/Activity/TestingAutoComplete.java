@@ -1,25 +1,17 @@
 package com.example.myapplicationflyaway.Activity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 
 import android.Manifest;
-import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.icu.text.SimpleDateFormat;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -27,26 +19,14 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplicationflyaway.Fragments.HomeFragment;
-import com.example.myapplicationflyaway.MainActivity;
-import com.example.myapplicationflyaway.Model.Day;
-import com.example.myapplicationflyaway.Model.Itinerary;
 import com.example.myapplicationflyaway.R;
-import com.example.myapplicationflyaway.databinding.ActivityCreateItineraryBinding;
-import com.example.myapplicationflyaway.databinding.ActivityMainBinding;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -54,6 +34,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -62,6 +43,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Period;
 import com.google.android.libraries.places.api.model.PhotoMetadata;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.net.FetchPhotoRequest;
@@ -72,51 +54,21 @@ import com.google.android.libraries.places.api.net.IsOpenResponse;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.Random;
-import java.util.UUID;
+import java.util.concurrent.atomic.AtomicReference;
 
-public class CreateItineraryActivity extends FragmentActivity implements OnMapReadyCallback {
-
-    ActivityCreateItineraryBinding binding;
-    String placeName, inicialDate, finalDate, numberOfTravelers;
-    Button add;
-    final Calendar currentDate = Calendar.getInstance();
-    final Calendar d1 = Calendar.getInstance();
-    final Calendar d2 = Calendar.getInstance();
-    Day day[];
-    ProgressDialog progressDialog;
-    FirebaseDatabase db;
-    DatabaseReference reference, dbRefDay;
-
-    FirebaseUser user;
-
-    String uid;
-
-    String id;
-    Long totaldedias;
-    private FirebaseAuth mAuth;
-    private DatabaseReference databaseReference;
-    EditText data1, data2;
-    TextView npessoas;
-    SearchView local;
-    Button start,button2;
-    String dt;
-
-    ImageButton btn_back_home;
-    final Calendar calendario = Calendar.getInstance();
+public class TestingAutoComplete extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private static String TAG = "Info";
@@ -131,14 +83,10 @@ public class CreateItineraryActivity extends FragmentActivity implements OnMapRe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_create_itinerary);
-        binding = ActivityCreateItineraryBinding.inflate(getLayoutInflater());
-       setContentView(binding.getRoot());
-        progressDialog = new ProgressDialog(this);
-        mAuth = FirebaseAuth.getInstance();
-///////////////// TRECHO 1
+        setContentView(R.layout.activity_testing_auto_complete);
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.imageViewCriar);
+                .findFragmentById(R.id.map2);
         mapFragment.getMapAsync(this);
 
         String apiKey = getString(R.string.my_map_api_key);
@@ -150,20 +98,21 @@ public class CreateItineraryActivity extends FragmentActivity implements OnMapRe
         placesClient = Places.createClient(this);
 
         AutocompleteSupportFragment autocompleteSupportFragment = (AutocompleteSupportFragment)
-                getSupportFragmentManager().findFragmentById(R.id.autoCompleteCriar);
-/////////////////// TRECHO 3
+                getSupportFragmentManager().findFragmentById(R.id.autoComplete);
+
         autocompleteSupportFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME,
                 Place.Field.LAT_LNG, Place.Field.ADDRESS,Place.Field.PHONE_NUMBER,Place.Field.PHOTO_METADATAS));
+
         autocompleteSupportFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(@NonNull Place place) {
                 // TODO: Get info about the selected place.
-                Geocoder geocoder = new Geocoder((CreateItineraryActivity.this));
+                Log.i(TAG, "Place: " + place.getName() + ", " + place.getAddress());
+                Geocoder geocoder = new Geocoder((TestingAutoComplete.this));
                 List<Address> address = null;
                 try{
 //                  address=geocoder.getFromLocationName(place.getName(),1);
                     address= geocoder.getFromLocation(place.getLatLng().latitude,place.getLatLng().longitude,1);
-
                 }
                 catch (IOException e){
                     e.printStackTrace();
@@ -196,196 +145,10 @@ public class CreateItineraryActivity extends FragmentActivity implements OnMapRe
         fused = LocationServices.getFusedLocationProviderClient(this);
 
         checkLocationPermission();
-        /////////////////////////////
-
-        binding.buttonCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                SearchView simpleSearchView = (SearchView) findViewById(R.id.searchview);
-//                CharSequence query = simpleSearchView.getQuery();
-//                placeName = String.valueOf(query);
-                placeName = "";
-                inicialDate = binding.data1.getText().toString();
-                finalDate = binding.data2.getText().toString();
-                numberOfTravelers = binding.npessoas.getText().toString();
-
-                progressDialog.setMessage("Criando roteiro do usuário");
-                progressDialog.setTitle("Roteiro");
-                progressDialog.setCanceledOnTouchOutside(false);
-                progressDialog.show();
-
-                if (!placeName.isEmpty() && !inicialDate.isEmpty() && !finalDate.isEmpty() && !numberOfTravelers.isEmpty()) {
-
-
-                    if ((d2.after(d1) || d1.equals(d2)) && (d1.after(currentDate) || d1.compareTo(currentDate) == 0)){
-                        user = FirebaseAuth.getInstance().getCurrentUser();
-                        uid = user.getUid().toString();
-                        id = UUID.randomUUID().toString();
-
-                    Itinerary itinerary = new Itinerary(id,placeName,inicialDate, finalDate, numberOfTravelers, null, null);
-                    db = FirebaseDatabase.getInstance();
-                    reference = db.getReference("Itineraries");
-                    dbRefDay = FirebaseDatabase.getInstance().getReference("Itineraries").child(uid).child(id).child("Days");
-
-                    reference.child(uid).child(id).setValue(itinerary).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-//                            binding.searchview.setQuery("", false);
-                            binding.data1.setText("");
-                            binding.data2.setText("");
-                            binding.npessoas.setText("");
-                            Toast.makeText(CreateItineraryActivity.this, "Roteiro criado com sucesso!",Toast.LENGTH_SHORT).show();
-                            sendUserToItineraryPage();
-                        }
-                    });
-
-                        String datainicial = (inicialDate).substring(0,6);
-                        String datainicial2 = (inicialDate).substring(6);
-                        String datafinal = (finalDate).substring(0,6);
-                        String datafinal2 = (finalDate).substring(6);
-
-                        String datainicialnew = datainicial+"20"+datainicial2;
-                        String datafinalnew = datafinal+"20"+datafinal2;
-
-                        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-                        sdf.setLenient (false);
-                        try {
-                            Date d1 = sdf.parse(datainicialnew);
-                            Date d2 = sdf.parse(datafinalnew);
-
-                            Long diff = d2.getTime() - d1.getTime();
-
-                            totaldedias = ((diff/(100*60*60*24))/10)+1;
-
-                            for (int i=1;i<=totaldedias;i++){
-                                String dayname = "dia " + i;
-                                String idday = UUID.randomUUID().toString();
-
-                                Calendar calendar = Calendar.getInstance();
-                                calendar.setTime(d1);
-                                if (i==1){}
-                                else{
-                                    calendar.add(Calendar.DATE, i-1);
-                                }
-                                SimpleDateFormat simple = new SimpleDateFormat("dd-MM-yyyy");
-                                dt = simple.format(calendar.getTime());
-
-                                Day day = new Day(dayname,"",idday,null,id,dt);
-                                dbRefDay.child(dayname).setValue(day).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        progressDialog.dismiss();
-                                    }
-                                });
-                            }
-
-                        } catch (ParseException e) {
-                            throw new RuntimeException(e);
-                        }
-
-                    }
-                    else {
-                      if (d1.after(d2)){
-                          progressDialog.dismiss();
-                          binding.data2.setError("Data final inválida");
-                          Toast.makeText(CreateItineraryActivity.this, "A data final deve vir após a data inicial", Toast.LENGTH_SHORT).show();
-                      }
-                      if (currentDate.after(d1)) {
-                          progressDialog.dismiss();
-                          binding.data1.setError("Data incial inválida");
-                          Toast.makeText(CreateItineraryActivity.this, "A data inicial não pode anteceder o dia de hoje", Toast.LENGTH_SHORT).show();
-                      }
-                    }
-                }
-                else{
-                    progressDialog.dismiss();
-                    Toast.makeText(CreateItineraryActivity.this, "Erro ao criar o roteiro", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-
-        btn_back_home = findViewById(R.id.btn_back_home);
-//        local = findViewById(R.id.searchview);
-        data1=(EditText) findViewById(R.id.data1);
-        data2=(EditText) findViewById(R.id.data2);
-
-        btn_back_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
-
-
-        DatePickerDialog.OnDateSetListener datai = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i2, int i3) {
-                calendario.set(Calendar.YEAR, i);
-                calendario.set(Calendar.MONTH,i2);
-                calendario.set(Calendar.DAY_OF_MONTH,i3);
-                d1.set(Calendar.YEAR, i);
-                d1.set(Calendar.MONTH,i2);
-                d1.set(Calendar.DAY_OF_MONTH,i3);
-                Date dataCalendario = calendario.getTime();
-                SimpleDateFormat data = new SimpleDateFormat("dd/MM/yy");
-                data1.setText(data.format(dataCalendario));
-                data1.setTextColor(androidx.appcompat.R.style.Base_TextAppearance_AppCompat_Body2);
-            }
-        };
-
-        DatePickerDialog.OnDateSetListener dataf = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int i, int i2, int i3) {
-                calendario.set(Calendar.YEAR, i);
-                calendario.set(Calendar.MONTH,i2);
-                calendario.set(Calendar.DAY_OF_MONTH,i3);
-                Date dataCalendario = calendario.getTime();
-                d2.set(Calendar.YEAR, i);
-                d2.set(Calendar.MONTH,i2);
-                d2.set(Calendar.DAY_OF_MONTH,i3);
-                SimpleDateFormat data = new SimpleDateFormat("dd/MM/yy");
-                data2.setText(data.format(dataCalendario));
-                data2.setTextColor(androidx.appcompat.R.style.Base_TextAppearance_AppCompat_Body2);
-
-            }
-        };
-
-        data1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar calendario = Calendar.getInstance();
-                int ano = calendario.get(calendario.YEAR);
-                int mes = calendario.get(calendario.MONTH);
-                int dia = calendario.get(calendario.DAY_OF_MONTH);
-                DatePickerDialog d = new DatePickerDialog(CreateItineraryActivity.this,android.R.style.Theme_DeviceDefault_Light_Dialog_MinWidth, datai,ano,mes,dia);
-                d.show();
-            }
-        });
-
-        data2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar calendario = Calendar.getInstance();
-                int ano = calendario.get(calendario.YEAR);
-                int mes = calendario.get(calendario.MONTH);
-                int dia = calendario.get(calendario.DAY_OF_MONTH);
-
-                DatePickerDialog d = new DatePickerDialog(CreateItineraryActivity.this,android.R.style.Theme_DeviceDefault_Light_Dialog_MinWidth, dataf,ano,mes,dia);
-                d.show();
-            }
-        });
     }
 
-    private void sendUserToItineraryPage() {
-        Intent intent = new Intent(CreateItineraryActivity.this, ItineraryPageActivity.class);
-        intent.putExtra("ItineraryId", id);
-        intent.putExtra("UserId", mAuth.getCurrentUser().getUid());
-        startActivity(intent);
-        finish();
-    }
+
+
 
     private void checkLocationPermission() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
@@ -417,8 +180,10 @@ public class CreateItineraryActivity extends FragmentActivity implements OnMapRe
                     double longitude = location.getLongitude();
 
                     LatLng userLocation = new LatLng(lat, longitude);
+
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(userLocation));
                     mMap.animateCamera(CameraUpdateFactory.zoomTo(12));
+
                     mMap.addMarker(new MarkerOptions().position(userLocation).title("Sua localização atual!"));
 
                 }
@@ -568,7 +333,7 @@ public class CreateItineraryActivity extends FragmentActivity implements OnMapRe
                 if (exception instanceof ApiException) {
                     final ApiException apiException = (ApiException) exception;
                     final int statusCode = apiException.getStatusCode();
-                    // TODO: Handle error with given status code.
+                      // TODO: Handle error with given status code.
                 }
             });
         }
@@ -599,5 +364,7 @@ public class CreateItineraryActivity extends FragmentActivity implements OnMapRe
             ((ViewGroup) v.getParent()).removeView(v);
         }
     }
+
+
 
 }
