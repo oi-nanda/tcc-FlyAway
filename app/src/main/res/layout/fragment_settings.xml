@@ -91,7 +91,7 @@
                 <TextView
                     android:id="@+id/editar_perfil_settings"
                     style="@style/settingsText"
-                    android:layout_width="300dp"
+                    android:layout_width="280dp"
                     android:layout_gravity="bottom"
                     android:layout_margin="5dp"
                     android:text="Editar Perfil"
@@ -115,7 +115,7 @@
                 <TextView
                     android:id="@+id/alterar_senha_settings"
                     style="@style/settingsText"
-                    android:layout_width="300dp"
+                    android:layout_width="280dp"
                     android:layout_gravity="bottom"
                     android:layout_margin="5dp"
                     android:text="Alterar Senha"
@@ -140,7 +140,7 @@
                 <TextView
                     android:id="@+id/txt_excluir"
                     style="@style/settingsText"
-                    android:layout_width="230dp"
+                    android:layout_width="200dp"
                     android:layout_gravity="bottom"
                     android:layout_margin="5dp"
                     android:text="Excluir Conta" />
@@ -188,7 +188,7 @@
                 <TextView
                     android:id="@+id/button_sair_settings"
                     style="@style/settingsText"
-                    android:layout_width="300dp"
+                    android:layout_width="280dp"
                     android:layout_gravity="bottom"
                     android:layout_margin="5dp"
                     android:drawableRight="@drawable/baseline_arrow_forward_ios_24"

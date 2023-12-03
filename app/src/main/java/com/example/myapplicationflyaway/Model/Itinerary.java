@@ -7,15 +7,15 @@ import java.io.Serializable;
 
 public class Itinerary implements Serializable {
 
-    String placeName, inicialDate, finalDate, numberOfTravelers, description, userId, id;
+    String placeName, inicialDate, finalDate, numberOfTravelers, description, userId, id, img ;
     Day day[];
 
 
-    ImageView img;
+
 
     public Itinerary() {}
 
-    public Itinerary(String id, String placeName, String inicialDate, String finalDate, String numberOfTravelers, String description,ImageView img) {
+    public Itinerary(String id, String placeName, String inicialDate, String finalDate, String numberOfTravelers, String description,String img) {
         this.placeName = placeName;
         this.id = id;
         this.inicialDate = inicialDate;
@@ -45,11 +45,11 @@ public class Itinerary implements Serializable {
         this.day = day;
     }
 
-    public ImageView getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(ImageView img) {
+    public void setImg(String img) {
         this.img = img;
     }
 

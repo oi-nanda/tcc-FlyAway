@@ -71,6 +71,8 @@ public class MyitinerariesFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot snapshot1 : snapshot.getChildren()){
                     Itinerary itinerary = snapshot1.getValue(Itinerary.class);
+
+
                     itineraryList.add(itinerary);
                 }
                 myAdapter.notifyDataSetChanged();
