@@ -17,7 +17,24 @@ public class Place {
         this.description = description;
         this.cost = cost;
         this.id = id;
+        this.img = img;
         this.iddia = iddia;
+        this.iditinerary = iditinerary;
+    }
+
+    public String getIddia() {
+        return iddia;
+    }
+
+    public void setIddia(String iddia) {
+        this.iddia = iddia;
+    }
+
+    public String getIditinerary() {
+        return iditinerary;
+    }
+
+    public void setIditinerary(String iditinerary) {
         this.iditinerary = iditinerary;
     }
 
