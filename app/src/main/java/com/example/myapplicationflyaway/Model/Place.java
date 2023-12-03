@@ -2,7 +2,9 @@ package com.example.myapplicationflyaway.Model;
 
 import android.media.Image;
 
-public class Place {
+import java.io.Serializable;
+
+public class Place implements Serializable {
 
     String name, description;
     Double cost;
@@ -11,6 +13,7 @@ public class Place {
 
 
     public void Place() {}
+
 
     public Place(String name, String description, Double cost, String id, Image img, String iddia, String iditinerary) {
         this.name = name;

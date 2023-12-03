@@ -59,8 +59,6 @@ public class CreatePlaceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 createPlace(v);
-//                Log.d("DayName", dayid+"abcde");
-//                Log.d("ItineraryId", itineraryId);
                 sendUsertoPlacePage();
             }
         });

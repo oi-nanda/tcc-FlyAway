@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Activity.ItineraryPageActivity"
+    tools:context=".Activity.DayPageActivity"
     android:background="@color/backgroud"
     android:orientation="vertical">
 
@@ -13,6 +13,8 @@
         android:layout_height="fill_parent"
         android:gravity="center" >
 
+
+        <include android:id="@+id/toolbar2" layout="@layout/toolbar_day"/>
 
 
         <androidx.core.widget.NestedScrollView
@@ -25,16 +27,14 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-
+                android:layout_height="wrap_content">
 
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cover"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:id="@+id/cover_dayPage"
+                    android:layout_width="450dp"
+                    android:layout_height="195dp"
+                    android:layout_marginTop="65dp"
                     android:elevation="10dp"
                     app:cardCornerRadius="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -57,150 +57,108 @@
                         style="@style/bolinhadia"
                         android:layout_width="85dp"
                         android:layout_height="85dp"
+                        android:layout_marginLeft="180dp"
                         android:layout_marginTop="150dp"
-                        android:layout_marginLeft="150dp"
                         android:paddingTop="15dp"
                         android:text="DIA X"
+                        android:textColor="#DEDEE8"
                         android:textAlignment="center"
-                        android:textSize="20dp"/>
-
+                        android:textSize="20dp" />
 
                     <ImageButton
                         android:id="@+id/btn_back_myItineraries"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginStart="20dp"
+                        android:layout_marginStart="40dp"
                         android:layout_marginTop="20dp"
                         android:background="@drawable/transparent_backgroud"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:srcCompat="@drawable/ic_arrow_back" />
 
-                    <ImageButton
-                        android:id="@+id/btn_edit"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="360dp"
-                        android:layout_marginTop="15dp"
-                        android:background="@drawable/transparent_backgroud"
-                        android:maxWidth="30dp"
-                        android:maxHeight="30dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/baseline_mode_edit_outline_24" />
 
-                    <ImageView
-                        android:id="@+id/btn_img"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:maxHeight="30dp"
-                        android:maxWidth="30dp"
-                        android:clickable="true"
-                        android:layout_marginStart="315dp"
-                        android:layout_marginTop="15dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:background="@drawable/transparent_backgroud"
-                        app:srcCompat="@drawable/downloadimg" />
 
-                    <ImageView
-                        android:id="@+id/btn_img_delete"
-                        android:layout_width="35dp"
-                        android:layout_height="40dp"
-                        android:maxHeight="30dp"
-                        android:maxWidth="30dp"
-                        android:clickable="true"
-                        android:layout_marginStart="270dp"
-                        android:layout_marginTop="15dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:background="@drawable/transparent_backgroud"
-                        app:srcCompat="@drawable/img_11" />
 
                 </androidx.cardview.widget.CardView>
-
 
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 
+        <TextView
+
+            android:id="@+id/data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="270dp"
+            android:layout_marginEnd="290dp"
+            android:layout_marginBottom="16dp"
+            android:text="ddmmyy"
+            android:textSize="15dp" />
 
         <ScrollView
+            android:layout_below="@+id/data"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:layout_marginTop="200dp">
+           >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:textSize="15dp"
+        android:layout_marginStart="280dp"
+        android:textStyle="bold"
+        android:text="Gastos do dia:" />
+    <TextView
+        android:id="@+id/valordodia"
+        style="@style/ContainerComponentsQuarto"
+        android:layout_width="81dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="285dp"
+        android:gravity="center"
+        android:text="R$ 0,00" />
+
+
+</LinearLayout>
+
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="7dp"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/data"
-                        android:layout_width="wrap_content"
+                        android:layout_width="210dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:text="ddmmyy" />
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:text="Atrações do dia: "
+                        android:textColor="#DCA900"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
 
                 </LinearLayout>
-
-                <TextView
-                    android:id="@+id/description"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="" />
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:id="@+id/moneyicon"
-                        android:layout_width="57dp"
-                        android:layout_height="53dp"
-                        android:padding="5dp"
-                        android:src="@drawable/img_1"
-                        android:layout_marginLeft="20dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.169"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.405" />
-
-                    <TextView
-                        android:id="@+id/valordodia"
-                        style="@style/ContainerComponentsQuarto"
-                        android:layout_width="81dp"
-                        android:layout_height="32dp"
-                        android:gravity="center"
-                        android:text="R$ 0,00" />
-                </LinearLayout>
-
-
-
-                <TextView
-                    android:id="@+id/seuslocais"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:text="SEUS LOCAIS"
-                    android:textSize="23dp"
-                    android:textStyle="bold"
-                    android:textAlignment="center"/>
 
 
                 <androidx.recyclerview.widget.RecyclerView
