@@ -116,7 +116,7 @@ public class downloadImgItineraryPage extends AppCompatActivity {
     }
 
     private void uploadItineraryImage(Uri imageUri) {
-        StorageReference fileRef = storageItineraryPicsRef.child("Itineraries").child(mAuth.getCurrentUser().getUid()).child(itineraryId).child("Profile Pic");
+        StorageReference fileRef = storageItineraryPicsRef.child("Itineraries").child(mAuth.getCurrentUser().getUid()).child("ItineraryPic").child(itineraryId+".jpg");
 
         fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -145,10 +145,9 @@ public class downloadImgItineraryPage extends AppCompatActivity {
                                 public void onSuccess(Uri uri) {
                                     String downloadUrl= uri.toString();
                                     HashMap<String, Object> userMap = new HashMap<>();
-                                    userMap.put("image", downloadUrl);
+                                    userMap.put("ItineraryPic", downloadUrl);
 
-                                    databaseReference.child("Itineraries").child(mAuth.getCurrentUser().getUid()).child(itineraryId)
-                                            .child("Profile Pic").updateChildren(userMap);
+                                    databaseReference.child("ItineraryPic").child(itineraryId).updateChildren(userMap);
                                 }
                             });
                 }
