@@ -51,7 +51,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
     private TextView txt_itinerary_name,txt_people, txt_inicial_date, txt_final_date, txt_description, totaldedias,edit_description_popup,edit_number_of_travelers_popup;
     private Button publicar;
     ImageButton btn_back, btn_edit;
-    ImageView btn_img, btn_delete, img;
+    ImageView btn_img, btn_delete, img,gpt_assisten_btn ;
 
     private RecyclerView recyclerView;
     private ArrayList<Day> daylist;
@@ -79,12 +79,15 @@ public class ItineraryPageActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        itineraryId = getIntent().getExtras().getString("ItineraryId");
+        userId = getIntent().getExtras().getString("UserId");
+
         String id = String.valueOf(item.getItemId());
         String id1 = "o";
-        String id2, id3, id4,id5;
+        String id2, id4,id5;
         id1 = String.valueOf(R.id.delete_itinerary);
         id2 = String.valueOf(R.id.edit_itinerary_menu);
-        id3 = String.valueOf(R.id.gpt_assistent);
         id4 = String.valueOf(R.id.add_cover);
         id5 = String.valueOf(R.id.publicate);
 
@@ -98,13 +101,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
             startActivity(i);
             finish();
         }
-        if(id3.contains(id)){
-            Intent b = new Intent(ItineraryPageActivity.this, ChatActivity.class);
-                b.putExtra("itineraryId", itineraryId);
-                b.putExtra("userId", userId);
-                startActivity(b);
-                finish();
-        }
+
         if(id4.contains(id)){
             Intent c = new Intent(ItineraryPageActivity.this, downloadImgItineraryPage.class);
                 c.putExtra("ItineraryId", itineraryId);
@@ -118,7 +115,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
                     publicItinerariesReference = FirebaseDatabase.getInstance().getReference().child("PublicItineraries");
 
                     AlertDialog.Builder buider = new AlertDialog.Builder(ItineraryPageActivity.this);
-                    buider.setTitle("Tem certeza?");
+                    buider.setTitle("Compartilhar roteiro");
                     buider.setMessage("Seu roteiro ficará visível para todos os usuários");
 
                     buider.setPositiveButton("Publicar", new DialogInterface.OnClickListener() {
@@ -178,10 +175,11 @@ public class ItineraryPageActivity extends AppCompatActivity {
         txt_description = findViewById(R.id.description);
         itinerary_pic = findViewById(R.id.cover_1);
         btn_clima = findViewById(R.id.btn_clima);
-        btn_back = findViewById(R.id.btn_back_myItineraries);
+        btn_back = findViewById(R.id.btn_back_myItinerariesList);
         btn_galeria = findViewById(R.id.btn_galeria);
         btn_notes = findViewById(R.id.btn_notes);
-
+        MyitinerariesFragment myitinerariesFragment = new MyitinerariesFragment();
+        gpt_assisten_btn =findViewById(R.id.gpt_assisten_btn);
         txt_itinerary_name = findViewById(R.id.localdoroteiro);
 
 
@@ -264,10 +262,23 @@ public class ItineraryPageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 fragmentManager.beginTransaction()
-                        .replace(R.id.main_fragment, MyitinerariesFragment.class, null)
+                        .replace(R.id.main_fragment, myitinerariesFragment, null)
+                        .setReorderingAllowed(true)
+                        .addToBackStack("name")
                         .commit();
             }
         });
+        gpt_assisten_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent b = new Intent(ItineraryPageActivity.this, ChatActivity.class);
+                b.putExtra("itineraryId", itineraryId);
+                b.putExtra("userId", userId);
+                startActivity(b);
+                finish();
+            }
+        });
+
 
         btn_clima.setOnClickListener(new View.OnClickListener() {
             @Override

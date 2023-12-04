@@ -38,6 +38,7 @@ public class ChatActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     EditText message;
+    TextView txtUm, txtDois, txt_desc;
     ImageButton sendMessage;
     List<Message> messageList;
     MessageAdapter messageAdapter;
@@ -49,10 +50,6 @@ public class ChatActivity extends AppCompatActivity {
 
     OkHttpClient client = new OkHttpClient();
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,9 +59,10 @@ public class ChatActivity extends AppCompatActivity {
         message = findViewById(R.id.message_edit_text_chat);
         sendMessage = findViewById(R.id.send_button);
         imageButton_goBack = findViewById(R.id.imageButton_goBack);
-
+        txtUm = findViewById(R.id.txtUm);
+        txtDois = findViewById(R.id.txtDois);
         messageList = new ArrayList<>();
-
+        txt_desc = findViewById(R.id.txt_desc);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setStackFromEnd(true);
         recyclerView.setLayoutManager(manager);
@@ -97,6 +95,9 @@ public class ChatActivity extends AppCompatActivity {
                     addToChat(question, Message.SENT_BY_ME);
                     message.setText("");
                     callAPI(question);
+                    txtUm.setText("");
+                    txtDois.setText("");
+                    txt_desc.setText("");
                 }
             }
 

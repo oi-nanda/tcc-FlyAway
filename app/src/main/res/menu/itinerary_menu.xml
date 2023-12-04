@@ -5,25 +5,21 @@
 
     <item
         android:id="@+id/delete_itinerary"
-        app:showAsAction="ifRoom"
+        app:showAsAction="never"
         android:title="Deletar Itinerário"
-        android:icon="@drawable/baseline_delete_24"
         />
     <item android:id="@+id/edit_itinerary_menu"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/baseline_edit_24"
+        app:showAsAction="never"
         android:title="Editar Itinerário"
         />
-    <item android:id="@+id/gpt_assistent"
-        app:showAsAction="never"
-        android:title="Assistente GPT"
-        />
+
     <item android:id="@+id/add_cover"
         app:showAsAction="never"
         android:title="Adicionar Cover"
         />
     <item android:id="@+id/publicate"
-        app:showAsAction="never"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/baseline_share_24"
         android:title="Publicar Itinerário"
         />
 

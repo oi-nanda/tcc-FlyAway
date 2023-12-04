@@ -6,119 +6,260 @@
     android:layout_height="match_parent"
     >
 
-
-    <ImageView
-        android:id="@+id/cover_place"
-        android:layout_width="702dp"
-        android:layout_height="293dp"
-        android:src="@drawable/img_7"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cover_placePage"
+        android:layout_width="450dp"
+        android:layout_height="195dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+        <ImageView
+            android:id="@+id/imageView25"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:elevation="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.007" />
+
+        <ImageView
+            android:id="@+id/cover_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_7"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
+    </androidx.cardview.widget.CardView>
 
 
-    <View
-        android:id="@+id/container"
-        style="@style/ContainerComponentsQuarto2"
-        android:layout_width="416dp"
-        android:layout_height="485dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent" />
+    <!--    telefone, , aberto, horarios, foto, review-->
 
     <TextView
+        android:id="@+id/nameplace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:elegantTextHeight="true"
         android:text="Catedral de Milão"
         android:textSize="25dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="263dp"
+        android:textStyle="bold"
+        android:textColor="#4c4c5c"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cover_placePage"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:layout_width="wrap_content"
+
+        android:id="@+id/textView26"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
         android:text="É uma catedral católica romana situada na praça central da cidade de Milão, na Lombardia, localizada ao norte da Itália."
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="318dp"
+        android:textColor="#4c4c5c"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameplace"
         tools:ignore="MissingConstraints" />
 
+
+
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="5dp"
+        android:src="@drawable/maps"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.918"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.26" />
+
+    <View
+        android:id="@+id/container_ciew_places"
+        style="@style/ContainerComponents"
+        android:layout_height="260dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
     <TextView
+        android:id="@+id/endereco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="P.za del Duomo, 20122 Milano MI, Itália"
-        tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="609dp"
+        app:layout_constraintBottom_toBottomOf="@+id/container_ciew_places"
+        app:layout_constraintEnd_toEndOf="@+id/container_ciew_places"
+        app:layout_constraintHorizontal_bias="0.594"
+        app:layout_constraintStart_toStartOf="@+id/container_ciew_places"
+        app:layout_constraintTop_toTopOf="@+id/container_ciew_places"
+        app:layout_constraintVertical_bias="0.082"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/imageView25"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:padding="5dp"
-        android:src="@drawable/img_9"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.007" />
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Telefone"
+        app:layout_constraintBottom_toBottomOf="@+id/container_ciew_places"
+        app:layout_constraintEnd_toEndOf="@+id/container_ciew_places"
+        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintStart_toStartOf="@+id/container_ciew_places"
+        app:layout_constraintTop_toBottomOf="@+id/endereco"
+        app:layout_constraintVertical_bias="0.148"
+        tools:ignore="MissingConstraints" />
 
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aberto ou fechado"
+        app:layout_constraintBottom_toBottomOf="@+id/container_ciew_places"
+        app:layout_constraintEnd_toEndOf="@+id/container_ciew_places"
+        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintStart_toStartOf="@+id/container_ciew_places"
+        app:layout_constraintTop_toBottomOf="@+id/textView28"
+        app:layout_constraintVertical_bias="0.137"
+        tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/coins"
-        android:layout_width="57dp"
-        android:layout_height="53dp"
-        android:padding="5dp"
-        android:src="@drawable/img_1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.961" />
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="horarios"
+        app:layout_constraintBottom_toBottomOf="@+id/container_ciew_places"
+        app:layout_constraintEnd_toEndOf="@+id/container_ciew_places"
+        app:layout_constraintHorizontal_bias="0.208"
+        app:layout_constraintStart_toStartOf="@+id/container_ciew_places"
+        app:layout_constraintTop_toBottomOf="@+id/textView29"
+        app:layout_constraintVertical_bias="0.203"
+        tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/imageView22"
-        android:layout_width="88dp"
-        android:layout_height="71dp"
-        android:padding="5dp"
-        android:src="@drawable/img_10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.88" />
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="review"
+        app:layout_constraintBottom_toBottomOf="@+id/container_ciew_places"
+        app:layout_constraintEnd_toEndOf="@+id/container_ciew_places"
+        app:layout_constraintHorizontal_bias="0.862"
+        app:layout_constraintStart_toStartOf="@+id/container_ciew_places"
+        app:layout_constraintTop_toTopOf="@+id/container_ciew_places"
+        app:layout_constraintVertical_bias="0.946"
+        tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:layout_width="97dp"
-        android:layout_height="101dp"
-        android:padding="5dp"
-        android:src="@drawable/img_2"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:text="Informações: "
+        android:textColor="#4c4c5c"
+        android:textSize="19sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.087"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.242" />
+        app:layout_constraintTop_toBottomOf="@+id/textView26"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/containerComponents"
         style="@style/ContainerComponents"
-        android:layout_width="158dp"
-        android:layout_height="44dp"
-        android:layout_marginEnd="144dp"
+        android:layout_width="136dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="R$ 200,00"
 
+        android:text="R$ 200,00"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="661dp"
+        app:layout_constraintHorizontal_bias="0.992"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/container_ciew_places"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remover atração do dia"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/container_ciew_places"
+        app:layout_constraintVertical_bias="0.678" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/endereco"
+        app:layout_constraintHorizontal_bias="0.593"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/container_ciew_places"
+        app:srcCompat="@drawable/baseline_location_on_24" />
+
+    <ImageView
+        android:id="@+id/telefone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView28"
+        app:layout_constraintTop_toBottomOf="@+id/imageView18"
+        app:srcCompat="@drawable/baseline_local_phone_24" />
+
+    <ImageView
+        android:id="@+id/abertooufechado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView29"
+        app:layout_constraintHorizontal_bias="0.384"
+        app:layout_constraintStart_toStartOf="@+id/container_ciew_places"
+        app:layout_constraintTop_toBottomOf="@+id/telefone"
+        app:srcCompat="@drawable/baseline_info_24" />
+
+    <ImageView
+        android:id="@+id/imageView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView30"
+        app:layout_constraintHorizontal_bias="0.384"
+        app:layout_constraintStart_toStartOf="@+id/container_ciew_places"
+        app:layout_constraintTop_toBottomOf="@+id/abertooufechado"
+        app:srcCompat="@drawable/baseline_access_time_24" />
+
+    <ImageView
+        android:id="@+id/imageView28"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/containerComponents"
+        app:layout_constraintHorizontal_bias="0.956"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/container_ciew_places"
+        app:srcCompat="@drawable/moeda" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

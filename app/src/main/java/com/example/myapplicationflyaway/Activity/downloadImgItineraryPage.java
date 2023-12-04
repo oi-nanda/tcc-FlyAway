@@ -116,6 +116,7 @@ public class downloadImgItineraryPage extends AppCompatActivity {
             itineraryImageView.setImageURI(resulturi);
         }
 
+
     }
 
     private void uploadItineraryImage(Uri imageUri) {

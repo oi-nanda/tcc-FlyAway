@@ -29,7 +29,7 @@ public class AddNotesActivity extends AppCompatActivity {
     EditText inputNoteTitle, inputNoteSubtitle, inputContent;
     DatabaseReference referenceNotes;
     FirebaseAuth mAuth;
-    String itineraryId;
+    String itineraryId, user2, itineraryName, itineraryDate;
     ImageView btn_back_fomNotesSave;
 
 
@@ -47,7 +47,10 @@ public class AddNotesActivity extends AppCompatActivity {
         btn_back_fomNotesSave = findViewById(R.id.btn_back_fomNotesSave);
         String user = mAuth.getCurrentUser().getUid();
 
-        itineraryId = getIntent().getExtras().getString("ItineraryId");
+        itineraryId = getIntent().getExtras().getString("itineraryId");
+        user2 = getIntent().getExtras().getString("UserId");
+        itineraryName = getIntent().getExtras().getString("itineraryName");
+        itineraryDate = getIntent().getExtras().getString("itineraryDate");
 
         referenceNotes = FirebaseDatabase.getInstance().getReference().child("Notes").child(user).child(itineraryId);
 
@@ -56,7 +59,10 @@ public class AddNotesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AddNotesActivity.this, NotesActivity.class);
-                intent.putExtra("ItineraryId", itineraryId);
+                intent.putExtra("itineraryId", itineraryId);
+                intent.putExtra("UserId", user2);
+                intent.putExtra("itineraryName", itineraryName);
+                intent.putExtra("itineraryDate", itineraryDate);
                 startActivity(intent);
                 finish();
             }
@@ -81,8 +87,10 @@ public class AddNotesActivity extends AppCompatActivity {
                                 Toast.makeText(AddNotesActivity.this, "Anotação criada com sucesso", Toast.LENGTH_SHORT).show();
 
                                 Intent intent = new Intent(AddNotesActivity.this, NotesActivity.class);
-                                intent.putExtra("ItineraryId", itineraryId);
-                                startActivity(intent);
+                                intent.putExtra("itineraryId", itineraryId);
+                                intent.putExtra("UserId", user2);
+                                intent.putExtra("itineraryName", itineraryName);
+                                intent.putExtra("itineraryDate", itineraryDate);                                startActivity(intent);
                                 finish();
                             }
                         });
