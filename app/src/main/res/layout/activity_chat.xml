@@ -13,7 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/txt_desc"
-        android:layout_below="@+id/imageButton_goBack"/>
+        android:layout_below="@+id/imageButton_goBack"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="1dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -23,10 +25,10 @@
         android:textStyle="bold"
         android:textSize="13dp"
         android:layout_above="@+id/bottom_layout"
-        android:gravity="center"
-        android:layout_marginStart="10dp"
+        android:gravity="start"
+        android:layout_marginStart="20dp"
 
-        android:text="Deixe o ChatGPT auxiliar na construção do seu roteiro!"/>
+        android:text="No que posso te ajudar?"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -76,4 +78,36 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/transparent_backgroud"
         android:src="@drawable/baseline_arrow_back_24" />
+
+    <TextView
+        android:id="@+id/txtDois"
+        android:layout_width="298dp"
+        android:layout_height="114dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="262dp"
+        android:layout_marginEnd="50dp"
+        android:gravity="center"
+        android:text="Bem Vindo ao Assistente ChatGPT do FlyAway!"
+        android:textColor="#bcbcc9"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtUm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtDois"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="57dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Pergunte o que achar que pode\n auxiliar na criação do seu roteiro \n de viagem"
+        android:textColor="#bcbcc9"
+        android:textSize="17dp" />
 </RelativeLayout>

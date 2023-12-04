@@ -12,7 +12,7 @@ public class Place implements Serializable {
     Image img;
 
 
-    public void Place() {}
+    public Place() {}
 
 
     public Place(String name, String description, Double cost, String id, Image img, String iddia, String iditinerary) {

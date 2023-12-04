@@ -27,7 +27,7 @@ import java.util.Random;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     Context context;
-    private FirebaseAuth mAuth;
+
     ArrayList<Day> dayArrayList;
     DatabaseReference reference;
 
@@ -50,7 +50,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         Day day = dayArrayList.get(position);
         holder.day.setText(day.getDayname());
-
         holder.imgDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,11 +71,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView day;
-        CardView imgDay;
+        ConstraintLayout imgDay;
+
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             day = itemView.findViewById(R.id.title_card);
-            imgDay = itemView.findViewById(R.id.image_card);
+            imgDay = itemView.findViewById(R.id.image_card_day);
+
 
         }
     }
