@@ -275,7 +275,6 @@ public class TestingAutoComplete extends FragmentActivity implements OnMapReadyC
                 (placeResponse) -> {
                     Place lugar = placeResponse.getPlace();
 
-
                     if (lugar.getOpeningHours() == null){
                         status.setText("Sem horário de funcionamento");
                     }
@@ -326,8 +325,6 @@ public class TestingAutoComplete extends FragmentActivity implements OnMapReadyC
             celular.setText("Sem número de telefone");
         }
 
-        //////////////////////////////
-
         final List<PhotoMetadata> metadata = place.getPhotoMetadatas();
         Drawable alternativeImage = getResources().getDrawable(R.drawable.img_13);
         if (metadata == null || metadata.isEmpty()) {
@@ -353,8 +350,6 @@ public class TestingAutoComplete extends FragmentActivity implements OnMapReadyC
                 }
             });
         }
-
-        /////////////////////////////
 
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -401,7 +396,7 @@ public class TestingAutoComplete extends FragmentActivity implements OnMapReadyC
         mAuth = FirebaseAuth.getInstance();
 
         com.example.myapplicationflyaway.Model.Place newplace = new com.example.myapplicationflyaway.Model.Place(
-                place.getName(),null,null,place.getId(),null,dayName,itineraryId
+                place.getName(),"",0.00,place.getId(),null,dayName,itineraryId
         );
         Log.i("msg",dayName+"   "+itineraryId);
 

@@ -2,6 +2,7 @@ package com.example.myapplicationflyaway.Activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,14 +46,17 @@ public class MyAdapterPlace extends RecyclerView.Adapter<MyAdapterPlace.ViewHold
         Place place = placeArrayList.get(position);
         holder.place.setText(place.getName());
 
-//        holder.imgPlace.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(v.getContext(), PlacePageActivity.class);
-//                intent.putExtra("PlaceName", place.getName());
-//                v.getContext().startActivity(intent);
-//            }
-//        });
+        holder.imgPlace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), PlacePageActivity.class);
+                intent.putExtra("PlaceName", place.getName());
+                intent.putExtra("PlaceId", place.getId());
+                intent.putExtra("ItineraryId",place.getIditinerary());
+                intent.putExtra("Dayname",place.getIddia());
+                v.getContext().startActivity(intent);
+            }
+        });
 
     }
 
@@ -63,13 +67,12 @@ public class MyAdapterPlace extends RecyclerView.Adapter<MyAdapterPlace.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView place,valor;
+        TextView place;
         CardView imgPlace;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-          //  valor = itemView.findViewById(R.id.valordolugar);
             place = itemView.findViewById(R.id.title_card);
-//            imgPlace = itemView.findViewById(R.id.image_card);
+            imgPlace = itemView.findViewById(R.id.image_card);
 
         }
     }
