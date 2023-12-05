@@ -43,6 +43,7 @@ public class FinancesActivity extends AppCompatActivity {
     ViewPagerAdapter viewPagerAdapter;
     Button btn_hotel, btn_lazer, btn_comida, btn_voos;
     TextView valorcomida, valorlazer, valorhotel, valorvoos;
+    int cont = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +63,74 @@ public class FinancesActivity extends AppCompatActivity {
                 .child("Finances");
 
 
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (!snapshot.child("voos").child("cost"
+                ).exists()){valorvoos.setText("R$ 0,00");}
+                else {
+                    valorvoos.setText("R$ " + snapshot.child("voos").child("cost"
+                    ).getValue().toString());
+                }
+
+                if (!snapshot.child("hotel").child("cost"
+                ).exists()){valorhotel.setText("R$ 0,00");}
+                else {
+                    valorhotel.setText("R$ " + snapshot.child("hotel").child("cost"
+                    ).getValue().toString());
+                }
+
+                if (!snapshot.child("lazer").child("cost"
+                ).exists()){valorlazer.setText("R$ 0,00");}
+                else {
+                    valorlazer.setText("R$ " + snapshot.child("lazer").child("cost"
+                    ).getValue().toString());
+                }
+
+                if (!snapshot.child("comida").child("cost"
+                ).exists()){valorcomida.setText("R$ 0,00");}
+                else {
+                    valorcomida.setText("R$ " + snapshot.child("comida").child("cost"
+                    ).getValue().toString());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
         btn_voos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 popup("voos");
             }
         });
+
+        btn_hotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popup("hotel");
+            }
+        });
+
+        btn_comida.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popup("comida");
+            }
+        });
+
+        btn_lazer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popup("lazer");
+            }
+        });
+
 
 
 //
@@ -106,41 +169,64 @@ public class FinancesActivity extends AppCompatActivity {
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
         popupWindow.showAtLocation(tempLayout, Gravity.CENTER, 0, 0);
 
-//
-//        btn.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                if (edt.getText().toString().equals(null) || edt.getText().toString().isEmpty()){
-//                    popupWindow.dismiss();
-//                }
-//                else{
-////                    valor.setText(edt.getText().toString());
-//
-//                    if (var.equals("voos")){
-//                        reference = reference.child("voos");
-//                    }
-//                    reference.addListenerForSingleValueEvent(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                            HashMap<String, Object> PlaceMap = new HashMap<>();
-//                            PlaceMap.put("cost",edt.getText().toString());
-//                            reference.updateChildren(PlaceMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<Void> task) {
-//                                    popupWindow.dismiss();
-//                                }
-//                            });
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError error) {
-////                            popupWindow.dismiss();
-//                        }
-//                    });
-//                }
-//                return false;
-//            }
-//        });
+
+        btn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (edt.getText().toString().equals(null) || edt.getText().toString().isEmpty()){
+                    popupWindow.dismiss();
+                }
+                else{
+//                    valor.setText(edt.getText().toString());
+
+                    if (var.equals("voos")) {
+                        reference = FirebaseDatabase.getInstance().getReference("Itineraries").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(itineraryId)
+                                .child("Finances").child("voos");
+                        valorvoos.setText("R$ "+edt.getText().toString());
+                    }
+
+                    if (var.equals("hotel")) {
+                        cont++;
+                        reference = FirebaseDatabase.getInstance().getReference("Itineraries").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(itineraryId)
+                                .child("Finances").child("hotel");
+                        valorvoos.setText("R$ "+edt.getText().toString());
+                    }
+
+                    if (var.equals("comida")) {
+                        cont++;
+                        reference = FirebaseDatabase.getInstance().getReference("Itineraries").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(itineraryId)
+                                .child("Finances").child("comida");
+                        valorvoos.setText("R$ "+edt.getText().toString());
+                    }
+
+                    if (var.equals("lazer")) {
+                        cont++;
+                        reference = FirebaseDatabase.getInstance().getReference("Itineraries").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(itineraryId)
+                                .child("Finances").child("lazer");
+                        valorlazer.setText("R$ "+edt.getText().toString());
+                    }
+                    reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            HashMap<String, Object> PlaceMap = new HashMap<>();
+                            PlaceMap.put("cost",edt.getText().toString());
+                            reference.updateChildren(PlaceMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    popupWindow.dismiss();
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+//                            popupWindow.dismiss();
+                        }
+                    });
+                }
+                return false;
+            }
+        });
 
         close_popup.setOnTouchListener(new View.OnTouchListener() {
             @Override

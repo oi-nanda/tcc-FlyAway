@@ -295,6 +295,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
                 Intent i = new Intent(ItineraryPageActivity.this, ClimaActivity.class);
                 i.putExtra("itineraryId", itineraryId);
                 i.putExtra("UserId", userId);
+                i.putExtra("ItineraryName",itineraryName);
                 startActivity(i);
 
             }
