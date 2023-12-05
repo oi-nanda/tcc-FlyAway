@@ -11,7 +11,6 @@ public class Place implements Serializable {
     String id,iddia,iditinerary;
     Image img;
 
-
     public Place() {}
 
 

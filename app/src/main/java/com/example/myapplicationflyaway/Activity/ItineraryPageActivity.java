@@ -68,7 +68,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
   
     DatabaseReference reference, publicItinerariesReference;
 
-    LinearLayout btn_clima, btn_galeria, btn_notes;
+    LinearLayout btn_clima, btn_galeria, btn_notes, btn_financas;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -178,6 +178,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
         btn_back = findViewById(R.id.btn_back_myItinerariesList);
         btn_galeria = findViewById(R.id.btn_galeria);
         btn_notes = findViewById(R.id.btn_notes);
+        btn_financas = findViewById(R.id.btn_financas);
         MyitinerariesFragment myitinerariesFragment = new MyitinerariesFragment();
         gpt_assisten_btn =findViewById(R.id.gpt_assisten_btn);
         txt_itinerary_name = findViewById(R.id.localdoroteiro);
@@ -186,7 +187,6 @@ public class ItineraryPageActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.trip_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         daylist = new ArrayList<Day>();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -280,6 +280,15 @@ public class ItineraryPageActivity extends AppCompatActivity {
         });
 
 
+        btn_financas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ItineraryPageActivity.this,FinancesActivity.class);
+                i.putExtra("ItineraryId",itineraryId);
+                startActivity(i);
+            }
+        });
+
         btn_clima.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -294,7 +303,8 @@ public class ItineraryPageActivity extends AppCompatActivity {
         btn_galeria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ItineraryPageActivity.this, GaleryPhotosActivity.class);
+//                Intent i = new Intent(ItineraryPageActivity.this, GaleryPhotosActivity.class);
+                Intent i = new Intent(ItineraryPageActivity.this, LocaisPorProximidade.class);
                 i.putExtra("itineraryId", itineraryId);
                 i.putExtra("UserId", userId);
                 startActivity(i);

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/linear_layout"
+    tools:context=".Activity.LocaisPorProximidade"
+    android:orientation="vertical">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:id="@+id/linearL"
+    android:layout_height="wrap_content">
+
+<ImageButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/hospital"
+    android:padding="30dp"
+    android:layout_margin="10dp"
+    android:background="@color/gray"
+    />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/restaurantes"
+        android:padding="30dp"
+        android:background="@color/gray"
+        android:layout_margin="10dp"
+        />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/atm"
+        android:padding="30dp"
+        android:background="@color/gray"
+        android:layout_margin="10dp"
+
+        />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bancos"
+        android:padding="30dp"
+        android:layout_margin="10dp"
+        android:background="@color/gray"
+        />
+
+
+</LinearLayout>
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linearL"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:id="@+id/mapa"
+        />
+
+</RelativeLayout>

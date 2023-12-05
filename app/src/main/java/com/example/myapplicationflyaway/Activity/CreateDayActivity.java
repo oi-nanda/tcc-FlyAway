@@ -44,34 +44,22 @@ public class CreateDayActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     ActivityCreateDayBinding binding;
     String desc, cost;
-
     private ArrayList<Day> daylist;
-
     MyAdapter myAdapter;
     String placeName;
     FirebaseUser user;
-
     private FirebaseAuth mAuth;
-
     private DatabaseReference dbReference;
     private FirebaseAuth auth;
     long a = 0;
-
     View view;
-
     DatabaseReference databaseReference, dbRefDay, dbRefPlace;
-
     FirebaseDatabase db;
     DatabaseReference reference;
-
     String uid;
-
     String NDaysNew;
-
     String dayname;
-
     String id;
-    // CUIDADO, LOOP INFINITO!!!!! PODE SOBRECARREGAR O SISTEMA!
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,7 +141,6 @@ public class CreateDayActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
          }

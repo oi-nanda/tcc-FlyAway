@@ -114,7 +114,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView28"
+        android:id="@+id/telefone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Telefone"
@@ -127,7 +127,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView29"
+        android:id="@+id/abertooufechado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Aberto ou fechado"
@@ -135,7 +135,7 @@
         app:layout_constraintEnd_toEndOf="@+id/container_ciew_places"
         app:layout_constraintHorizontal_bias="0.266"
         app:layout_constraintStart_toStartOf="@+id/container_ciew_places"
-        app:layout_constraintTop_toBottomOf="@+id/textView28"
+        app:layout_constraintTop_toBottomOf="@+id/telefone"
         app:layout_constraintVertical_bias="0.137"
         tools:ignore="MissingConstraints" />
 
@@ -148,7 +148,7 @@
         app:layout_constraintEnd_toEndOf="@+id/container_ciew_places"
         app:layout_constraintHorizontal_bias="0.208"
         app:layout_constraintStart_toStartOf="@+id/container_ciew_places"
-        app:layout_constraintTop_toBottomOf="@+id/textView29"
+        app:layout_constraintTop_toBottomOf="@+id/abertooufechado"
         app:layout_constraintVertical_bias="0.203"
         tools:ignore="MissingConstraints" />
 
@@ -182,13 +182,12 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/containerComponents"
+        android:id="@+id/valor"
         style="@style/ContainerComponents"
         android:layout_width="136dp"
         android:layout_height="29dp"
         android:layout_marginTop="16dp"
         android:gravity="center"
-
         android:text="R$ 200,00"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.992"
@@ -219,26 +218,26 @@
         app:srcCompat="@drawable/baseline_location_on_24" />
 
     <ImageView
-        android:id="@+id/telefone"
+        android:id="@+id/imageView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView28"
+        app:layout_constraintEnd_toStartOf="@+id/telefone"
+
         app:layout_constraintTop_toBottomOf="@+id/imageView18"
         app:srcCompat="@drawable/baseline_local_phone_24" />
 
     <ImageView
-        android:id="@+id/abertooufechado"
+        android:id="@+id/imageView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView29"
+        app:layout_constraintEnd_toStartOf="@+id/abertooufechado"
         app:layout_constraintHorizontal_bias="0.384"
         app:layout_constraintStart_toStartOf="@+id/container_ciew_places"
-        app:layout_constraintTop_toBottomOf="@+id/telefone"
+        app:layout_constraintTop_toBottomOf="@+id/imageView19"
         app:srcCompat="@drawable/baseline_info_24" />
-
     <ImageView
         android:id="@+id/imageView27"
         android:layout_width="wrap_content"
@@ -247,7 +246,7 @@
         app:layout_constraintEnd_toStartOf="@+id/textView30"
         app:layout_constraintHorizontal_bias="0.384"
         app:layout_constraintStart_toStartOf="@+id/container_ciew_places"
-        app:layout_constraintTop_toBottomOf="@+id/abertooufechado"
+        app:layout_constraintTop_toBottomOf="@+id/imageView22"
         app:srcCompat="@drawable/baseline_access_time_24" />
 
     <ImageView
@@ -255,7 +254,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/containerComponents"
+        app:layout_constraintEnd_toStartOf="@+id/valor"
         app:layout_constraintHorizontal_bias="0.956"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/container_ciew_places"
