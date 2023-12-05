@@ -43,7 +43,7 @@ public class LocaisPorProximidade extends FragmentActivity implements OnMapReady
     private  static  final int Request_code = 101;
     private double lat, lng;
 
-    ImageButton atm, bank, hosp, res;
+    ImageButton atm, bank, hosp, res, store;
 
 
     @Override
@@ -56,7 +56,7 @@ public class LocaisPorProximidade extends FragmentActivity implements OnMapReady
         bank = findViewById(R.id.bancos);
         hosp = findViewById(R.id.hospital);
         res = findViewById(R.id.restaurantes);
-
+        store = findViewById(R.id.store);
 
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(
@@ -144,6 +144,28 @@ public class LocaisPorProximidade extends FragmentActivity implements OnMapReady
                 stringBuilder.append("&radius=1000");
                 stringBuilder.append("&type=park");
                 stringBuilder.append("&keyword=park");
+                stringBuilder.append("&sensor=true");
+                stringBuilder.append("&key="+getResources().getString(R.string.google_maps_key));
+
+                String url = stringBuilder.toString();
+                Object dataFectch[] = new Object[2];
+                dataFectch[0]=mMap;
+                dataFectch[1]=url;
+
+                Pegarinformacoes pegarinformacoes = new Pegarinformacoes();
+                pegarinformacoes.execute(dataFectch);
+            }
+        });
+
+        store.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringBuilder stringBuilder = new StringBuilder
+                        ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=");
+                stringBuilder.append(lat+","+lng);
+                stringBuilder.append("&radius=1000");
+                stringBuilder.append("&type=store");
+                stringBuilder.append("&keyword=store");
                 stringBuilder.append("&sensor=true");
                 stringBuilder.append("&key="+getResources().getString(R.string.google_maps_key));
 
