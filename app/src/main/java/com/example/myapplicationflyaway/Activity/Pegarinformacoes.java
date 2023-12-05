@@ -59,7 +59,7 @@ public class Pegarinformacoes extends AsyncTask<Object,String,String> {
                         Double.parseDouble(lng));
 
                 MarkerOptions markerOptions = new MarkerOptions();
-                markerOptions.title(placeId);
+                markerOptions.title(name);
                 markerOptions.position(latLng);
                 googleMap.addMarker(markerOptions);
                 googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,15));

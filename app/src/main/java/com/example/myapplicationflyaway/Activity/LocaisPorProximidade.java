@@ -175,7 +175,7 @@ public class LocaisPorProximidade extends FragmentActivity implements OnMapReady
                 dataFectch[0]=mMap;
                 dataFectch[1]=url;
 
-                Pegarinformacoes pegarinformacoes = new Pegarinformacoes();
+                Pegarinformacoes pegarinformacoes = new Pegarinformacoes(LocaisPorProximidade.this);
                 pegarinformacoes.execute(dataFectch);
             }
         });

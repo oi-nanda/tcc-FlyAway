@@ -101,11 +101,11 @@ public class DayPageActivity extends AppCompatActivity {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                     Place place = dataSnapshot.getValue(Place.class);
+                                    Place place = dataSnapshot.getValue(Place.class);
                                     placelist.add(place);
                                 }
                                 Log.d("lugar", "erro3");
-                               myAdapterPlace.notifyDataSetChanged();
+                                myAdapterPlace.notifyDataSetChanged();
                             }
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
@@ -113,17 +113,17 @@ public class DayPageActivity extends AppCompatActivity {
                             }
                         });
                         Log.d("lugar", "erro4");
-                      myAdapterPlace = new MyAdapterPlace(DayPageActivity.this, placelist);
+                        myAdapterPlace = new MyAdapterPlace(DayPageActivity.this, placelist);
                         Log.d("lugar", "erro5");
-                      recyclerView.setAdapter(myAdapterPlace);
+                        recyclerView.setAdapter(myAdapterPlace);
 
                     }
                     nomedodia.setText((snapshot.child("dayname").getValue().toString()));
 
-                    if(snapshot.child("valorv").getValue().toString() != null){
-                        valordodia.setText(snapshot.child("valorv").getValue().toString());
-                    }
-                    else{valordodia.setText("R$ 0,00");}
+//                    if(snapshot.child("valorv").getValue().toString() != null){
+//                        valordodia.setText(snapshot.child("valorv").getValue().toString());
+//                    }
+//                    else{valordodia.setText("R$ 0,00");}
                 }
 
                 @Override

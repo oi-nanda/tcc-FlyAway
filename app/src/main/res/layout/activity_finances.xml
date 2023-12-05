@@ -71,45 +71,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
-    <!--    <View-->
-    <!--        android:id="@+id/view_test3"-->
-    <!--        android:layout_width="300dp"-->
-    <!--        android:layout_height="1dp"-->
-    <!--        android:background="@color/darkgray"-->
-    <!--        android:foregroundGravity="center"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="0.494"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintVertical_bias="0.15" />-->
-
-
-    <View
-        android:id="@+id/view_test4"
-        android:layout_width="300dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="40dp"
-        android:elevation="3dp"
-        android:background="@color/darkgray"
-        android:foregroundGravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView25" />
-
-
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
-        android:elevation="3dp"
-        android:text="Atrações Turísticas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.363"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view_test" />
-
-
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/containerComponents"
         style="@style/ContainerComponents"
@@ -119,20 +80,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view_test" />
-
-    <!--    <ImageView-->
-    <!--        android:id="@+id/imageView23"-->
-    <!--        android:layout_width="60dp"-->
-    <!--        android:layout_height="40dp"-->
-    <!--        android:layout_marginStart="95dp"-->
-    <!--        android:layout_marginTop="310dp"-->
-    <!--        android:layout_marginEnd="14dp"-->
-    <!--        android:layout_marginBottom="10dp"-->
-    <!--        app:layout_constraintBottom_toBottomOf="@+id/containerComponents"-->
-    <!--        app:layout_constraintStart_toStartOf="@+id/containerComponents"-->
-    <!--        app:layout_constraintTop_toTopOf="@+id/containerComponents"-->
-    <!--        app:srcCompat="@drawable/add_itinerary" />-->
-
 
 
     <TextView
