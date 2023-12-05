@@ -257,7 +257,7 @@ public class CreateItineraryActivity extends FragmentActivity implements OnMapRe
                                 SimpleDateFormat simple = new SimpleDateFormat("dd-MM-yyyy");
                                 dt = simple.format(calendar.getTime());
 
-                                Day day = new Day(dayname,"",idday,null,id,dt,"0.00");
+                                Day day = new Day(dayname,"",idday,null,id,dt,0.00);
                                 dbRefDay.child(dayname).setValue(day).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {

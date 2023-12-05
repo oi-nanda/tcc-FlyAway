@@ -16,9 +16,16 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +34,7 @@ import com.example.myapplicationflyaway.Fragments.MyitinerariesFragment;
 import com.example.myapplicationflyaway.R;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.LocalTime;
@@ -53,6 +61,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -104,6 +113,14 @@ public class PlacePageActivity extends FragmentActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+
+        valor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popup();
             }
         });
 
@@ -300,6 +317,70 @@ public class PlacePageActivity extends FragmentActivity {
                     }
                 });
                 buider.show();
+
+            }
+        });
+    }
+
+    public void popup (){
+        LayoutInflater inflater = (LayoutInflater)
+                getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.activity_question_edit_popup, null);
+        Button btn = popupView.findViewById(R.id.button_edit_info_itinerary);
+        ImageView close_popup = popupView.findViewById(R.id.imageView14);
+        EditText edt = popupView.findViewById(R.id.edit_description);
+
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = true;
+        FrameLayout tempLayout = new FrameLayout(getApplicationContext());
+        tempLayout.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        popupWindow.showAtLocation(tempLayout, Gravity.CENTER, 0, 0);
+
+
+        btn.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (edt.getText().toString() == null || edt.getText().toString().isEmpty()){
+                    popupWindow.dismiss();
+                }
+                else{
+                    valor.setText(edt.getText().toString());
+                    reference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            HashMap<String, Object> PlaceMap = new HashMap<>();
+                            PlaceMap.put("cost",edt.getText().toString());
+                            reference.updateChildren(PlaceMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    popupWindow.dismiss();
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+//                            popupWindow.dismiss();
+                        }
+                    });
+                }
+                return false;
+            }
+        });
+
+        close_popup.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                popupWindow.dismiss();
+                return true;
+            }
+        });
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
             }
         });

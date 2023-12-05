@@ -107,7 +107,7 @@ public class CreateDayActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         dbRefPlace = snapshot.child("Days").child(dayname).child("Places").getRef();
-                        Place place = new Place(placeName,null,Double.valueOf(cost),null,null,null,null);
+                        Place place = new Place(placeName,null,cost,null,null,null,null);
                         dbRefPlace.child(placeName).setValue(place).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {

@@ -199,6 +199,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="R$ 200,00"
+        android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.992"
         app:layout_constraintStart_toStartOf="parent"
