@@ -59,6 +59,7 @@ public class DayPageActivity extends AppCompatActivity {
         nomedodia = findViewById(R.id.nomedodia);
         description = findViewById(R.id.description);
         placelist = new ArrayList<Place>();
+        valordodia = findViewById(R.id.valordodia);
         buttonCreatePlace = findViewById(R.id.buttonCreatePlace);
         btn_back_itineraryfromDay = findViewById(R.id.btn_back_itineraryfromDay);
         button3 = findViewById(R.id.button3);
@@ -119,6 +120,11 @@ public class DayPageActivity extends AppCompatActivity {
 
                     }
                     nomedodia.setText((snapshot.child("dayname").getValue().toString()));
+
+                    if(snapshot.child("valorv").getValue().toString() != null){
+                        valordodia.setText(snapshot.child("valorv").getValue().toString());
+                    }
+                    else{valordodia.setText("R$ 0,00");}
                 }
 
                 @Override
