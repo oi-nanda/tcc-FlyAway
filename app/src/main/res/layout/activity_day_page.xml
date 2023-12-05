@@ -114,10 +114,9 @@
                         <Button
                             android:id="@+id/button3"
                             android:layout_width="wrap_content"
-
                             android:layout_height="wrap_content"
                             android:layout_marginStart="17dp"
-                            android:text="Adicionar por proximidade" />
+                            android:text="Visualizar por proximidade" />
 
 
                     </LinearLayout>
@@ -140,7 +139,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_weight="1"
                         android:text="Atividades do dia: "
-                        android:textColor="#DCA900"
+                        android:textColor="@color/darkblue"
                         android:textSize="19sp"
                         android:textStyle="bold" />
 

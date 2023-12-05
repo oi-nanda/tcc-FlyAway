@@ -39,6 +39,7 @@ public class FinancesActivity extends AppCompatActivity {
     Button btn_criar, btnadd, nextbtn;
     String itineraryId;
     DatabaseReference reference;
+
     TextView[] dots;
     ViewPagerAdapter viewPagerAdapter;
     Button btn_hotel, btn_lazer, btn_comida, btn_voos;
@@ -63,6 +64,7 @@ public class FinancesActivity extends AppCompatActivity {
 
 
         btn_voos.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 popup("voos");
