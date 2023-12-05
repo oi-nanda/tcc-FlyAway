@@ -87,9 +87,13 @@ public class ClimaActivity extends AppCompatActivity {
 
         hourlyList = new ArrayList<Hourly>();
 
+        String itineraryId = getIntent().getExtras().getString("ItineraryId");
+        String userId = getIntent().getExtras().getString("UserId");
+        String itineraryName = getIntent().getExtras().getString("ItineraryName");
+
         String tempUrl = "";
         String tempFiveDaysUrl = "";
-        String city = "roma";
+        String city = itineraryName;
         String country = "italia";
 
         if(city.equals("")){
@@ -97,8 +101,10 @@ public class ClimaActivity extends AppCompatActivity {
             Toast.makeText(ClimaActivity.this, "Não foi possivel encontrar o clima para a cidade informada", Toast.LENGTH_LONG).show();
         }else{
             if(!country.equals("")){
-                tempUrl = url + "?q=" + city + "," + country  +"&lang=pt_br" +"&appid=" + appid;
-                tempFiveDaysUrl = urlForecast + "?q=" + city + "," + country + "&cnt=" + 5 + "&lang=pt_br" + "&appid=" + appid;
+//                tempUrl = url + "?q=" + city + "," + country  +"&lang=pt_br" +"&appid=" + appid;
+//                tempFiveDaysUrl = urlForecast + "?q=" + city + "," + country + "&cnt=" + 5 + "&lang=pt_br" + "&appid=" + appid;
+                tempUrl = url + "?q=" + city +"&lang=pt_br" +"&appid=" + appid;
+                tempFiveDaysUrl = urlForecast + "?q=" + city + "&cnt=" + 5 + "&lang=pt_br" + "&appid=" + appid;
             }else{
                 tempUrl = url + "?q=" + city  +"&lang=pt_br"  + "&appid=" + appid;
                 tempFiveDaysUrl = urlForecast + "?q=" + city + "&cnt="+ 5 + "&lang=pt_br" +"&appid=" + appid;

@@ -54,11 +54,11 @@ public class DayPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_day_page);
 
         data = findViewById(R.id.data);
-        valordodia = findViewById(R.id.valordodia);
+//        valordodia = findViewById(R.id.valordodia);
         nomedodia = findViewById(R.id.nomedodia);
         description = findViewById(R.id.description);
         placelist = new ArrayList<Place>();
-        valordodia = findViewById(R.id.valordodia);
+//        valordodia = findViewById(R.id.valordodia);
         buttonCreatePlace = findViewById(R.id.buttonCreatePlace);
         btn_back_itineraryfromDay = findViewById(R.id.btn_back_itineraryfromDay);
         button3 = findViewById(R.id.button3);

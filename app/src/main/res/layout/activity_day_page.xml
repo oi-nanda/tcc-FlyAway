@@ -91,26 +91,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/data">
 
-                        <TextView
-                            android:id="@+id/description"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="280dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="20dp"
-                            android:text="Gastos do dia:"
-                            android:textSize="15dp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/valordodia"
-                            style="@style/ContainerComponentsQuarto"
-                            android:layout_width="81dp"
-                            android:layout_height="32dp"
-                            android:layout_marginStart="285dp"
-                            android:gravity="center"
-                            android:text="R$ 0,00" />
-
                         <Button
                             android:id="@+id/button3"
                             android:layout_width="wrap_content"

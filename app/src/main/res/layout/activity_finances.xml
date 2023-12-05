@@ -133,20 +133,7 @@
     <!--        app:layout_constraintTop_toTopOf="@+id/containerComponents"-->
     <!--        app:srcCompat="@drawable/add_itinerary" />-->
 
-    <TextView
-        android:id="@+id/Lugares"
-        android:layout_width="120dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="305dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="10dp"
-        android:text="R$ 0,00"
-        android:gravity="center"
-        style="@style/ContainerComponentsQuarto"
-        app:layout_constraintStart_toStartOf="@+id/containerComponents"
-        app:layout_constraintTop_toTopOf="@+id/containerComponents"
-        android:textSize="20dp" />
+
 
     <TextView
         android:id="@+id/hotell"
@@ -295,15 +282,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/img_18" />
 
-    <ImageView
-        android:id="@+id/lugares"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="660dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img_19" />
 
     <Button
         android:id="@+id/alimentacaotxt"
@@ -360,19 +338,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <TextView
-        android:id="@+id/lugarestxt"
-        android:layout_width="135dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="675dp"
-        android:gravity="center"
-        android:layout_marginStart="200dp"
-        android:text="LUGARES"
-        android:textSize="12dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
