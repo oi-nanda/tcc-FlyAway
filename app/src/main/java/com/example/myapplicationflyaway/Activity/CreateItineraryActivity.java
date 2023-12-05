@@ -134,7 +134,6 @@ public class CreateItineraryActivity extends FragmentActivity implements OnMapRe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_create_itinerary);
         binding = ActivityCreateItineraryBinding.inflate(getLayoutInflater());
        setContentView(binding.getRoot());
         progressDialog = new ProgressDialog(this);
@@ -163,7 +162,6 @@ public class CreateItineraryActivity extends FragmentActivity implements OnMapRe
                 Geocoder geocoder = new Geocoder((CreateItineraryActivity.this));
                 List<Address> address = null;
                 try{
-//                  address=geocoder.getFromLocationName(place.getName(),1);
                     address= geocoder.getFromLocation(place.getLatLng().latitude,place.getLatLng().longitude,1);
 
                 }

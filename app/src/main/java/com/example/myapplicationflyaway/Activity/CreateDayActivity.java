@@ -44,19 +44,9 @@ public class CreateDayActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     ActivityCreateDayBinding binding;
     String desc, cost;
-    private ArrayList<Day> daylist;
-    MyAdapter myAdapter;
     String placeName;
-    FirebaseUser user;
     private FirebaseAuth mAuth;
-    private DatabaseReference dbReference;
-    private FirebaseAuth auth;
-    long a = 0;
-    View view;
     DatabaseReference databaseReference, dbRefDay, dbRefPlace;
-    FirebaseDatabase db;
-    DatabaseReference reference;
-    String uid;
     String NDaysNew;
     String dayname;
     String id;
@@ -64,14 +54,10 @@ public class CreateDayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_create_day);
         id = getIntent().getExtras().getString("ItineraryIdAtual");
         binding = ActivityCreateDayBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         progressDialog = new ProgressDialog(this);
-
-
-
         binding.buttonCreateDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

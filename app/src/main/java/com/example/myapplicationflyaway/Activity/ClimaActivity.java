@@ -43,16 +43,11 @@ import java.util.Date;
 
 public class ClimaActivity extends AppCompatActivity {
 
-    String stCity, eiCountry;
-    TextView tvResult;
-
-    Button next_days;
     private HourlyAdapter hourlyAdapter;
     private RecyclerView recyclerView;
     private ArrayList<Hourly> hourlyList;
     String idItinerary, idUser;
 
-    Hourly hourly;
     ImageButton btn_back_itinerary;
     ImageView imagem_clima;
     TextView description_weather,place_weather,weather_temp,max_min_weather,rain_weather, wind_weather, humididty_weather, feelslike_weather;

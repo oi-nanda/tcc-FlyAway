@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplicationflyaway.Model.Place;
@@ -36,7 +37,7 @@ public class MyAdapterPlace extends RecyclerView.Adapter<MyAdapterPlace.ViewHold
     @Override
     public MyAdapterPlace.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.dia_card_item_layout,parent,false);
-
+        Log.d("lugar", "erro7");
         return new ViewHolder(v);
     }
 
@@ -44,13 +45,14 @@ public class MyAdapterPlace extends RecyclerView.Adapter<MyAdapterPlace.ViewHold
     public void onBindViewHolder(@NonNull MyAdapterPlace.ViewHolder holder, int position) {
 
         Place place = placeArrayList.get(position);
+        Log.d("lugar", "place.getName()");
         holder.place.setText(place.getName());
 
         holder.imgPlace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), PlacePageActivity.class);
-                intent.putExtra("PlaceName", place.getName());
+             //   intent.putExtra("PlaceName", place.getName());
                 intent.putExtra("PlaceId", place.getId());
                 intent.putExtra("ItineraryId",place.getIditinerary());
                 intent.putExtra("Dayname",place.getIddia());
@@ -68,11 +70,11 @@ public class MyAdapterPlace extends RecyclerView.Adapter<MyAdapterPlace.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView place;
-        CardView imgPlace;
+        ConstraintLayout imgPlace;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            place = itemView.findViewById(R.id.title_card);
-            imgPlace = itemView.findViewById(R.id.image_card);
+            place = itemView.findViewById(R.id.title_card_place);
+            imgPlace = itemView.findViewById(R.id.image_card_place);
 
         }
     }

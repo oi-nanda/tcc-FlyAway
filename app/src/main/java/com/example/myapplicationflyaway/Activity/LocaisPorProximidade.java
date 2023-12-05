@@ -38,7 +38,7 @@ import com.google.android.gms.tasks.Task;
 
 public class LocaisPorProximidade extends FragmentActivity implements OnMapReadyCallback{
     private GoogleMap mMap;
-    private ActivityLocaisPorProximidadeBinding binding;
+
     private FusedLocationProviderClient fusedLocationProviderClient;
     private  static  final int Request_code = 101;
     private double lat, lng;
@@ -49,9 +49,8 @@ public class LocaisPorProximidade extends FragmentActivity implements OnMapReady
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_locais_por_proximidade);
-        binding = ActivityLocaisPorProximidadeBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_locais_por_proximidade);
+
 
         atm = findViewById(R.id.atm);
         bank = findViewById(R.id.bancos);
@@ -77,8 +76,8 @@ public class LocaisPorProximidade extends FragmentActivity implements OnMapReady
                         ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=");
                 stringBuilder.append(lat+","+lng);
                 stringBuilder.append("&radius=1000");
-                stringBuilder.append("&type=atm");
-                stringBuilder.append("&keyword=atm");
+                stringBuilder.append("&type=tourist_attraction");
+                stringBuilder.append("&keyword=tourist_attraction");
                 stringBuilder.append("&sensor=true");
                 stringBuilder.append("&key="+getResources().getString(R.string.google_maps_key));
 
@@ -93,28 +92,6 @@ public class LocaisPorProximidade extends FragmentActivity implements OnMapReady
         });
 
         hosp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StringBuilder stringBuilder = new StringBuilder
-                        ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=");
-                stringBuilder.append(lat+","+lng);
-                stringBuilder.append("&radius=1000");
-                stringBuilder.append("&type=hospital");
-                stringBuilder.append("&keyword=hospital");
-                stringBuilder.append("&sensor=true");
-                stringBuilder.append("&key="+getResources().getString(R.string.google_maps_key));
-
-                String url = stringBuilder.toString();
-                Object dataFectch[] = new Object[2];
-                dataFectch[0]=mMap;
-                dataFectch[1]=url;
-
-                Pegarinformacoes pegarinformacoes = new Pegarinformacoes();
-                pegarinformacoes.execute(dataFectch);
-            }
-        });
-
-        res.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 StringBuilder stringBuilder = new StringBuilder
@@ -136,6 +113,28 @@ public class LocaisPorProximidade extends FragmentActivity implements OnMapReady
             }
         });
 
+        res.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringBuilder stringBuilder = new StringBuilder
+                        ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=");
+                stringBuilder.append(lat+","+lng);
+                stringBuilder.append("&radius=1000");
+                stringBuilder.append("&type=bus_station");
+                stringBuilder.append("&keyword=bus_station");
+                stringBuilder.append("&sensor=true");
+                stringBuilder.append("&key="+getResources().getString(R.string.google_maps_key));
+
+                String url = stringBuilder.toString();
+                Object dataFectch[] = new Object[2];
+                dataFectch[0]=mMap;
+                dataFectch[1]=url;
+
+                Pegarinformacoes pegarinformacoes = new Pegarinformacoes();
+                pegarinformacoes.execute(dataFectch);
+            }
+        });
+
         bank.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,8 +142,8 @@ public class LocaisPorProximidade extends FragmentActivity implements OnMapReady
                         ("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=");
                 stringBuilder.append(lat+","+lng);
                 stringBuilder.append("&radius=1000");
-                stringBuilder.append("&type=bank");
-                stringBuilder.append("&keyword=bank");
+                stringBuilder.append("&type=park");
+                stringBuilder.append("&keyword=park");
                 stringBuilder.append("&sensor=true");
                 stringBuilder.append("&key="+getResources().getString(R.string.google_maps_key));
 

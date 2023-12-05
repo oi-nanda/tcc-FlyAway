@@ -31,9 +31,6 @@
         <activity
             android:name=".Activity.LocaisPorProximidade"
             android:exported="false" />
-      <activity
-            android:name=".Activity.DownloadCoverDayActivity"
-            android:exported="false" />
         <activity
             android:name=".Activity.TestingAutoComplete"
             android:exported="false" />

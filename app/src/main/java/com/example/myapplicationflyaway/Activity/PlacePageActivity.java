@@ -87,7 +87,7 @@ public class PlacePageActivity extends FragmentActivity {
         placeIdReturn = getIntent().getStringExtra("PlaceId");
         Dayname = getIntent().getStringExtra("Dayname");
         user = FirebaseAuth.getInstance().getCurrentUser();
-        uid = user.getUid().toString();
+        uid = user.getUid();
 
         reference = FirebaseDatabase.getInstance().getReference("Itineraries").child(uid).child(itineraryId)
                 .child("Days").child(Dayname).child("Places").child(placeIdReturn);
@@ -138,10 +138,10 @@ public class PlacePageActivity extends FragmentActivity {
                         SimpleDateFormat simple = new SimpleDateFormat("HH:mm", Locale.getDefault());
                         String openTime = String.valueOf(period.getOpen().getTime().getHours());
                         String closeTime = String.valueOf(period.getClose().getTime().getHours());
-////                        LocalTime openTime = LocalTime.of(period.getOpen().getTime().getHours(), period.getOpen().getTime().getMinutes()); // Horário de abertura
-////                        LocalTime closeTime = period.getClose().getTime(); // Horário de fechamento
-//                        String horariofechar = simple.format(closeTime)+" h";
-//                        String horarioabrir = simple.format(openTime)+ " h";
+         //               LocalTime openTime = LocalTime.of(period.getOpen().getTime().getHours(), period.getOpen().getTime().getMinutes()); // Horário de abertura
+//                        LocalTime closeTime = period.getClose().getTime(); // Horário de fechamento
+                        String horariofechar = simple.format(closeTime)+" h";
+                        String horarioabrir = simple.format(openTime)+ " h";
                         String diadeabrir = "";
 
                         if (period.getOpen().getDay().toString().equals("SUNDAY")) { diadeabrir="segunda";}
@@ -177,7 +177,7 @@ public class PlacePageActivity extends FragmentActivity {
                 if (place.getRating() != null && !place.getRating().toString().isEmpty()) {
                     review.setText(place.getRating().toString());
                 } else {
-                    review.setText("Endereço indisponível");
+                    review.setText("Review indisponível");
                 }
 
                 if (place.getPhoneNumber() != null && !place.getPhoneNumber().isEmpty()) {
