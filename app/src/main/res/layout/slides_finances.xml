@@ -3,143 +3,371 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.067"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrow_back" />
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView12"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:layout_marginTop="32dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.067"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:srcCompat="@drawable/ic_arrow_back" />-->
 
-    <ImageView
-        android:id="@+id/imageView13"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="120dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/finances" />
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView13"-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_height="170dp"-->
+<!--        android:layout_marginTop="90dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:srcCompat="@drawable/finances" />-->
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Controle Financeiro"
+<!--    <TextView-->
+<!--        android:id="@+id/textView14"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Controle Financeiro"-->
 
-        android:textSize="25dp"
-        android:layout_marginTop="60dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/imageView13"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.693" />
+<!--        android:textSize="25dp"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/imageView13"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.693" />-->
 
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:text="Roma, Itália"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView13" />
+<!--    <TextView-->
+<!--        android:id="@+id/textView15"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:text="Roma, Itália"-->
+<!--        android:textSize="18dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/imageView13" />-->
 
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Qua, 29 Nov até Ter, 05 Dez"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-    <View
-        android:id="@+id/view_test"
-        android:layout_width="300dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/darkgray"
-        android:foregroundGravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+<!--    <Button-->
+<!--        android:id="@+id/textView16"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:text="Adicionar atividade"-->
+<!--        android:layout_marginBottom="5dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView15" />-->
 
 <!--    <View-->
-<!--        android:id="@+id/view_test3"-->
+<!--        android:id="@+id/view_test"-->
 <!--        android:layout_width="300dp"-->
 <!--        android:layout_height="1dp"-->
+<!--        android:layout_marginTop="2dp"-->
 <!--        android:background="@color/darkgray"-->
 <!--        android:foregroundGravity="center"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintHorizontal_bias="0.494"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.15" />-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView16" />-->
 
-    <View
-        android:id="@+id/view_test2"
-        android:layout_width="300dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="93dp"
-        android:background="@color/darkgray"
-        android:foregroundGravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.763"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+<!--&lt;!&ndash;    <View&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/view_test3"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="300dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="1dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:background="@color/darkgray"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:foregroundGravity="center"&ndash;&gt;-->
+<!--&lt;!&ndash;        app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;        app:layout_constraintHorizontal_bias="0.494"&ndash;&gt;-->
+<!--&lt;!&ndash;        app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;        app:layout_constraintVertical_bias="0.15" />&ndash;&gt;-->
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/containerComponents"
-        style="@style/ContainerComponents"
-        android:layout_height="260dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_test" />
-
-    <ImageView
-        android:id="@+id/imageView24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="336dp"
-        app:layout_constraintBottom_toBottomOf="@+id/containerComponents"
-        app:layout_constraintStart_toStartOf="@+id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@+id/view_test"
-        app:layout_constraintVertical_bias="0.545"
-        app:srcCompat="@drawable/baseline_arrow_forward_ios_24" />
-
-    <ImageView
-        android:id="@+id/imageView25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@+id/view_test"
-        app:layout_constraintStart_toStartOf="@+id/containerComponents"
-        app:layout_constraintVertical_bias="0.545"
-        app:srcCompat="@drawable/baseline_arrow_back_ios_24" />
+<!--    <View-->
+<!--        android:id="@+id/view_test2"-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_marginTop="80dp"-->
+<!--        android:layout_marginBottom="93dp"-->
+<!--        android:background="@color/darkgray"-->
+<!--        android:foregroundGravity="center"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.763"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView16" />-->
 
 
-    <ImageView
-        android:id="@+id/imageView23"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="309dp"
-        android:layout_marginTop="220dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/containerComponents"
-        app:layout_constraintEnd_toEndOf="@+id/containerComponents"
-        app:layout_constraintStart_toStartOf="@+id/containerComponents"
-        app:layout_constraintTop_toTopOf="@+id/containerComponents"
-        app:srcCompat="@drawable/baseline_add_24" />
+<!--    <androidx.viewpager.widget.ViewPager-->
+<!--        android:id="@+id/containerComponents"-->
+<!--        style="@style/ContainerComponents"-->
+<!--        android:layout_height="365dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/view_test" />-->
+
+<!--&lt;!&ndash;    <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/imageView23"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="60dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="40dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginStart="95dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginTop="310dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginEnd="14dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginBottom="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        app:layout_constraintBottom_toBottomOf="@+id/containerComponents"&ndash;&gt;-->
+<!--&lt;!&ndash;        app:layout_constraintStart_toStartOf="@+id/containerComponents"&ndash;&gt;-->
+<!--&lt;!&ndash;        app:layout_constraintTop_toTopOf="@+id/containerComponents"&ndash;&gt;-->
+<!--&lt;!&ndash;        app:srcCompat="@drawable/add_itinerary" />&ndash;&gt;-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/Lugares"-->
+<!--        android:layout_width="120dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="305dp"-->
+<!--        android:layout_marginEnd="14dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:text="R$ 0,00"-->
+<!--        android:gravity="center"-->
+<!--        style="@style/ContainerComponentsQuarto"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/containerComponents"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/containerComponents"-->
+<!--        android:textSize="20dp" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/hotell"-->
+<!--        style="@style/ContainerComponentsQuarto"-->
+<!--        android:layout_width="120dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="235dp"-->
+<!--        android:gravity="center"-->
+<!--        android:text="R$ 0,00"-->
+<!--        android:textSize="20dp"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/containerComponents"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/containerComponents" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/Voos"-->
+<!--        android:layout_width="120dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="165dp"-->
+<!--        android:layout_marginEnd="14dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:text="R$ 0,00"-->
+<!--        android:gravity="center"-->
+<!--        style="@style/ContainerComponentsQuarto"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/containerComponents"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/containerComponents"-->
+<!--        android:textSize="20dp" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/Lazer"-->
+<!--        style="@style/ContainerComponentsQuarto"-->
+<!--        android:layout_width="120dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="95dp"-->
+<!--        android:gravity="center"-->
+<!--        android:text="R$ 0,00"-->
+<!--        android:textSize="20dp"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/containerComponents"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/containerComponents" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/Alimentacao"-->
+<!--        android:layout_width="120dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="25dp"-->
+<!--        android:layout_marginEnd="14dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:text="R$ 0,00"-->
+<!--        android:gravity="center"-->
+<!--        style="@style/ContainerComponentsQuarto"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/containerComponents"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/containerComponents"-->
+<!--        android:textSize="20dp" />-->
+
+<!--    <View-->
+<!--        android:id="@+id/viewlinha1"-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_marginTop="85dp"-->
+<!--        android:background="@color/darkgray"-->
+<!--        android:foregroundGravity="center"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.494"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView16" />-->
+
+<!--    <View-->
+<!--        android:id="@+id/viewlinha2"-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_marginTop="155dp"-->
+<!--        android:background="@color/darkgray"-->
+<!--        android:foregroundGravity="center"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.494"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView16" />-->
+
+<!--    <View-->
+<!--        android:id="@+id/viewlinha3"-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_marginTop="225dp"-->
+<!--        android:background="@color/darkgray"-->
+<!--        android:foregroundGravity="center"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.494"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView16" />-->
+
+<!--    <View-->
+<!--        android:id="@+id/viewlinha4"-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:layout_marginTop="295dp"-->
+<!--        android:background="@color/darkgray"-->
+<!--        android:foregroundGravity="center"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.494"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView16" />-->
+
+
+<!--    <ImageView-->
+<!--        android:id="@+id/comida"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginTop="375dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:srcCompat="@drawable/img_14" />-->
+
+
+
+<!--    <ImageView-->
+<!--        android:id="@+id/lazer"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginTop="450dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:srcCompat="@drawable/img_16" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/voos"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginTop="520dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:srcCompat="@drawable/img_17" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/hotel"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginTop="590dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:srcCompat="@drawable/img_18" />-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/lugares"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginTop="660dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:srcCompat="@drawable/img_19" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/comidatxt"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="390dp"-->
+<!--        android:layout_marginStart="180dp"-->
+<!--        android:text="ALIMENTAÇÃO"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/comidatxt"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="390dp"-->
+<!--        android:layout_marginStart="180dp"-->
+<!--        android:text="ALIMENTAÇÃO"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/lazertxt"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="460dp"-->
+<!--        android:layout_marginStart="180dp"-->
+<!--        android:text="LAZER"-->
+<!--        android:gravity="center"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/vootxt"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="535dp"-->
+<!--        android:layout_marginStart="180dp"-->
+<!--        android:text="VOOS"-->
+<!--        android:gravity="center"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/hoteltxt"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="600dp"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_marginStart="180dp"-->
+<!--        android:text="HOTEL"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/lugarestxt"-->
+<!--        android:layout_width="100dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="675dp"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_marginStart="180dp"-->
+<!--        android:text="LUGARES"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

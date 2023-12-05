@@ -8,9 +8,9 @@ public class Day {
     String date;
 
     String itineraryId;
-    String valorv;
+    Double valorv;
 
-    public Day(String dayname, String description, String id, Image imgDay, String itineraryId, String date, String valorv) {
+    public Day(String dayname, String description, String id, Image imgDay, String itineraryId, String date, Double valorv) {
         this.dayname = dayname;
         this.description = description;
         this.id = id;
@@ -20,11 +20,11 @@ public class Day {
         this.valorv = valorv;
     }
 
-    public String getValorv() {
+    public Double getValorv() {
         return valorv;
     }
 
-    public void setValor(String valorv) {
+    public void setValorv(Double valorv) {
         this.valorv = valorv;
     }
 

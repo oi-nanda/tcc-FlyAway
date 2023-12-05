@@ -49,7 +49,6 @@ public class DayPageActivity extends AppCompatActivity {
     ImageButton btn_back_itineraryfromDay;
     private TextView data,valordodia,nomedodia,description,edit_description_popup;
 
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day_page);

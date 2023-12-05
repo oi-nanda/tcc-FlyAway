@@ -7,14 +7,14 @@ import java.io.Serializable;
 public class Place implements Serializable {
 
     String name, description;
-    Double cost;
+    String cost;
     String id,iddia,iditinerary;
     Image img;
 
     public Place() {}
 
 
-    public Place(String name, String description, Double cost, String id, Image img, String iddia, String iditinerary) {
+    public Place(String name, String description, String cost, String id, Image img, String iddia, String iditinerary) {
         this.name = name;
         this.description = description;
         this.cost = cost;
@@ -72,11 +72,10 @@ public class Place implements Serializable {
         this.description = description;
     }
 
-    public Double getCost() {
-        return cost;
-    }
-
-    public void setCost(Double cost) {
+    public void setCost(String cost) {
         this.cost = cost;
+    }
+    public String getCost() {
+        return cost;
     }
 }

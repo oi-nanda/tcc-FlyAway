@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/transparent_backgroud"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.EditProfileInfoFragment">
+
+
+    <LinearLayout
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/popupbg"
+        android:layout_marginTop="50sp"
+        android:layout_marginBottom="50sp"
+        android:orientation="vertical"
+        >
+
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_width="30dp"
+            android:layout_margin="20dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_arrow_back" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView15"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/img_12" />
+
+            <TextView
+                android:id="@+id/txt_edit_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="90dp"
+                android:text="Adicione um valor"
+                android:textColor="@color/darkblue"
+                android:textSize="23dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.506"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/edit_description"
+            style="@style/Edit_Text"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:elevation="3dp"
+            android:ems="10"
+            android:inputType="number"
+            android:textAlignment="viewStart"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/container_edit_profile_info_component"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.512"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_edit_profile"
+            app:layout_constraintVertical_bias="0.146" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_edit_info_itinerary"
+            style="@style/Button_Login"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_marginTop="332dp"
+            android:background="@drawable/button_login"
+            android:text="Salvar"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="@+id/container_edit_profile_info_component"
+            app:layout_constraintEnd_toEndOf="@+id/edit_number_of_travelers"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="@+id/edit_number_of_travelers"
+            app:layout_constraintTop_toTopOf="@+id/container_edit_profile_info_component"
+            app:layout_constraintVertical_bias="1.0"
+            tools:ignore="MissingConstraints" />
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

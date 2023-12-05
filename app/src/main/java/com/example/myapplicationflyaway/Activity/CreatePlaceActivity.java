@@ -84,11 +84,23 @@ public class CreatePlaceActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         id = UUID.randomUUID().toString();
 
+        databaseReference.child(mAuth.getCurrentUser().getUid()).child(itineraryId).child("Days").child(dayid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         databaseReference.child(mAuth.getCurrentUser().getUid()).child(itineraryId).child("Days").child(dayid).child("Places").child(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                Place place = new Place(placeName,desc,newCost,id, null, dayid,itineraryId);
+                Place place = new Place(placeName,desc,newCost.toString(),id, null, dayid,itineraryId);
                 dbRefPlace = snapshot.getRef();
                 dbRefPlace.setValue(place).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

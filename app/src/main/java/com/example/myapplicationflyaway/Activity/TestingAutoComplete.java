@@ -396,7 +396,7 @@ public class TestingAutoComplete extends FragmentActivity implements OnMapReadyC
         mAuth = FirebaseAuth.getInstance();
 
         com.example.myapplicationflyaway.Model.Place newplace = new com.example.myapplicationflyaway.Model.Place(
-                place.getName(),"",0.00,place.getId(),null,dayName,itineraryId
+                place.getName(),"","0.00",place.getId(),null,dayName,itineraryId
         );
         Log.i("msg",dayName+"   "+itineraryId);
 
