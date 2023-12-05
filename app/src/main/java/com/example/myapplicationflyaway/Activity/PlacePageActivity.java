@@ -131,41 +131,41 @@ public class PlacePageActivity extends FragmentActivity {
                     horarios.setText("");
                 }
                 else{
-                    List<Period> periodos = place.getOpeningHours().getPeriods();
-                    StringBuilder horariosdeabertura = new StringBuilder("Horários de Funcionamento:\n");
-
-                    for (Period period : periodos) {
-                        SimpleDateFormat simple = new SimpleDateFormat("HH:mm", Locale.getDefault());
-                        String openTime = String.valueOf(period.getOpen().getTime().getHours());
-                        String closeTime = String.valueOf(period.getClose().getTime().getHours());
-         //               LocalTime openTime = LocalTime.of(period.getOpen().getTime().getHours(), period.getOpen().getTime().getMinutes()); // Horário de abertura
-//                        LocalTime closeTime = period.getClose().getTime(); // Horário de fechamento
-                        String horariofechar = simple.format(closeTime)+" h";
-                        String horarioabrir = simple.format(openTime)+ " h";
-                        String diadeabrir = "";
-
-                        if (period.getOpen().getDay().toString().equals("SUNDAY")) { diadeabrir="segunda";}
-                        if (period.getOpen().getDay().toString().equals("MONDAY")) { diadeabrir="terça";}
-                        if (period.getOpen().getDay().toString().equals("TUESDAY")) { diadeabrir="quarta";}
-                        if (period.getOpen().getDay().toString().equals("WEDNESDAY")) { diadeabrir="quinta";}
-                        if (period.getOpen().getDay().toString().equals("THURSDAY")) { diadeabrir="sexta";}
-                        if (period.getOpen().getDay().toString().equals("FRIDAY")) { diadeabrir="sábado";}
-                        if (period.getOpen().getDay().toString().equals("SATURDAY")) { diadeabrir="domingo";}
-
-
-                        horariosdeabertura
-                                .append(diadeabrir)
-                                .append(", Abre: ")
-                                .append(openTime+" h")
-                                .append(", Fecha: ")
-                                .append(closeTime+" h")
-                                .append("\n")
-                                .append("\n");
-
-                    }
-
-                    String openingHours = horariosdeabertura.toString();
-                    horarios.setText(openingHours);
+//                    List<Period> periodos = place.getOpeningHours().getPeriods();
+//                    StringBuilder horariosdeabertura = new StringBuilder("Horários de Funcionamento:\n");
+//
+//                    for (Period period : periodos) {
+//                        SimpleDateFormat simple = new SimpleDateFormat("HH:mm", Locale.getDefault());
+//                        String openTime = String.valueOf(period.getOpen().getTime().getHours());
+//                        String closeTime = String.valueOf(period.getClose().getTime().getHours());
+//         //               LocalTime openTime = LocalTime.of(period.getOpen().getTime().getHours(), period.getOpen().getTime().getMinutes()); // Horário de abertura
+////                        LocalTime closeTime = period.getClose().getTime(); // Horário de fechamento
+//                        String horariofechar = simple.format(closeTime)+" h";
+//                        String horarioabrir = simple.format(openTime)+ " h";
+//                        String diadeabrir = "";
+//
+//                        if (period.getOpen().getDay().toString().equals("SUNDAY")) { diadeabrir="segunda";}
+//                        if (period.getOpen().getDay().toString().equals("MONDAY")) { diadeabrir="terça";}
+//                        if (period.getOpen().getDay().toString().equals("TUESDAY")) { diadeabrir="quarta";}
+//                        if (period.getOpen().getDay().toString().equals("WEDNESDAY")) { diadeabrir="quinta";}
+//                        if (period.getOpen().getDay().toString().equals("THURSDAY")) { diadeabrir="sexta";}
+//                        if (period.getOpen().getDay().toString().equals("FRIDAY")) { diadeabrir="sábado";}
+//                        if (period.getOpen().getDay().toString().equals("SATURDAY")) { diadeabrir="domingo";}
+//
+//
+//                        horariosdeabertura
+//                                .append(diadeabrir)
+//                                .append(", Abre: ")
+//                                .append(openTime+" h")
+//                                .append(", Fecha: ")
+//                                .append(closeTime+" h")
+//                                .append("\n")
+//                                .append("\n");
+//
+//                    }
+//
+//                    String openingHours = horariosdeabertura.toString();
+                  //  horarios.setText(openingHours);
                 }
 
                 if (place.getAddress() != null && !place.getAddress().isEmpty()) {

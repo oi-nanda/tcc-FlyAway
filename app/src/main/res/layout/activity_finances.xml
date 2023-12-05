@@ -79,34 +79,47 @@
         android:id="@+id/view_test3"
         android:layout_width="300dp"
         android:layout_height="1dp"
+        android:elevation="3dp"
         android:background="@color/darkgray"
         android:foregroundGravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/textView20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView25"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
 
     <View
-        android:id="@+id/view_test2"
+        android:id="@+id/view_test4"
         android:layout_width="300dp"
         android:layout_height="1dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="93dp"
+        android:layout_marginTop="40dp"
+        android:elevation="3dp"
         android:background="@color/darkgray"
         android:foregroundGravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/textView23"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.763"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:elevation="3dp"
+        android:text="Atrações Turísticas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.363"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_test" />
 
     <View
         android:id="@+id/containerComponents"
         style="@style/ContainerComponents"
         android:layout_height="260dp"
         android:layout_marginTop="8dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view_test" />
@@ -115,56 +128,12 @@
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="44dp"
         android:text="Alimentação"
-        app:layout_constraintBottom_toBottomOf="@+id/view_test2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.315"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="315dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="25dp"
-        android:hint="--------------------------------------------------------------------------------------------"
-        android:textSize="13dp"
-        app:layout_constraintBottom_toBottomOf="@+id/containerComponents"
-        app:layout_constraintEnd_toEndOf="@+id/containerComponents"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@+id/imageView20" />
-
-    <TextView
-        android:id="@+id/textView24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
-        android:text="15€"
-        android:textSize="13dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView23"
-        app:layout_constraintEnd_toStartOf="@+id/imageView24"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView22"
-        app:layout_constraintTop_toBottomOf="@+id/textView21"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="25dp"
-        android:text="Pizza"
-        android:textSize="13dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView23"
-        app:layout_constraintEnd_toStartOf="@+id/imageView24"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/containerComponents"
-        app:layout_constraintTop_toTopOf="@+id/textView20"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/view_test" />
 
     <TextView
         android:id="@+id/textView17"
@@ -181,13 +150,26 @@
 
 
     <ImageView
+        android:id="@+id/imageView220"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/mochila"
+        app:layout_constraintEnd_toStartOf="@+id/textView25"
+        app:layout_constraintStart_toStartOf="@+id/containerComponents"
+        app:layout_constraintTop_toTopOf="@+id/containerComponents"
+
+        />
+
+    <ImageView
         android:id="@+id/imageView20"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="92dp"
         android:layout_marginBottom="205dp"
+        android:src="@drawable/talheres"
         app:layout_constraintBottom_toBottomOf="@+id/containerComponents"
         app:layout_constraintEnd_toStartOf="@+id/textView25"
         app:layout_constraintStart_toStartOf="@+id/containerComponents"
@@ -195,73 +177,18 @@
 
         />
 
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="313dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="27dp"
-        android:hint="----------------------------------------------------------------------------------------------------------"
-        android:textSize="13dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView23"
-        app:layout_constraintEnd_toEndOf="@+id/containerComponents"
-        app:layout_constraintStart_toStartOf="@+id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@+id/view_test2" />
 
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="309dp"
-        android:layout_marginTop="87dp"
-        android:layout_marginEnd="29dp"
-        android:layout_marginBottom="1dp"
-        android:text="2€"
-        android:textSize="13dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView20"
-        app:layout_constraintEnd_toEndOf="@+id/containerComponents"
-        app:layout_constraintStart_toStartOf="@+id/containerComponents"
-        app:layout_constraintTop_toTopOf="@+id/containerComponents" />
-
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="60dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="37dp"
-        android:text="Gelato"
-        android:textSize="13dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView22"
-        app:layout_constraintEnd_toStartOf="@+id/textView21"
-        app:layout_constraintHorizontal_bias="0.004"
-        app:layout_constraintStart_toStartOf="@+id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@+id/imageView20"
-        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
-        android:id="@+id/imageView23"
+        android:id="@+id/save_finances_finances"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="309dp"
-        android:layout_marginTop="220dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/containerComponents"
-        app:layout_constraintEnd_toEndOf="@+id/containerComponents"
-        app:layout_constraintStart_toStartOf="@+id/containerComponents"
-        app:layout_constraintTop_toTopOf="@+id/containerComponents"
-        app:srcCompat="@drawable/baseline_add_24" />
+        app:srcCompat="@drawable/baseline_check_24"
+        tools:layout_editor_absoluteX="335dp"
+        tools:layout_editor_absoluteY="493dp"
+        tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/imageView24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="336dp"
-        app:layout_constraintBottom_toBottomOf="@+id/containerComponents"
-        app:layout_constraintStart_toStartOf="@+id/containerComponents"
-        app:layout_constraintTop_toBottomOf="@+id/view_test"
-        app:layout_constraintVertical_bias="0.545"
-        app:srcCompat="@drawable/baseline_arrow_forward_ios_24" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

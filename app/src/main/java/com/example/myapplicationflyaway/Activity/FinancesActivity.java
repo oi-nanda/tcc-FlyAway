@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ public class FinancesActivity extends AppCompatActivity {
     LinearLayout nDotLayout;
     ImageView backbtn, btnadd, nextbtn;
 
+
     TextView[] dots;
     ViewPagerAdapter viewPagerAdapter;
 
@@ -31,7 +33,6 @@ public class FinancesActivity extends AppCompatActivity {
         backbtn = findViewById(R.id.imageView25);
         nextbtn = findViewById(R.id.imageView24);
         btnadd = findViewById(R.id.imageView23);
-
         backbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
