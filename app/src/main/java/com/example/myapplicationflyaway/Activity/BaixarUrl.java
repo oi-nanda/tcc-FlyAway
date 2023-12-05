@@ -13,39 +13,6 @@ import java.net.URL;
 
 public class BaixarUrl {
 
-//    public String rUrl (String url) throws IOException {
-//        String urlData="";
-//        HttpURLConnection httpconection = null;
-//        InputStream inputStream = null;
-//
-//        try{
-//            URL url1 = new URL(url);
-//            httpconection=(HttpURLConnection)url1.openConnection();
-//
-//            httpconection.connect();
-//
-//            inputStream=httpconection.getInputStream();
-//
-//            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-//            StringBuffer strbuffer = new StringBuffer();
-//
-//            String line = "";
-//
-//            while ((line=bufferedReader.readLine())!=null){
-//                strbuffer.append(line);
-//            }
-//
-//            urlData=strbuffer.toString();
-//            bufferedReader.close();
-//            ;
-//        } catch (Exception exception){
-//            Log.d("Exception",exception.toString());
-//        } finally {
-//            inputStream.close();
-//            httpconection.disconnect();
-//        }
-//        return urlData;
-//    }
 public String rUrl(String url) throws IOException {
     String urlData = "";
     HttpURLConnection httpConnection = null;

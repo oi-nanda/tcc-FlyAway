@@ -8,14 +8,24 @@ public class Day {
     String date;
 
     String itineraryId;
+    String valorv;
 
-    public Day(String dayname, String description, String id, Image imgDay, String itineraryId, String date) {
+    public Day(String dayname, String description, String id, Image imgDay, String itineraryId, String date, String valorv) {
         this.dayname = dayname;
         this.description = description;
         this.id = id;
         this.imgDay = imgDay;
         this.itineraryId = itineraryId;
         this.date = date;
+        this.valorv = valorv;
+    }
+
+    public String getValorv() {
+        return valorv;
+    }
+
+    public void setValor(String valorv) {
+        this.valorv = valorv;
     }
 
     public String getDate() {

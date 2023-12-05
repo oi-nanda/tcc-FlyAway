@@ -32,6 +32,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -87,7 +88,7 @@ public class LocaisPorProximidade extends FragmentActivity implements OnMapReady
                 dataFectch[0]=mMap;
                 dataFectch[1]=url;
 
-                Pegarinformacoes pegarinformacoes = new Pegarinformacoes();
+                Pegarinformacoes pegarinformacoes = new Pegarinformacoes(LocaisPorProximidade.this);
                 pegarinformacoes.execute(dataFectch);
             }
         });
@@ -109,7 +110,7 @@ public class LocaisPorProximidade extends FragmentActivity implements OnMapReady
                 dataFectch[0]=mMap;
                 dataFectch[1]=url;
 
-                Pegarinformacoes pegarinformacoes = new Pegarinformacoes();
+                Pegarinformacoes pegarinformacoes = new Pegarinformacoes(LocaisPorProximidade.this);
                 pegarinformacoes.execute(dataFectch);
             }
         });
@@ -131,7 +132,7 @@ public class LocaisPorProximidade extends FragmentActivity implements OnMapReady
                 dataFectch[0]=mMap;
                 dataFectch[1]=url;
 
-                Pegarinformacoes pegarinformacoes = new Pegarinformacoes();
+                Pegarinformacoes pegarinformacoes = new Pegarinformacoes(LocaisPorProximidade.this);
                 pegarinformacoes.execute(dataFectch);
             }
         });
@@ -153,7 +154,7 @@ public class LocaisPorProximidade extends FragmentActivity implements OnMapReady
                 dataFectch[0]=mMap;
                 dataFectch[1]=url;
 
-                Pegarinformacoes pegarinformacoes = new Pegarinformacoes();
+                Pegarinformacoes pegarinformacoes = new Pegarinformacoes(LocaisPorProximidade.this);
                 pegarinformacoes.execute(dataFectch);
             }
         });
@@ -163,6 +164,7 @@ public class LocaisPorProximidade extends FragmentActivity implements OnMapReady
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
         LocalizacaoAtual();
+
     }
 
     private void LocalizacaoAtual(){
