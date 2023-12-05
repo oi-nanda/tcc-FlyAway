@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -36,10 +37,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class DayPageActivity extends AppCompatActivity {
-    String itineraryId, dayname;
+    String itineraryId, dayname, userId;
     DatabaseReference reference;
+    Button button3;
     private FirebaseAuth mAuth;
-    private ImageButton btn_edit;
     MyAdapterPlace myAdapterPlace;
     private RecyclerView recyclerView;
     private ArrayList<Place> placelist;
@@ -61,6 +62,8 @@ public class DayPageActivity extends AppCompatActivity {
         valordodia = findViewById(R.id.valordodia);
         buttonCreatePlace = findViewById(R.id.buttonCreatePlace);
         btn_back_itineraryfromDay = findViewById(R.id.btn_back_itineraryfromDay);
+        button3 = findViewById(R.id.button3);
+
         recyclerView = findViewById(R.id.places_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -79,6 +82,7 @@ public class DayPageActivity extends AppCompatActivity {
         if(bundle != null) {
             itineraryId = getIntent().getExtras().getString("ItineraryId");
             dayname = getIntent().getExtras().getString("DayName");
+            userId = getIntent().getExtras().getString("UserId");
 
             reference = FirebaseDatabase.getInstance().getReference("Itineraries").child(mAuth.getCurrentUser().getUid()).child(itineraryId)
                     .child("Days").child(dayname);
@@ -92,16 +96,16 @@ public class DayPageActivity extends AppCompatActivity {
                     if (snapshot.child("img").getValue()==null){}
                     else{
                         String image = snapshot.child("img").getValue().toString();
-                 //       Picasso.get().load(image).into(itinerary_pic);
                     }
                     if(snapshot.hasChild("Places")){
                         reference.child("Places").addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                    Place place = dataSnapshot.getValue(Place.class);
+                                     Place place = dataSnapshot.getValue(Place.class);
                                     placelist.add(place);
                                 }
+                                Log.d("lugar", "erro3");
                                myAdapterPlace.notifyDataSetChanged();
                             }
                             @Override
@@ -109,8 +113,11 @@ public class DayPageActivity extends AppCompatActivity {
 
                             }
                         });
-                       myAdapterPlace = new MyAdapterPlace(DayPageActivity.this, placelist);
-                       recyclerView.setAdapter(myAdapterPlace);
+                        Log.d("lugar", "erro4");
+                      myAdapterPlace = new MyAdapterPlace(DayPageActivity.this, placelist);
+                        Log.d("lugar", "erro5");
+                      recyclerView.setAdapter(myAdapterPlace);
+
                     }
                     nomedodia.setText((snapshot.child("dayname").getValue().toString()));
 
@@ -147,6 +154,16 @@ public class DayPageActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(DayPageActivity.this, LocaisPorProximidade.class);
+                i.putExtra("itineraryId", itineraryId);
+                i.putExtra("UserId", userId);
+                startActivity(i);
+                finish();
+            }
+        });
 
 
 
@@ -161,14 +178,12 @@ public class DayPageActivity extends AppCompatActivity {
         button_edit_info_itinerary_popup = popupView.findViewById(R.id.button_edit_info_itinerary);
 
 
-        // create the popup window
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true; // lets taps outside the popup also dismiss it
+        boolean focusable = true;
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
 
-        // show the popup window
-        // which view you pass in doesn't matter, it is only used for the window tolken
+
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
         back_popup.setOnTouchListener(new View.OnTouchListener() {

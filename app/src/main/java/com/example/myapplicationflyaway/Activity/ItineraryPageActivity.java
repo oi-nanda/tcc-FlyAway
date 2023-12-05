@@ -303,8 +303,7 @@ public class ItineraryPageActivity extends AppCompatActivity {
         btn_galeria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent i = new Intent(ItineraryPageActivity.this, GaleryPhotosActivity.class);
-                Intent i = new Intent(ItineraryPageActivity.this, LocaisPorProximidade.class);
+                Intent i = new Intent(ItineraryPageActivity.this, GaleryPhotosActivity.class);
                 i.putExtra("itineraryId", itineraryId);
                 i.putExtra("UserId", userId);
                 startActivity(i);
