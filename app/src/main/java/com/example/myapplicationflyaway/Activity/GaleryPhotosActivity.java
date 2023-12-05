@@ -3,6 +3,7 @@ package com.example.myapplicationflyaway.Activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplicationflyaway.Adapter.GaleryAdapter;
+import com.example.myapplicationflyaway.Fragments.MyitinerariesFragment;
+import com.example.myapplicationflyaway.Fragments.ProfileFragment;
 import com.example.myapplicationflyaway.Model.Itinerary;
 import com.example.myapplicationflyaway.Model.Upload;
 import com.example.myapplicationflyaway.R;

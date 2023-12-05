@@ -83,7 +83,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:padding="5dp"
-        android:src="@drawable/baseline_local_phone_24"
+        android:src="@drawable/maps"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.918"
@@ -95,9 +95,8 @@
         android:id="@+id/container_ciew_places"
         style="@style/ContainerComponents"
         android:layout_height="260dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
@@ -211,10 +210,10 @@
         android:id="@+id/imageView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toStartOf="@+id/endereco"
-        app:layout_constraintStart_toStartOf="@+id/container_ciew_places"
+        app:layout_constraintHorizontal_bias="0.593"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/container_ciew_places"
         app:srcCompat="@drawable/baseline_location_on_24" />
 
@@ -225,6 +224,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintEnd_toStartOf="@+id/telefone"
+
         app:layout_constraintTop_toBottomOf="@+id/imageView18"
         app:srcCompat="@drawable/baseline_local_phone_24" />
 
@@ -237,8 +237,7 @@
         app:layout_constraintHorizontal_bias="0.384"
         app:layout_constraintStart_toStartOf="@+id/container_ciew_places"
         app:layout_constraintTop_toBottomOf="@+id/imageView19"
-        app:srcCompat="@drawable/baseline_local_phone_24" />
-
+        app:srcCompat="@drawable/baseline_info_24" />
     <ImageView
         android:id="@+id/imageView27"
         android:layout_width="wrap_content"
@@ -248,7 +247,7 @@
         app:layout_constraintHorizontal_bias="0.384"
         app:layout_constraintStart_toStartOf="@+id/container_ciew_places"
         app:layout_constraintTop_toBottomOf="@+id/imageView22"
-        app:srcCompat="@drawable/baseline_local_phone_24" />
+        app:srcCompat="@drawable/baseline_access_time_24" />
 
     <ImageView
         android:id="@+id/imageView28"

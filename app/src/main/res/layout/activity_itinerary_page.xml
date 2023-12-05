@@ -8,87 +8,95 @@
     android:background="@color/backgroud"
     android:orientation="vertical">
 
+
+    <include android:id="@+id/toolbar" layout="@layout/toolbar"/>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:gravity="center" >
-
-        <include android:id="@+id/toolbar" layout="@layout/toolbar"/>
-
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="0dp"
-            android:fillViewport="true">
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cover"
-                    android:layout_width="450dp"
-                    android:layout_height="195dp"
-                    android:layout_marginTop="65dp"
-                    android:elevation="10dp"
-                    app:cardCornerRadius="20dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="MissingConstraints">
-
-
-                    <ImageView
-                        android:id="@+id/cover_1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@color/gray">
-
-
-                    </ImageView>
-
-                    <ImageButton
-                        android:id="@+id/btn_back_myItineraries"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/transparent_backgroud"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_arrow_back" />
-
-
-
-                </androidx.cardview.widget.CardView>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@+id/toolbar">
 
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginTop="260dp"
-            >
+            android:layout_height="wrap_content">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <TextView
-                    android:id="@+id/localdoroteiro"
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="LOCAL DO ROTEIRO"
-                    android:textSize="25dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="10dp"
-                    />
+                    android:layout_height="wrap_content">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cover"
+                        android:layout_width="450dp"
+                        android:layout_height="195dp"
+                        android:elevation="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints">
+
+                        <ImageView
+                            android:id="@+id/cover_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@color/gray">
+
+
+                        </ImageView>
+
+                        <ImageButton
+                            android:id="@+id/btn_back_myItinerariesList"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="45dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/transparent_backgroud"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_arrow_back" />
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/localdoroteiro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Local"
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:layout_margin="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/gpt_assisten_btn"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="30dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/chatbotazul" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -101,7 +109,6 @@
                         android:layout_below="@+id/data"
                         android:layout_alignLeft="@+id/data"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
                         android:text="x"
                         android:textSize="15dp" />
 
@@ -112,7 +119,6 @@
                         android:layout_below="@+id/data"
                         android:layout_alignLeft="@+id/data"
                         android:layout_marginLeft="5dp"
-                        android:layout_marginTop="10dp"
                         android:text="pessoas"
                         android:textSize="15dp" />
 
@@ -144,23 +150,30 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:text="ddmmyy" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/description"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:text=""
+                            android:textSize="16dp"/>
+                    </LinearLayout>
 
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/description"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="16dp"
-                    android:textStyle="bold"
-                    android:textSize="17dp"
-                    android:text="" />
 
                 <LinearLayout
                     android:layout_width="368dp"
                     android:layout_height="130dp"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="16dp"
                     android:orientation="horizontal"
                     android:textAlignment="center">
 
@@ -308,6 +321,7 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -321,7 +335,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_weight="1"
                         android:text="Programação"
-                        android:textColor="#DCA900"
+                        android:textColor="#000000"
                         android:textSize="19sp"
                         android:textStyle="bold" />
 
@@ -333,9 +347,7 @@
                     android:id="@+id/trip_list"
                     android:layout_width="370dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="20dp" />
+                    android:layout_margin="10dp" />
 
 
             </LinearLayout>

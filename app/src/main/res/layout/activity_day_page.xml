@@ -17,91 +17,7 @@
         <include android:id="@+id/toolbar2" layout="@layout/toolbar_day"/>
 
 
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="0dp"
-            android:fillViewport="true">
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cover_dayPage"
-                    android:layout_width="450dp"
-                    android:layout_height="195dp"
-                    android:layout_marginTop="65dp"
-                    android:elevation="10dp"
-                    app:cardCornerRadius="20dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="MissingConstraints">
-
-
-                    <ImageView
-                        android:id="@+id/cover_1"
-                        android:layout_width="match_parent"
-                        android:layout_height="261dp"
-                        android:scaleType="centerInside"
-                        android:src="@color/gray">
-
-                    </ImageView>
-
-                    <TextView
-                        android:id="@+id/nomedodia"
-                        style="@style/bolinhadia"
-                        android:layout_width="85dp"
-                        android:layout_height="85dp"
-                        android:layout_marginLeft="180dp"
-                        android:layout_marginTop="150dp"
-                        android:paddingTop="15dp"
-                        android:text="DIA X"
-                        android:textColor="#DEDEE8"
-                        android:textAlignment="center"
-                        android:textSize="20dp" />
-
-                    <ImageButton
-                        android:id="@+id/btn_back_myItineraries"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/transparent_backgroud"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_arrow_back" />
-
-
-
-
-                </androidx.cardview.widget.CardView>
-
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
-
-        <TextView
-
-            android:id="@+id/data"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="270dp"
-            android:layout_marginEnd="290dp"
-            android:layout_marginBottom="16dp"
-            android:text="ddmmyy"
-            android:textSize="15dp" />
-
         <ScrollView
-            android:layout_below="@+id/data"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
            >
@@ -111,32 +27,95 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+                <TextView
+                    android:id="@+id/nomedodia"
+                    style="@style/bolinhadia"
+                    android:layout_width="103dp"
+                    android:layout_height="100dp"
+                    android:gravity="bottom"
+                    android:layout_marginStart="145dp"
+                    android:text="DIA X"
+                    android:padding="15dp"
+                    android:paddingStart="25dp"
+                    android:textAllCaps="true"
+                    android:textColor="#DEDEE8"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.34"
+                    app:layout_constraintStart_toEndOf="@+id/btn_back_myItineraries"
+                    tools:layout_editor_absoluteY="-25dp" />
 
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:textSize="15dp"
-        android:layout_marginStart="280dp"
-        android:textStyle="bold"
-        android:text="Gastos do dia:" />
-    <TextView
-        android:id="@+id/valordodia"
-        style="@style/ContainerComponentsQuarto"
-        android:layout_width="81dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="285dp"
-        android:gravity="center"
-        android:text="R$ 0,00" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
 
 
-</LinearLayout>
+                    <TextView
+
+                        android:id="@+id/data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="16dp"
+                        android:text="ddmmyy"
+                        android:textSize="17dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.498"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <ImageButton
+                        android:id="@+id/btn_back_itineraryfromDay"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="28dp"
+
+                        android:background="@drawable/transparent_backgroud"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_arrow_back" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="20dp"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.47"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/data">
+
+                        <TextView
+                            android:id="@+id/description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="280dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="20dp"
+                            android:text="Gastos do dia:"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/valordodia"
+                            style="@style/ContainerComponentsQuarto"
+                            android:layout_width="81dp"
+                            android:layout_height="32dp"
+                            android:layout_marginStart="285dp"
+                            android:gravity="center"
+                            android:text="R$ 0,00" />
+
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 
@@ -152,7 +131,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_weight="1"
-                        android:text="Atrações do dia: "
+                        android:text="Atividades do dia: "
                         android:textColor="#DCA900"
                         android:textSize="19sp"
                         android:textStyle="bold" />

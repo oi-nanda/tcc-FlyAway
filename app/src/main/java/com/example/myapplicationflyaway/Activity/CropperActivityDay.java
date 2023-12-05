@@ -1,27 +1,25 @@
 package com.example.myapplicationflyaway.Activity;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.myapplicationflyaway.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.File;
 
-public class CropperActivityItinerary extends AppCompatActivity {
+public class CropperActivityDay extends AppCompatActivity {
+
     String result;
     Uri fileUri;
-    private FirebaseAuth mAuth;
-    String itineraryId;
+    FirebaseAuth mAuth;
 
-    DatabaseReference  databaseReference;
+    String itineraryId, dayname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +28,10 @@ public class CropperActivityItinerary extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         readIntent();
 
-        itineraryId = getIntent().getExtras().getString("ItineraryId");
+        dayname = getIntent().getExtras().getString("DayName");
 
-        String dest_uri = new StringBuilder(itineraryId).append(".jpg").toString();
+
+        String dest_uri = new StringBuilder(dayname).append(".jpg").toString();
 
 
         UCrop.Options options = new UCrop.Options();
@@ -42,7 +41,7 @@ public class CropperActivityItinerary extends AppCompatActivity {
                 .withAspectRatio(0,0)
                 .useSourceImageAspectRatio()
                 .withMaxResultSize(2000,2000)
-                .start(CropperActivityItinerary.this);
+                .start(CropperActivityDay.this);
     }
 
     private void readIntent() {

@@ -45,33 +45,10 @@ public class DayPageActivity extends AppCompatActivity {
     private ArrayList<Place> placelist;
     private ImageView buttonCreatePlace,back_popup;
     Button button_edit_info_itinerary_popup;
+    ImageButton btn_back_itineraryfromDay;
     private TextView data,valordodia,nomedodia,description,edit_description_popup;
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.day_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        String id = String.valueOf(item.getItemId());
-        String id1, id2;
-        id1 = String.valueOf(R.id.delete_day);
-        id2 = String.valueOf(R.id.add_cover_day);
-
-        if(id1.contains(id)){
-
-        }
-        if(id2.contains(id)){
-
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day_page);
@@ -82,7 +59,7 @@ public class DayPageActivity extends AppCompatActivity {
         description = findViewById(R.id.description);
         placelist = new ArrayList<Place>();
         buttonCreatePlace = findViewById(R.id.buttonCreatePlace);
-
+        btn_back_itineraryfromDay = findViewById(R.id.btn_back_itineraryfromDay);
         recyclerView = findViewById(R.id.places_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -113,8 +90,8 @@ public class DayPageActivity extends AppCompatActivity {
 
                     if (snapshot.child("img").getValue()==null){}
                     else{
-//                        String image = snapshot.child("img").getValue().toString();
-//                        Picasso.get().load(image).into(itinerary_pic);
+                        String image = snapshot.child("img").getValue().toString();
+                 //       Picasso.get().load(image).into(itinerary_pic);
                     }
                     if(snapshot.hasChild("Places")){
                         reference.child("Places").addValueEventListener(new ValueEventListener() {
@@ -131,8 +108,8 @@ public class DayPageActivity extends AppCompatActivity {
 
                             }
                         });
-                        myAdapterPlace = new MyAdapterPlace(DayPageActivity.this, placelist);
-                        recyclerView.setAdapter(myAdapterPlace);
+                       myAdapterPlace = new MyAdapterPlace(DayPageActivity.this, placelist);
+                       recyclerView.setAdapter(myAdapterPlace);
                     }
                     nomedodia.setText((snapshot.child("dayname").getValue().toString()));
                 }
@@ -151,6 +128,16 @@ public class DayPageActivity extends AppCompatActivity {
                 Intent i = new Intent(DayPageActivity.this, TestingAutoComplete.class);
                 i.putExtra("ItineraryId",itineraryId);
                 i.putExtra("DayName",dayname);
+                startActivity(i);
+            }
+        });
+
+        btn_back_itineraryfromDay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(DayPageActivity.this, ItineraryPageActivity.class);
+                i.putExtra("ItineraryId",itineraryId);
+                i.putExtra("UserId",dayname);
                 startActivity(i);
             }
         });
