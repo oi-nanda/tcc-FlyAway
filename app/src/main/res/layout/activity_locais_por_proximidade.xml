@@ -11,40 +11,54 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:id="@+id/linearL"
+    android:layout_marginTop="110dp"
     android:layout_height="wrap_content">
 
-<ImageButton
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/hospital"
-    android:padding="30dp"
-    android:layout_margin="10dp"
-    android:background="@color/gray"
-    />
+    <ImageButton
+        android:id="@+id/hospital"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/localizacao"
+        android:padding="30dp" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:id="@+id/restaurantes"
         android:padding="30dp"
-        android:background="@color/gray"
+        android:background="@drawable/talheres"
         android:layout_margin="10dp"
         />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:id="@+id/atm"
         android:padding="30dp"
-        android:background="@color/gray"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/localizacao"
         android:layout_margin="10dp"
 
         />
 
     <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="centerCrop"
+        android:id="@+id/bancos"
+        android:background="@drawable/pinheiro"
+        android:padding="30dp"
+        android:layout_margin="10dp"
+        />
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/bancos"
+        android:id="@+id/bancos2"
         android:padding="30dp"
         android:layout_margin="10dp"
         android:background="@color/gray"

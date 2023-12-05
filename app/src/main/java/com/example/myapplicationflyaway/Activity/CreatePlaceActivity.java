@@ -107,10 +107,10 @@ public class CreatePlaceActivity extends AppCompatActivity {
     }
 
     private void sendUsertoPlacePage() {
-        Intent intent = new Intent(CreatePlaceActivity.this, ItineraryPageActivity.class);
+        Intent intent = new Intent(CreatePlaceActivity.this, PlacePageActivity.class);
         intent.putExtra("ItineraryId", itineraryId);
         intent.putExtra("DayName",dayid);
-        intent.putExtra("IdPlace",id);
+        intent.putExtra("PlaceId",id);
         startActivity(intent);
         finish();
     }

@@ -111,6 +111,14 @@
                             android:gravity="center"
                             android:text="R$ 0,00" />
 
+                        <Button
+                            android:id="@+id/button3"
+                            android:layout_width="wrap_content"
+
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="17dp"
+                            android:text="Adicionar por proximidade" />
+
 
                     </LinearLayout>
 
@@ -127,7 +135,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="210dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_weight="1"
